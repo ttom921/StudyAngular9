@@ -1,0 +1,16 @@
+<mat-nav-list style="margin-top: 64px;" color="primary">
+  <mat-list-item [routerLink]="['/','dashboard','angularprogressbars']" (click)="handleClicked($event)">
+    <mat-icon md-list-icon>dns</mat-icon>angularprogressbars <span style="width: 100%;"></span>
+    <mat-icon matSuffix class="SufficIcon">keyboard_arrow_right</mat-icon>
+  </mat-list-item>
+
+  <mat-list-item [routerLink]="['/','dashboard','ngtestsilder']" (click)="handleClicked($event)">
+    <mat-icon md-list-icon>dns</mat-icon>測試sliderbar <span style="width: 100%;"></span>
+    <mat-icon matSuffix class="SufficIcon">keyboard_arrow_right</mat-icon>
+  </mat-list-item>
+
+  <mat-divider></mat-divider>
+  <mat-nav-list>
+    <app-menu-list-item *ngFor="let item of navItems" [item]="item"></app-menu-list-item>
+  </mat-nav-list>
+</mat-nav-list>
