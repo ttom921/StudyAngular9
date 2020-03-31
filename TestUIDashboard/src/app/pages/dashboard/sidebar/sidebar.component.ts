@@ -20,11 +20,6 @@ export class SidebarComponent implements OnInit {
       route: '',
       children: [
         {
-          displayName: 'angularprogressbars元件',
-          iconName: 'star_rate',
-          route: 'dashboard/angularprogressbars',
-        },
-        {
           displayName: 'ngcircleprogress元件',
           iconName: 'person',
           route: 'dashboard/ngcircleprogress',
