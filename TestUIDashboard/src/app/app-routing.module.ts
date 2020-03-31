@@ -9,7 +9,11 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)
-  }
+  },
+  {
+    path: 'videoplaymanager/:carid/:eventid/:token',
+    loadChildren: () => import('./pages/video-play-manager/video-play-manager.module').then(m => m.VideoPlayManagerModule)
+  },
 ];
 
 @NgModule({
