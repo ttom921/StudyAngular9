@@ -20,17 +20,17 @@ export class SidebarComponent implements OnInit {
       route: '',
       children: [
         {
-          displayName: 'ngcircleprogress元件',
+          displayName: '元件ngcircleprogress',
           iconName: 'person',
           route: 'dashboard/ngcircleprogress',
         },
         {
-          displayName: '測試animate程式庫',
+          displayName: '元件animate程式庫',
           iconName: 'star_rate',
           route: 'dashboard/ngtestanimate',
         },
         {
-          displayName: '測試',
+          displayName: '測試隱藏選單',
           disabled: true,
           iconName: 'person',
           route: 'dashboard/ch03',
