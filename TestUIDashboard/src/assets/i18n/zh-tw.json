@@ -1,0 +1,34 @@
+{
+  "menu": {
+    "home": "首頁",
+    "system": "系統",
+    "systemList": {
+      "systemsetting": "系統設定"
+    },
+    "feature": {
+      "name": "功能模組",
+      "form": "表單"
+    },
+    "language": "語言",
+    "languageList": {
+      "taiwan": "繁體中文",
+      "english": "English",
+      "japan": "日本語"
+    }
+  },
+  "error": {
+    "require": "{{itemName}}為必埴欄位"
+  },
+  "enum": {
+    "gender": "男"
+  },
+  "validationMessages": {
+    "email": {
+      "required": "郵箱必須輸入",
+      "pattern": "請輸入正確的郵箱地址"
+    }
+  },
+  "systemsetting": {
+    "vehicledefaultposition": "預設車輛GPS位置:"
+  }
+}

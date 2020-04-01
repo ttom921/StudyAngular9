@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LanguageService } from './_services/language/language.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'TestUIDashboard';
+  constructor(private languageService: LanguageService) {
+    this.languageService.setInitState();
+    this.languageService.setCurrentLanguage();
+  }
 }

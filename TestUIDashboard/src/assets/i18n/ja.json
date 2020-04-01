@@ -1,0 +1,34 @@
+{
+  "menu": {
+    "home": "ホーム",
+    "system": "システム",
+    "systemList": {
+      "systemsetting": "システム設定"
+    },
+    "feature": {
+      "name": "汎用モジュール",
+      "form": "形"
+    },
+    "language": "言語",
+    "languageList": {
+      "taiwan": "繁體中文",
+      "english": "English",
+      "japan": "日本語"
+    }
+  },
+  "error": {
+    "require": "{{itemName}}必須フィールド"
+  },
+  "enum": {
+    "gender": "男性"
+  },
+  "validationMessages": {
+    "email": {
+      "required": "メールアドレスを入力する必要があります",
+      "pattern": "正しいメールアドレスを入力してください"
+    }
+  },
+  "systemsetting": {
+    "vehicledefaultposition": "事前設定された車両のGPS位置:"
+  }
+}

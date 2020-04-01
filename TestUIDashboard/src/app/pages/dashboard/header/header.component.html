@@ -8,7 +8,12 @@
 
   <mat-icon matPrefix style="margin-right: 10px;font-size: 24px;">account_circle</mat-icon>
   <span style="margin-right: 32px;">{{user_id}}</span>
-
+  <mat-form-field style="width: 144px;">
+    <mat-icon style="font-size: 24px;vertical-align: bottom;" matPrefix>language</mat-icon>
+    <mat-select [(ngModel)]="langselected" (selectionChange)="selectChange($event)">
+      <mat-option *ngFor="let item of langslist" [value]="item.lang">{{ item.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
   <!-- <button mat-icon-button (click)="logout()">
     <mat-icon>exit_to_app</mat-icon>
   </button> -->

@@ -1,0 +1,34 @@
+{
+  "menu": {
+    "home": "Home",
+    "system": "system",
+    "systemList": {
+      "systemsetting": "systemsetting"
+    },
+    "feature": {
+      "name": "fun module",
+      "form": "form"
+    },
+    "language": "language",
+    "languageList": {
+      "taiwan": "繁體中文",
+      "english": "English",
+      "japan": "日本語"
+    }
+  },
+  "error": {
+    "require": "{{itemName}}is require"
+  },
+  "enum": {
+    "gender": "man"
+  },
+  "validationMessages": {
+    "email": {
+      "required": "email is require",
+      "pattern": "Please input the correct email"
+    }
+  },
+  "systemsetting": {
+    "vehicledefaultposition": "Vehicle default position:"
+  }
+}

@@ -37,13 +37,17 @@
         <mat-card-header fxLayout="row">
           <mat-card-title>
             <p matLine>
-              車子容量 &nbsp;
+              車子容量
+              &nbsp;
               <button mat-raised-button color="primary" *ngIf="true">自動分配</button>
             </p>
           </mat-card-title>
         </mat-card-header>
         &nbsp;
         <mat-card-content>
+
+
+
           <span>10</span>
           <mat-slider #slider min="10" max="100" step="1" thumbLabel [displayWith]="formatLabel" (input)="onInputChange($event)"></mat-slider>
           <span>100</span>
@@ -59,4 +63,14 @@
   </mat-card-content>
 
 
+</mat-card>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>多國語言用法:</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{'menu.home' | translate }}</p>
+    <p [translate]="'menu.system'"> </p>
+
+  </mat-card-content>
 </mat-card>

@@ -66,6 +66,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 //flex-layout
 import { FlexLayoutModule } from '@angular/flex-layout';
+//多國語言
+import { TranslateModule } from '@ngx-translate/core';
 //
 //import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 //import { LeafletMarkerClusterModule } from '@asymmetrik/ngx-leaflet-markercluster';
@@ -79,6 +81,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
+    TranslateModule,
     //LeafletModule,
     //LeafletMarkerClusterModule,
   ],
@@ -138,6 +141,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     CdkTableModule,
     CdkTreeModule,
     FlexLayoutModule,
+    TranslateModule,
     //LeafletModule,
     //LeafletMarkerClusterModule,
   ]
