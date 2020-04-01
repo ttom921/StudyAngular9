@@ -1,6 +1,6 @@
-<div class="color1" fxLayout="row" fxLayoutAlign="center stretch" style="width:100vw;height:100vh;">
+<div fxLayout="row" fxLayoutAlign="center stretch" style="width:100vw;height:100vh;">
   <!-- left -->
-  <div class="color2" fxFlex="10">
+  <div fxFlex="10">
     <div style="margin-left: 12px;">
       <mat-card class="mat-elevation-z2" *ngFor="let item of videolist;" style="padding: 2px;" [ngClass]="{'select-card': item.src==mainvideo.src ?true:false}">
         <mat-video [playFreeze]="true" [mustShowMouseIcon]="true" [preload]="false" [overlay]="false" (click)="onVideoclick($event,item)">
