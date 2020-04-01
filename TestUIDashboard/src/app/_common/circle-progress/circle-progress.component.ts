@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, OnDestroy, SimpleChanges, ElementRef, Inject, EventEmitter, Output, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, OnDestroy, SimpleChanges, ElementRef, Inject, EventEmitter, Output, Input, ViewEncapsulation } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Subscription, timer } from 'rxjs';
 
@@ -120,7 +120,7 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
   styleUrls: ['./circle-progress.component.scss'],
   providers: [
     { provide: CircleProgressOptions, useValue: CircleProgressOptions }
-  ]
+  ],
 })
 export class CircleProgressComponent implements OnChanges, OnInit, OnDestroy {
 

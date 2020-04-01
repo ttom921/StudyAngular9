@@ -1,11 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { CircleProgressComponent } from 'src/app/_common/circle-progress/circle-progress.component';
 import { MatSlider, MatSliderChange } from '@angular/material/slider';
 
 @Component({
   selector: 'app-ng-circle-progress',
   templateUrl: './ng-circle-progress.component.html',
-  styleUrls: ['./ng-circle-progress.component.scss']
+  styleUrls: ['./ng-circle-progress.component.scss'],
+  //encapsulation: ViewEncapsulation.None,
 })
 export class NgCircleProgressComponent implements OnInit {
   @ViewChild('slider', { static: true }) slider: MatSlider;
