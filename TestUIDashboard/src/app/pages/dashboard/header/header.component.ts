@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
   // }
   processLanguageList() {
     this.languageService.translate.get('menu.languageList').subscribe(value => {
-      console.log(value);
+      //console.log(value);
       for (const key in value) {
         if (value.hasOwnProperty(key)) {
           let element = null;

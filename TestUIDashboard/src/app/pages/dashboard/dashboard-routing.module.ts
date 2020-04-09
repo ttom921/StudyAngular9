@@ -5,6 +5,7 @@ import { AngularProgressBarsComponent } from '../angular-progress-bars/angular-p
 import { NgCircleProgressComponent } from '../ng-circle-progress/ng-circle-progress.component';
 import { NgTestSilderComponent } from '../ng-test-silder/ng-test-silder.component';
 import { NgTestAnimateComponent } from '../ng-test-animate/ng-test-animate.component';
+import { NgTestMapComponent } from '../ng-test-map/ng-test-map.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
       { path: 'ngtestsilder', component: NgTestSilderComponent },
       { path: 'ngcircleprogress', component: NgCircleProgressComponent },
       { path: 'ngtestanimate', component: NgTestAnimateComponent },
+      { path: 'ngtestmap', component: NgTestMapComponent }
     ]
   }
 ];

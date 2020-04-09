@@ -29,12 +29,30 @@ export class SidebarComponent implements OnInit {
           iconName: 'star_rate',
           route: 'dashboard/ngtestanimate',
         },
+
         {
           displayName: '測試隱藏選單',
           disabled: true,
           iconName: 'person',
           route: 'dashboard/ch03',
         }
+      ]
+    },
+    {
+      displayName: '一般測試',
+      iconName: 'recent_actors',
+      route: '',
+      children: [
+        {
+          displayName: '測試angularprogressbars',
+          iconName: 'person',
+          route: 'dashboard/angularprogressbars',
+        },
+        {
+          displayName: '測試sliderbar',
+          iconName: 'person',
+          route: 'dashboard/ngtestsilder',
+        },
       ]
     }
   ];

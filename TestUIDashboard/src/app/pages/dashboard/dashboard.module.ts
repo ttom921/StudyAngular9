@@ -15,12 +15,22 @@ import { CircleProgressComponent } from '../../_common/circle-progress/circle-pr
 import { NgCircleProgressComponent } from '../ng-circle-progress/ng-circle-progress.component';
 import { NgTestSilderComponent } from '../ng-test-silder/ng-test-silder.component';
 import { NgTestAnimateComponent } from '../ng-test-animate/ng-test-animate.component';
-
+import { NgTestMapComponent } from '../ng-test-map/ng-test-map.component';
+import { OsmViewComponent } from 'src/app/_common/map/osm-view/osm-view.component';
 
 
 @NgModule({
   declarations: [DashboardComponent, MenuListItemComponent, HeaderComponent, SidebarComponent,
-    AngularProgressBarsComponent, BarComponent, SvgbarComponent, SpinnerComponent, CircleProgressComponent, NgCircleProgressComponent, NgTestSilderComponent, NgTestAnimateComponent,
+    AngularProgressBarsComponent,
+    BarComponent,
+    SvgbarComponent,
+    SpinnerComponent,
+    CircleProgressComponent,
+    OsmViewComponent,
+    NgCircleProgressComponent,
+    NgTestSilderComponent,
+    NgTestAnimateComponent,
+    NgTestMapComponent,
   ],
   imports: [
     CommonModule,
