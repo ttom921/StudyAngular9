@@ -19,3 +19,11 @@ npm i -s @angular/flex-layout
 import { ScrollingModule } from '@angular/cdk/scrolling';
 ```
 
+## TestUIDashboard
+
+測試之前在ng8用的UI
+
+## TestGPXParser
+
+測試[GPXParser.js](https://github.com/Luuka/GPXParser.js)的使用
+
