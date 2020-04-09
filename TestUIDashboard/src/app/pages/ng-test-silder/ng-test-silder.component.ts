@@ -11,5 +11,7 @@ export class NgTestSilderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  btntest() {
+    window.open('http://localhost:4300/dashboard/videoplaymanager/%E3%82%8F2-674/eventid123/eyJhbGciOiJIUzUxMiIsImlhdCI6MTU4');
+  }
 }
