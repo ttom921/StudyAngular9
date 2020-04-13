@@ -25,8 +25,13 @@ export class OsmViewComponent implements OnInit, OnChanges {
   */
   @Input() zoom = 14;
 
+  //路徑
+  @Input()
+  carinfo: any;
+  pathsObj = {};
   @Input()
   carpath = [];
+  pathlayer: L.Layer;
   //mark的物件
   //markersObj = {};
   map: L.Map;// Values to bind to Leaflet Directive
@@ -55,6 +60,7 @@ export class OsmViewComponent implements OnInit, OnChanges {
     //修改右下角的資訊
     L.control.attribution({ prefix: 'leaflet ' }).addTo(this.map);
     //this.addMarker(this.center);
+    //console.log(`carinfo=${this.carinfo}`);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -62,9 +68,29 @@ export class OsmViewComponent implements OnInit, OnChanges {
 
     //console.log(this.map);
     console.log(changes);
+    //車子
+    if (changes.hasOwnProperty('carinfo')) {
+      console.log(`change carinfo=>${this.carinfo}`);
+    }
     //車子路徑
+
     if (changes.hasOwnProperty('carpath')) {
-      var polyline = L.polyline(this.carpath, { weight: 6, color: 'darkred' }).addTo(this.map);
+      if (this.map.hasLayer(this.pathlayer)) {
+        this.map.removeLayer(this.pathlayer);
+        this.pathlayer = null;
+      }
+      //檢查是否有此物件
+      const key = this.carinfo.caruid;
+      let polyline;
+      if (!this.pathsObj.hasOwnProperty(key)) {
+        //加入一個path
+        polyline = L.polyline(this.carinfo.carpath, { weight: 6, color: 'darkred' });
+        this.pathsObj[key] = polyline;
+      }
+      polyline = this.pathsObj[key];
+      this.pathlayer = polyline;
+      this.pathlayer.addTo(this.map);
+      //var polyline = L.polyline(this.carpath, { weight: 6, color: 'darkred' }).addTo(this.map);
     }
     if (changes.hasOwnProperty('center')) {
       //console.log(this.center);

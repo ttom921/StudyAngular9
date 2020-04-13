@@ -14,10 +14,13 @@ export class NgTestMapComponent implements OnInit {
   //車輛相關
   carInfos = [];
   carpath = [];
+  carinfo: any;
+  //
   constructor(
     private gpxParserService: GPXParserService
   ) {
-    this.testInitCarInfo();
+    this.testGenCarUid();
+    //this.testInitCarInfo();
   }
 
   ngOnInit(): void {
@@ -27,39 +30,99 @@ export class NgTestMapComponent implements OnInit {
     this.center = this.centerselect;
   }
   clickCarInfo(info) {
-    console.log(info);
+    //console.log(info);
+    this.testgetGpxDatabyid(info);
   }
   //以下是測試程式
-  testInitCarInfo() {
+  //建立測試車牌
+  testGenCarUid() {
+    let carids = ["1234", "8888"];
+    carids.forEach(element => {
+      let obj = {
+        caruid: element,
+      };
+      this.carInfos.push(obj);
+    });
+  }
+  testgetGpxDatabyid(carinfo) {
     var gpx = new gpxParser(); //Create gpxParser Object
-    this.gpxParserService.getGPX().subscribe(data => {
+    this.gpxParserService.getGPX(carinfo.caruid).subscribe(data => {
       //console.log(data.text().then(result => console.log(result)));
       data.text().then(result => {
         gpx.parse(result);
-        console.log(gpx);
+        //console.log(gpx);
         let totalDistance = gpx.routes[0].distance.total;
         console.log(`distance=${totalDistance}`);
-        //let geoJSON = gpx.toGeoJSON();
-        //console.log(geoJSON);
         let coordinates = gpx.routes[0].points.map(p => [p.lat.toFixed(5), p.lon.toFixed(5)]);
-        let obj = {
-          caruid: "1234",
-          route: coordinates
-        };
-        this.carInfos.push(obj);
-        obj = {
-          caruid: "8888",
-          route: coordinates
-        };
-        this.carInfos.push(obj);
-        console.log(this.carInfos);
-
-        this.carpath = this.carInfos[0].route;
+        this.carpath = coordinates;
+        carinfo.carpath = coordinates;
+        //console.log(carinfo);
+        this.carinfo = carinfo;
 
       });
     });
-
-
   }
+  // testInitCarInfo() {
+  //   //let carid = "1234";
+  //   //this.testgetGpxData(carid);
+  //   let carid = "8888";
+  //   this.testgetGpxData(carid);
+  //   // var gpx = new gpxParser(); //Create gpxParser Object
+  //   // let carid = "1234";
+  //   // this.gpxParserService.getGPX(carid).subscribe(data => {
+  //   //   //console.log(data.text().then(result => console.log(result)));
+  //   //   data.text().then(result => {
+  //   //     gpx.parse(result);
+  //   //     console.log(gpx);
+  //   //     let totalDistance = gpx.routes[0].distance.total;
+  //   //     console.log(`distance=${totalDistance}`);
+  //   //     //let geoJSON = gpx.toGeoJSON();
+  //   //     //console.log(geoJSON);
+  //   //     let coordinates = gpx.routes[0].points.map(p => [p.lat.toFixed(5), p.lon.toFixed(5)]);
+  //   //     let obj = {
+  //   //       caruid: carid,
+  //   //       route: coordinates
+  //   //     };
+  //   //     // this.carInfos.push(obj);
+  //   //     // obj = {
+  //   //     //   caruid: "8888",
+  //   //     //   route: coordinates
+  //   //     // };
+  //   //     this.carInfos.push(obj);
+  //   //     console.log(this.carInfos);
+
+  //   //     this.carpath = this.carInfos[0].route;
+
+  //   //   });
+  //   // });
+  // }
+  // private testgetGpxData(carid) {
+  //   // this.gpxParserService.getGPX(carid).subscribe(data => {
+  //   //   //console.log(data.text().then(result => console.log(result)));
+  //   //   data.text().then(result => {
+  //   //     this.gpx.parse(result);
+  //   //     console.log(this.gpx);
+  //   //     let totalDistance = this.gpx.routes[0].distance.total;
+  //   //     console.log(`distance=${totalDistance}`);
+  //   //     //let geoJSON = gpx.toGeoJSON();
+  //   //     //console.log(geoJSON);
+  //   //     let coordinates = this.gpx.routes[0].points.map(p => [p.lat.toFixed(5), p.lon.toFixed(5)]);
+  //   //     let obj = {
+  //   //       caruid: carid,
+  //   //       route: coordinates
+  //   //     };
+  //   //     // this.carInfos.push(obj);
+  //   //     // obj = {
+  //   //     //   caruid: "8888",
+  //   //     //   route: coordinates
+  //   //     // };
+  //   //     this.carInfos.push(obj);
+  //   //     console.log(this.carInfos);
+
+  //   //     this.carpath = this.carInfos[0].route;
+
+  //   //   });
+  //   // });
+  // }
 
 }

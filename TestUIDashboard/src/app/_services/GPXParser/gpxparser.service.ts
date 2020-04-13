@@ -8,8 +8,10 @@ import { Observable, from } from 'rxjs';
 export class GPXParserService {
 
   constructor(private http: HttpClient) { }
-  public getGPX(): Observable<any> {
-    const data = from(fetch('./assets/result.gpx'));
+  public getGPX(carid): Observable<any> {
+    let carurl = `car${carid}`;
+    //const data = from(fetch('./assets/car1234.gpx'));
+    const data = from(fetch(`./assets/${carurl}.gpx`));
     return data;
   }
 }
