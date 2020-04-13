@@ -25,14 +25,17 @@ export class OsmViewComponent implements OnInit, OnChanges {
   */
   @Input() zoom = 14;
 
+  @Input()
+  carpath = [];
   //mark的物件
-  markersObj = {};
+  //markersObj = {};
   map: L.Map;// Values to bind to Leaflet Directive
   constructor(
     private makeMarkerIconService: MakeMarkerIconService
   ) {
-    console.log(this.center);
-    this.setDefaultIcon();
+    //console.log(this.center);
+    //
+    this.initDefaultIcon();
   }
   ngOnInit(): void {
     console.log("map ngOnInit----------------------");
@@ -51,28 +54,36 @@ export class OsmViewComponent implements OnInit, OnChanges {
 
     //修改右下角的資訊
     L.control.attribution({ prefix: 'leaflet ' }).addTo(this.map);
-    this.addMarker(this.center);
+    //this.addMarker(this.center);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (isNullOrUndefined(this.map)) return;
+
     //console.log(this.map);
     console.log(changes);
+    //車子路徑
+    if (changes.hasOwnProperty('carpath')) {
+      var polyline = L.polyline(this.carpath, { weight: 6, color: 'darkred' }).addTo(this.map);
+    }
     if (changes.hasOwnProperty('center')) {
-      console.log(this.center);
+      //console.log(this.center);
       this.map.panTo(this.center);
-      const key = this.center[0] + this.center[1];
-      //檢查是否有此物件
-      if (!this.markersObj.hasOwnProperty(key)) {
-        //加入一個mark
-        //console.log("//加入一個mark");
-        this.addMarker(this.center);
-      }
-      const marker = this.markersObj[key];
+      // const key = this.center[0] + this.center[1];
+      // //檢查是否有此物件
+      // if (!this.markersObj.hasOwnProperty(key)) {
+      //   //加入一個mark
+      //   //console.log("//加入一個mark");
+      //   this.addMarker(this.center);
+      // }
+      // const marker = this.markersObj[key];
+      // if (!this.map.hasLayer(marker)) {
+      //   this.map.addLayer(marker);
+      // }
     }
   }
-  //設定預設的圖標
-  private setDefaultIcon() {
+  //初始化預設的圖標
+  private initDefaultIcon() {
     const iconRetinaUrl = 'assets/marker-icon-2x.png';
     const iconUrl = 'assets/marker-icon.png';
     const shadowUrl = 'assets/marker-shadow.png';
@@ -89,20 +100,29 @@ export class OsmViewComponent implements OnInit, OnChanges {
     Marker.prototype.options.icon = iconDefault;
 
   }
-  addMarker(item) {
-    //let myicon = this.testGetTextIcon();
-    let myicon = this.testGetMaterialIcon();
-    const marker = L
-      .marker([item[0], item[1]], { icon: myicon, title: "aaa" })
-      .addTo(this.map)
-      // .bindPopup(item.properties.name +
-      //   '<br>成人口罩：' + item.properties.mask_adult +
-      //   '<br>兒童口罩：' + item.properties.mask_child
-      //)
-      ;
-    const key = item[0] + item[1];
-    this.markersObj[key] = marker;
-  }
+
+  //以下是測試程式
+  // addMarker(item) {
+  //   //let myicon = this.testGetTextIcon();
+  //   let myicon = this.testGetMaterialIcon();
+  //   const marker = L
+  //     .marker([item[0], item[1]], { icon: myicon, title: "aaa" })
+  //     .addTo(this.map)
+  //     // .bindPopup(item.properties.name +
+  //     //   '<br>成人口罩：' + item.properties.mask_adult +
+  //     //   '<br>兒童口罩：' + item.properties.mask_child
+  //     //)
+  //     ;
+  //   const key = item[0] + item[1];
+  //   this.markersObj[key] = marker;
+  // }
+  // removeallmark() {
+  //   for (let key in this.markersObj) {
+  //     let marker = this.markersObj[key];
+  //     //console.log(marker);
+  //     this.map.removeLayer(marker);
+  //   }
+  // }
   private testGetTextIcon() {
     let bgcolor = new ColorMetaData();
     bgcolor.getRandomColor();
