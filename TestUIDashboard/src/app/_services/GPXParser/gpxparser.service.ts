@@ -8,10 +8,16 @@ import { Observable, from } from 'rxjs';
 export class GPXParserService {
 
   constructor(private http: HttpClient) { }
-  public getGPX(carid): Observable<any> {
+  public getGPX(carid, level = 0): Observable<any> {
+    let data;
     let carurl = `car${carid}`;
-    //const data = from(fetch('./assets/car1234.gpx'));
-    const data = from(fetch(`./assets/${carurl}.gpx`));
+    console.log(`level=${level}`);
+    if (level > 14) {
+      data = from(fetch(`./assets/${carurl}_lv4.gpx`));
+    } else {
+      //const data = from(fetch('./assets/car1234.gpx'));
+      data = from(fetch(`./assets/${carurl}.gpx`));
+    }
     return data;
   }
 }

@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import * as L from 'leaflet';
 import { LatLngExpression, Layer, tileLayer, latLng, icon, Marker } from 'leaflet';
 import { isNullOrUndefined } from 'util';
 import { MakeMarkerIconService } from '../service/make-marker-icon.service';
 import { ColorMetaData } from '../model/color-meta-data';
+import { fromEvent } from 'rxjs';
+import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'osm-view',
@@ -24,13 +26,15 @@ export class OsmViewComponent implements OnInit, OnChanges {
   * @memberof OsmViewComponent
   */
   @Input() zoom = 14;
-
+  /**
+   * Zoom有改變時通知
+   *
+   * @memberof OsmViewComponent
+   */
+  @Output() zoomChange = new EventEmitter<number>();
+  //@Output
   //路徑
-  @Input()
-  carinfo: any;
-  pathsObj = {};
-  @Input()
-  carpath = [];
+  @Input() carpath = [];
   pathlayer: L.Layer;
   //mark的物件
   //markersObj = {};
@@ -50,7 +54,7 @@ export class OsmViewComponent implements OnInit, OnChanges {
     this.map = L.map('mapid', {
       attributionControl: false,//移除右下角的資訊
       center: this.center,
-      zoom: 16
+      zoom: this.zoom
     });
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -61,36 +65,33 @@ export class OsmViewComponent implements OnInit, OnChanges {
     L.control.attribution({ prefix: 'leaflet ' }).addTo(this.map);
     //this.addMarker(this.center);
     //console.log(`carinfo=${this.carinfo}`);
+    // this.map.on('zoomend', function (e) {
+    //   console.log(e);
+    //   //var currZoom = this.map.getZoom();
+    //   //console.log(`currZoom=${currZoom}`);
+    // });
+    //射出zoom 事件
+    this.initZoomEvent();
   }
 
+
+  // zoomend(e) {
+  //   console.log(e);
+  //   console.log(this);
+  // }
   ngOnChanges(changes: SimpleChanges): void {
     if (isNullOrUndefined(this.map)) return;
-
     //console.log(this.map);
     console.log(changes);
-    //車子
-    if (changes.hasOwnProperty('carinfo')) {
-      console.log(`change carinfo=>${this.carinfo}`);
-    }
     //車子路徑
-
     if (changes.hasOwnProperty('carpath')) {
       if (this.map.hasLayer(this.pathlayer)) {
         this.map.removeLayer(this.pathlayer);
         this.pathlayer = null;
       }
-      //檢查是否有此物件
-      const key = this.carinfo.caruid;
-      let polyline;
-      if (!this.pathsObj.hasOwnProperty(key)) {
-        //加入一個path
-        polyline = L.polyline(this.carinfo.carpath, { weight: 6, color: 'darkred' });
-        this.pathsObj[key] = polyline;
-      }
-      polyline = this.pathsObj[key];
+      let polyline = L.polyline(this.carpath, { weight: 6, color: 'darkred' });
       this.pathlayer = polyline;
       this.pathlayer.addTo(this.map);
-      //var polyline = L.polyline(this.carpath, { weight: 6, color: 'darkred' }).addTo(this.map);
     }
     if (changes.hasOwnProperty('center')) {
       //console.log(this.center);
@@ -126,8 +127,30 @@ export class OsmViewComponent implements OnInit, OnChanges {
     Marker.prototype.options.icon = iconDefault;
 
   }
+  //zoom事件
+  private initZoomEvent() {
+    //let mymap = this.map
+    //let zoomChange = this.zoomChange;
+    // this.map.on('zoomend', function (e) {
+    //   //console.log(e);
+    //   //console.log(mymap.getZoom());
 
-  //以下是測試程式
+    //   //zoomChange.emit(mymap.getZoom());
+    // });
+    const source = fromEvent(this.map, 'zoomend');
+    //const example = source.pipe(map(event => `Event time: ${event}`));
+    const subscribe = source
+      .pipe(
+        debounceTime(800),
+        distinctUntilChanged()
+      )
+      .subscribe(val => {
+        //console.log(val);
+        //console.log(this.map.getZoom());
+        this.zoomChange.emit(this.map.getZoom());
+      });
+  }
+  //以下是測試程式---------------------------------------------------
   // addMarker(item) {
   //   //let myicon = this.testGetTextIcon();
   //   let myicon = this.testGetMaterialIcon();
