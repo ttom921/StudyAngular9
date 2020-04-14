@@ -9,15 +9,13 @@ import { SharedAngularMaterialModule } from './share/shared-angular-material/sha
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
-import { SnackbarModule } from './_common/Snackbar/snackbar.module';
-
-
 //AoT requires an exported function for factories
 //建立TranslateHttplLoader作為語系檔的讀取器
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 //#endregion 多國語言
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,9 +34,14 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     //#endregion 多國語言
-    //#region snackbar
-    SnackbarModule.forRoot(),
-    //#endregion 多國語言
+    //#region Toastr
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      enableHtml: true,
+      closeButton: true,
+      //disableTimeOut: true
+    }) // ToastrModule added
+    //#endregion Toastr
   ],
   providers: [],
   bootstrap: [AppComponent]

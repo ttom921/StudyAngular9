@@ -17,6 +17,7 @@ import { NgTestSilderComponent } from '../ng-test-silder/ng-test-silder.componen
 import { NgTestAnimateComponent } from '../ng-test-animate/ng-test-animate.component';
 import { NgTestMapComponent } from '../ng-test-map/ng-test-map.component';
 import { OsmViewComponent } from 'src/app/_common/map/osm-view/osm-view.component';
+import { NgTestToastrComponent } from '../ng-test-toastr/ng-test-toastr.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { OsmViewComponent } from 'src/app/_common/map/osm-view/osm-view.componen
     NgTestSilderComponent,
     NgTestAnimateComponent,
     NgTestMapComponent,
+    NgTestToastrComponent,
   ],
   imports: [
     CommonModule,
