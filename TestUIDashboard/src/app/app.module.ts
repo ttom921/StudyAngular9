@@ -9,6 +9,7 @@ import { SharedAngularMaterialModule } from './share/shared-angular-material/sha
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
+import { SnackbarModule } from './_common/Snackbar/snackbar.module';
 
 
 //AoT requires an exported function for factories
@@ -34,6 +35,9 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    //#endregion 多國語言
+    //#region snackbar
+    SnackbarModule.forRoot(),
     //#endregion 多國語言
   ],
   providers: [],
