@@ -16,7 +16,8 @@ const quotes: Quote[] = [
   },
   {
     title: '移動',
-    message: "<a href='/dashboard/ngtestmap' > 地圖 </a>",
+    //message: "<a href='/dashboard/ngtestmap' > 地圖 </a>",
+    message: `<a href='/dashboard/ngtestmap' > 地圖 </a>`,
   }
 ];
 const types = ['success', 'error', 'info', 'warning'];
