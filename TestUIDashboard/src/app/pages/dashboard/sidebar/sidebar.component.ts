@@ -58,6 +58,11 @@ export class SidebarComponent implements OnInit {
           iconName: 'star_rate',
           route: 'dashboard/ngtesttoastr',
         },
+        {
+          displayName: '測試SSE',
+          iconName: 'star_rate',
+          route: 'dashboard/ngtestsse',
+        }
       ]
     }
   ];

@@ -7,6 +7,7 @@ import { NgTestSilderComponent } from '../ng-test-silder/ng-test-silder.componen
 import { NgTestAnimateComponent } from '../ng-test-animate/ng-test-animate.component';
 import { NgTestMapComponent } from '../ng-test-map/ng-test-map.component';
 import { NgTestToastrComponent } from '../ng-test-toastr/ng-test-toastr.component';
+import { NgTestSSEComponent } from '../ng-test-sse/ng-test-sse.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
       { path: 'ngcircleprogress', component: NgCircleProgressComponent },
       { path: 'ngtestanimate', component: NgTestAnimateComponent },
       { path: 'ngtestmap', component: NgTestMapComponent },
-      { path: 'ngtesttoastr', component: NgTestToastrComponent }
+      { path: 'ngtesttoastr', component: NgTestToastrComponent },
+      { path: 'ngtestsse', component: NgTestSSEComponent }
     ]
   }
 ];
