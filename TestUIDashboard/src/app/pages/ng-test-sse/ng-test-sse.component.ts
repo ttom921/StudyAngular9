@@ -92,4 +92,20 @@ export class NgTestSSEComponent implements OnInit {
 
     }
   }
+  onClick(e) {
+    if (this.formModel.valid) {
+      //console.log(`send to server ${this.formModel.value}`);
+      this.dataInfo = this.formModel.value;
+      console.log(`send to server ${this.dataInfo}`);
+      this.sseService.PostDVT(this.dataInfo).subscribe(
+        res => {
+          console.log(res);
+        },
+        error => {
+          console.log(error);
+        }
+
+      );
+    }
+  }
 }

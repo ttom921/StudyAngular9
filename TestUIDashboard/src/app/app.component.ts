@@ -28,13 +28,18 @@ export class AppComponent {
     this.languageService.setCurrentLanguage();
     this.initSSE();
   }
+  //#region SSE相關
   initSSE() {
+    this.sseSetupMessage();
+    this.sseSetupDVRType();
+  }
+  private sseSetupMessage() {
     const source = this.sseService.getEventSource("channel1");
     source.addEventListener('social', (event: MessageEvent) => {
       console.log(event.data);
       var resdata = JSON.parse(event.data);
       let data = {
-        title: '',
+        title: 'Message',
         message: resdata.message
       }
       //this.lidatas.push(event.data);
@@ -45,6 +50,25 @@ export class AppComponent {
       console.log('reconnected service!')
     }, false);
   }
+  private sseSetupDVRType() {
+    const source = this.sseService.getEventSource("channel1");
+    source.addEventListener('dvr', (event: MessageEvent) => {
+      console.log(event.data);
+      var resdata = JSON.parse(event.data);
+      let data = {
+        title: 'DVR',
+        message: resdata.message
+      }
+      //this.lidatas.push(event.data);
+      //var data = JSON.parse(event.data);
+      this.openToast(data);
+    });
+    source.addEventListener('error', (event: MessageEvent) => {
+      console.log('reconnected service!')
+    }, false);
+  }
+  //#endregion SSE相關
+
   //#region toastr相關
   openToast(data: any) {
     let type = types[0];

@@ -35,6 +35,7 @@ import { ToastrModule } from 'ngx-toastr';
     }),
     //#endregion 多國語言
     //#region Toastr
+    //初始化的預設值的設定
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
       enableHtml: true,

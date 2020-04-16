@@ -1,5 +1,5 @@
 <div fxLayout="column" fxLayoutAlign="center stretch">
-  <form [formGroup]="formModel" (ngSubmit)="onSubmit($event)">
+  <form [formGroup]="formModel">
     <mat-card>
       <mat-card-title>送SSE訊息</mat-card-title>
       <mat-form-field class="full-width">
@@ -13,7 +13,8 @@
         <mat-error *ngIf="formErrors.message">{{formErrors.message}}</mat-error>
       </mat-form-field>
       <mat-card-actions>
-        <button mat-raised-button type="submit" [disabled]="!formModel.valid" color="primary">Send</button>
+        <button mat-raised-button [disabled]="!formModel.valid" color="primary" (click)="onSubmit($event)">SendMessage</button>
+        <button mat-raised-button [disabled]="!formModel.valid" color="primary" (click)="onClick($event)">SendDVRType</button>
       </mat-card-actions>
     </mat-card>
   </form>

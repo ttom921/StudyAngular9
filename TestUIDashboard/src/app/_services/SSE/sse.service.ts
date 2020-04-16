@@ -13,6 +13,11 @@ export class SSEService {
     this.api = `${environment.apiUrl}/messages`;
     return this.http.post<any>(this.api, data);
   }
+  //送息給server
+  PostDVT(data) {
+    this.api = `${environment.apiUrl}/dvrpost`;
+    return this.http.post<any>(this.api, data);
+  }
   //取得sse的channel物件
   getEventSource(channel: string) {
     const source = new EventSource(`${environment.apiUrl}/stream?channel=${channel}`);
