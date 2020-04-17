@@ -44,6 +44,11 @@ export class SidebarComponent implements OnInit {
       route: '',
       children: [
         {
+          displayName: '測試同步播放多個影像',
+          iconName: 'star_rate',
+          route: 'dashboard/ngtestmultivideos'
+        },
+        {
           displayName: '測試angularprogressbars',
           iconName: 'person',
           route: 'dashboard/angularprogressbars',
@@ -62,7 +67,7 @@ export class SidebarComponent implements OnInit {
           displayName: '測試SSE',
           iconName: 'star_rate',
           route: 'dashboard/ngtestsse',
-        }
+        },
       ]
     }
   ];

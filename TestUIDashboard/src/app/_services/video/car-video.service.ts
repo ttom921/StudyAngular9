@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarVideoService {
   //api = `${environment.apiUrl}/users`;
-  constructor() { }
+  constructor(private http: HttpClient) { }
   Get(carid) {
     //let url = `${this.api}?userid=${data.id}`;
     console.log("carid=" + carid);
@@ -60,5 +61,16 @@ export class CarVideoService {
 
     ];
     return data;
+  }
+  //
+  GetBlob(vurl: any): Observable<any> {
+
+    //var api = `${environment.apiUrl}/servers/config`;
+    //let api = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
+    return this.http.get(vurl, {
+      responseType: 'blob' // <-- changed to blob
+    });
+    // return this.http.post<any>(api, data, { observe: 'response' });
+    // this.http.post<any>('your API path', body, { responseType: 'blob' as 'json' })
   }
 }

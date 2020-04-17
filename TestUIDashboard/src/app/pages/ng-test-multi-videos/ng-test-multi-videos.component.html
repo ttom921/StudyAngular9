@@ -1,0 +1,41 @@
+<div fxLayout="column" fxLayoutAlign="center stretch">
+
+  <mat-card>
+    <mat-card-title>
+      播放多個影像
+    </mat-card-title>
+    <mat-card-content>
+      <video #video1 [src]="srcs[0]" [muted]="'muted'" controls>
+
+      </video>
+      <video #video2 [src]="srcs[1]" [muted]="'muted'" controls>
+
+      </video>
+      <video #video3 [src]="srcs[2]" [muted]="'muted'" controls>
+
+      </video>
+      <video #video4 [src]="srcs[3]" [muted]="'muted'" controls>
+
+      </video>
+      <video #video5 [src]="srcs[4]" [muted]="'muted'" controls>
+
+      </video>
+      <video #video6 [src]="srcs[5]" [muted]="'muted'" controls>
+
+      </video>
+      <video #video7 [src]="srcs[6]" [muted]="'muted'" controls>
+
+      </video>
+      <video #video8 [src]="srcs[7]" [muted]="'muted'" controls>
+
+      </video>
+
+
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-content>
+      <button (click)="onPlay()">play</button>
+    </mat-card-content>
+  </mat-card>
+</div>

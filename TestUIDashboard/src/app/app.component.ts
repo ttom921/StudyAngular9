@@ -26,7 +26,8 @@ export class AppComponent {
 
     this.languageService.setInitState();
     this.languageService.setCurrentLanguage();
-    this.initSSE();
+    //有關SSE
+    //this.initSSE();
   }
   //#region SSE相關
   initSSE() {

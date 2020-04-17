@@ -8,6 +8,8 @@ import { NgTestAnimateComponent } from '../ng-test-animate/ng-test-animate.compo
 import { NgTestMapComponent } from '../ng-test-map/ng-test-map.component';
 import { NgTestToastrComponent } from '../ng-test-toastr/ng-test-toastr.component';
 import { NgTestSSEComponent } from '../ng-test-sse/ng-test-sse.component';
+import { NgTestMultiVideosComponent } from '../ng-test-multi-videos/ng-test-multi-videos.component';
+import { NgTestSingleVideosComponent } from '../ng-test-single-videos/ng-test-single-videos.component';
 
 
 const routes: Routes = [
@@ -21,7 +23,9 @@ const routes: Routes = [
       { path: 'ngtestanimate', component: NgTestAnimateComponent },
       { path: 'ngtestmap', component: NgTestMapComponent },
       { path: 'ngtesttoastr', component: NgTestToastrComponent },
-      { path: 'ngtestsse', component: NgTestSSEComponent }
+      { path: 'ngtestsse', component: NgTestSSEComponent },
+      { path: 'ngtestmultivideos', component: NgTestMultiVideosComponent },
+      { path: 'ngtestsinglevideos', component: NgTestSingleVideosComponent },
     ]
   }
 ];
