@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CarVideoService } from 'src/app/_services/video/car-video.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { interval } from 'rxjs';
+import { interval, fromEvent, combineLatest } from 'rxjs';
+import { MatVideoComponent } from 'src/app/_common/video/video.component';
 
 @Component({
   selector: 'app-ng-test-multi-videos',
@@ -9,122 +10,74 @@ import { interval } from 'rxjs';
   styleUrls: ['./ng-test-multi-videos.component.scss']
 })
 export class NgTestMultiVideosComponent implements OnInit {
-  @ViewChild('video1', { static: false }) video1: ElementRef;
-  @ViewChild('video2', { static: false }) video2: ElementRef;
-  @ViewChild('video3', { static: false }) video3: ElementRef;
-  @ViewChild('video4', { static: false }) video4: ElementRef;
-  @ViewChild('video5', { static: false }) video5: ElementRef;
-  @ViewChild('video6', { static: false }) video6: ElementRef;
-  @ViewChild('video7', { static: false }) video7: ElementRef;
-  @ViewChild('video8', { static: false }) video8: ElementRef;
-  srcs = [];
+  @ViewChild('video1', { static: true }) video1: MatVideoComponent;
+  @ViewChild('video2', { static: true }) video2: MatVideoComponent;
+  // @ViewChild('video3', { static: true }) video3: ElementRef;
+  // @ViewChild('video4', { static: true }) video4: ElementRef;
+  // @ViewChild('video5', { static: true }) video5: ElementRef;
+  // @ViewChild('video6', { static: true }) video6: ElementRef;
+  // @ViewChild('video7', { static: true }) video7: ElementRef;
+  // @ViewChild('video8', { static: true }) video8: ElementRef;
+  // srcs = [];
   constructor(
     private carVideoService: CarVideoService,
     private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
+    //console.dir(this.video1);
 
+    const v1$ = fromEvent(this.video1.getVideoTag(), 'canplay');
+    const v2$ = fromEvent(this.video2.getVideoTag(), 'canplay');
+    // v1$.subscribe(data => {
+    //   console.dir(data);
+    //   console.log(`canplay$`);
+    // });
+
+    const allEvents$ = combineLatest(
+      v1$,
+      v2$,
+    );
+    allEvents$.subscribe(data => {
+      console.dir(data);
+      console.log(`allEvents canPlay=${data}`);
+      // this.canPlay$.next(true);
+      // this.waiting$.next(false);
+    });
+
+    this.loadVideo();
+
+  }
+  loadVideo() {
     let vdapi;
     //vdapi = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
-    vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
-    //1
-    this.carVideoService.GetBlob(vdapi).subscribe(data => {
-      let blob = new Blob([data], { type: 'application/mp4' });
-      //console.log(blob);
-      let vid = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(blob));
-      this.srcs.push(vid);
-      console.log(this.video1.nativeElement.duration);
 
-    });
-    //2
-    //vdapi = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4";
-    vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
-    this.carVideoService.GetBlob(vdapi).subscribe(data => {
-      let blob = new Blob([data], { type: 'application/mp4' });
-      let vid = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(blob));
-      this.srcs.push(vid);
-    });
-    //3
-    //vdapi = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4";
-    this.carVideoService.GetBlob(vdapi).subscribe(data => {
-      let blob = new Blob([data], { type: 'application/mp4' });
-      let vid = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(blob));
-      this.srcs.push(vid);
-    });
-    //4
-    //vdapi = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4";
-    this.carVideoService.GetBlob(vdapi).subscribe(data => {
-      let blob = new Blob([data], { type: 'application/mp4' });
-      let vid = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(blob));
-      this.srcs.push(vid);
-    });
-    //5
-    //vdapi = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4";
-    this.carVideoService.GetBlob(vdapi).subscribe(data => {
-      let blob = new Blob([data], { type: 'application/mp4' });
-      let vid = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(blob));
-      this.srcs.push(vid);
-    });
-    //6
-    //vdapi = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4";
-    this.carVideoService.GetBlob(vdapi).subscribe(data => {
-      let blob = new Blob([data], { type: 'application/mp4' });
-      let vid = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(blob));
-      this.srcs.push(vid);
-    });
-    //7
-    //vdapi = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4";
-    this.carVideoService.GetBlob(vdapi).subscribe(data => {
-      let blob = new Blob([data], { type: 'application/mp4' });
-      let vid = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(blob));
-      this.srcs.push(vid);
-    });
-    //8
-    //vdapi = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4";
-    vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4";
-    this.carVideoService.GetBlob(vdapi).subscribe(data => {
-      let blob = new Blob([data], { type: 'application/mp4' });
-      let vid = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(blob));
-      this.srcs.push(vid);
-    });
+    //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
+    vdapi = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4';
+    this.video1.src = vdapi;
+    //vdapi = "https://nkoehler.github.io/mat-video/assets/NASA.mp4"
+    // //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
+    this.video2.src = vdapi;
+    // //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
+    // this.video3.src = vdapi;
+    // //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
+    // this.video2.src = vdapi;
+    // //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
+    // this.video4.src = vdapi;
+    // //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
+    // // vdapi = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4';
+    // // //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4";
+    // // this.video5.src = vdapi;
+    // // //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
+    // // this.video6.src = vdapi;
+    // // //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
+    // // this.video7.src = vdapi;
+    // // //vdapi = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4';
+    // // //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4";
+    // // this.video8.src = vdapi;
   }
   onPlay() {
-    this.video1.nativeElement.play();
-    this.video2.nativeElement.play();
-    this.video3.nativeElement.play();
-    this.video4.nativeElement.play();
-    this.video5.nativeElement.play();
-    this.video6.nativeElement.play();
-    this.video7.nativeElement.play();
-    this.video8.nativeElement.play();
-    this.video1.nativeElement.ontimeupdate = (event) => {
-      //console.log('The currentTime attribute has been updated. Again.');
-      console.log(event.target.currentTime);
-      let diff = this.video2.nativeElement.currentTime - event.target.currentTime;
-      console.log(`diff=${diff}`);
-      // if (this.video2.nativeElement.currentTime - event.target.currentTime) {
-      //   console.log('diff=' + event.target.currentTime);
-      //   this.video2.nativeElement.currentTime = event.target.currentTime;
-      // }
-      //this.video2.nativeElement.currentTime = event.target.currentTime;
-    };
-    // addEventListener(video1, 'timeupdate', function () {
 
-    //   position.innerHTML = asTime(this.currentTime);
-
-    //   scrub.value = this.currentTime;
-
-    // });
-    // const source = interval(1000);
-    // const subscribe = source.subscribe(val => {
-    //   console.log(val);
-    //   this.video1.nativeElement.currentTime = val;
-    //   if (val > 15) {
-    //     console.log(`unsubscribe=${val}`);
-    //     subscribe.unsubscribe();
-    //   }
-    // });
 
 
   }
