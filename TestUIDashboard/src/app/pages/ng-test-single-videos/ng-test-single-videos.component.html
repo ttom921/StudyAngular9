@@ -17,7 +17,7 @@
       <sync-video #video4 [vname]="'video4'" [muted]="'muted'" controls>
 
       </sync-video>
-      <sync-video #video5 [vname]="'video5'" [muted]="'muted'" controls>
+      <!-- <sync-video #video5 [vname]="'video5'" [muted]="'muted'" controls>
 
       </sync-video>
       <sync-video #video6 [vname]="'video6'" [muted]="'muted'" controls>
@@ -28,15 +28,14 @@
       </sync-video>
       <sync-video #video8 [vname]="'video8'" [muted]="'muted'" controls="true">
 
-      </sync-video>
-
+      </sync-video> -->
 
 
     </mat-card-content>
   </mat-card>
   <mat-card>
     <mat-card-content>
-      <button (click)="onPlay()">play</button>
+      <button mat-raised-button [disabled]="!(syncVideoMgrService.canPlay$ | async)" (click)="onPlay()">play</button>
     </mat-card-content>
   </mat-card>
 </div>

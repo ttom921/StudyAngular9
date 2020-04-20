@@ -8,6 +8,7 @@ import {
 }
 
   from '@angular/core';
+import { Observable, fromEvent } from 'rxjs';
 
 @Component({
   selector: 'sync-video',
@@ -22,7 +23,7 @@ import {
   @Input() vname: string;
   @Input() src: string;
   @Input() autoplay: boolean = false;
-  @Input() preload: boolean = true;
+  @Input() preload: boolean = false;
   @Input() loop: boolean = false;
   @Input() controls: boolean = false;
   @Input() poster: string = null;
@@ -41,6 +42,7 @@ import {
     }
   }
 
+
   constructor() { }
 
 
@@ -48,12 +50,12 @@ import {
     //console.log(this.video);
     //console.log(this.vname);
     let vname = this.vname;
-    this.getVideoTag().addEventListener('canplay', function () {
-      console.log(`${vname}=>canplay`);
-    });
-    this.getVideoTag().addEventListener('waiting', function () {
-      console.log(`${vname}=>waiting`);
-    });
+    // this.getVideoTag().addEventListener('canplay', function () {
+    //   console.log(`${vname}=>canplay`);
+    // });
+    // this.getVideoTag().addEventListener('waiting', function () {
+    //   console.log(`${vname}=>waiting`);
+    // });
   }
 
   ngAfterViewInit(): void { }
@@ -65,4 +67,10 @@ import {
     this.video.nativeElement.play();
   }
 
+  canplay(): Observable<any> {
+    return fromEvent(this.getVideoTag(), 'canplay');
+  }
+  waiting(): Observable<any> {
+    return fromEvent(this.getVideoTag(), 'waiting');
+  }
 }
