@@ -3,7 +3,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { SyncVideoComponent } from 'src/app/_common/sync-video/sync-video.component';
 import { fromEvent, merge, combineLatest, BehaviorSubject, Observable } from 'rxjs';
 import { combineAll } from 'rxjs/operators';
-import { SyncVideoMgrService } from 'src/app/_services/video/sync-video-mgr.service';
+import { SyncVideoMgrService } from 'src/app/_common/sync-video/service/sync-video-mgr.service';
+import { MatVideoComponent } from 'src/app/_common/video/video.component';
 
 @Component({
   selector: 'app-ng-test-single-videos',
@@ -11,15 +12,18 @@ import { SyncVideoMgrService } from 'src/app/_services/video/sync-video-mgr.serv
   styleUrls: ['./ng-test-single-videos.component.scss']
 })
 export class NgTestSingleVideosComponent implements OnInit, AfterViewInit {
-  @ViewChild('video1', { static: true }) video1: SyncVideoComponent;
-  @ViewChild('video2', { static: true }) video2: SyncVideoComponent;
-  @ViewChild('video3', { static: true }) video3: SyncVideoComponent;
-  @ViewChild('video4', { static: true }) video4: SyncVideoComponent;
+  @ViewChild('video1', { static: true }) video1: MatVideoComponent;
+  @ViewChild('video2', { static: true }) video2: MatVideoComponent;
+  // @ViewChild('video1', { static: true }) video1: SyncVideoComponent;
+  // @ViewChild('video2', { static: true }) video2: SyncVideoComponent;
+  // @ViewChild('video3', { static: true }) video3: SyncVideoComponent;
+  // @ViewChild('video4', { static: true }) video4: SyncVideoComponent;
   // @ViewChild('video5', { static: true }) video5: SyncVideoComponent;
   // @ViewChild('video6', { static: true }) video6: SyncVideoComponent;
   // @ViewChild('video7', { static: true }) video7: SyncVideoComponent;
   // @ViewChild('video8', { static: true }) video8: SyncVideoComponent;
 
+  @ViewChild('syncvideo', { static: true }) syncvideo: SyncVideoComponent;
   // canPlay$ = new BehaviorSubject(false);
   // waiting$ = new BehaviorSubject(false);
   constructor(
@@ -113,17 +117,20 @@ export class NgTestSingleVideosComponent implements OnInit, AfterViewInit {
     // this.waiting$.subscribe(data => {
     //   console.log(`waiting$=${data}`);
     // });
-    this.syncVideoMgrService.addVideo(this.video1);
-    this.syncVideoMgrService.addVideo(this.video2);
-    this.syncVideoMgrService.addVideo(this.video3);
-    this.syncVideoMgrService.addVideo(this.video4);
+    // this.syncVideoMgrService.addVideo(this.video1);
+    // this.syncVideoMgrService.addVideo(this.video2);
+    // this.syncVideoMgrService.addVideo(this.video3);
+    // this.syncVideoMgrService.addVideo(this.video4);
+    // this.syncVideoMgrService.initcombineLatest();
+    // this.syncVideoMgrService.canPlay$.subscribe(data => {
+    //   console.log(`canPlay$=${data}`);
+    // });
+    // this.syncVideoMgrService.waiting$.subscribe(data => {
+    //   console.log(`waiting$=${data}`);
+    // });
+    this.syncvideo.addVideo(this.video1);
+    this.syncvideo.addVideo(this.video2);
     this.syncVideoMgrService.initcombineLatest();
-    this.syncVideoMgrService.canPlay$.subscribe(data => {
-      console.log(`canPlay$=${data}`);
-    });
-    this.syncVideoMgrService.waiting$.subscribe(data => {
-      console.log(`waiting$=${data}`);
-    });
     this.loadVideo();
   }
   // iscanPlay(): Observable<boolean> {
@@ -137,31 +144,32 @@ export class NgTestSingleVideosComponent implements OnInit, AfterViewInit {
     //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
     vdapi = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4';
     this.video1.src = vdapi;
-    //vdapi = "https://nkoehler.github.io/mat-video/assets/NASA.mp4"
-    //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
-    this.video2.src = vdapi;
-    //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
-    this.video3.src = vdapi;
-    //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
-    this.video2.src = vdapi;
-    //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
-    this.video4.src = vdapi;
-    //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
-    // vdapi = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4';
-    // //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4";
-    // this.video5.src = vdapi;
+    // //vdapi = "https://nkoehler.github.io/mat-video/assets/NASA.mp4"
     // //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
-    // this.video6.src = vdapi;
+    this.video2.src = vdapi;
     // //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
-    // this.video7.src = vdapi;
-    // //vdapi = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4';
-    // //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4";
-    // this.video8.src = vdapi;
+    // this.video3.src = vdapi;
+    // //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
+    // this.video2.src = vdapi;
+    // //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
+    // this.video4.src = vdapi;
+    // //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
+    // // vdapi = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4';
+    // // //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4";
+    // // this.video5.src = vdapi;
+    // // //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
+    // // this.video6.src = vdapi;
+    // // //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
+    // // this.video7.src = vdapi;
+    // // //vdapi = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4';
+    // // //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4";
+    // // this.video8.src = vdapi;
   }
   // getVideoTag(): HTMLVideoElement | null {
   //   return this.video1 && this.video1.nativeElement ? this.video1.nativeElement as HTMLVideoElement : null;
   // }
   onPlay() {
+
     this.syncVideoMgrService.play();
     // this.video1.play();
     // this.video2.play();

@@ -8,7 +8,9 @@ import {
 }
 
   from '@angular/core';
-import { Observable, fromEvent } from 'rxjs';
+import { Observable, fromEvent, BehaviorSubject, combineLatest } from 'rxjs';
+import { MatVideoComponent } from '../video/video.component';
+import { SyncVideoMgrService } from './service/sync-video-mgr.service';
 
 @Component({
   selector: 'sync-video',
@@ -16,40 +18,26 @@ import { Observable, fromEvent } from 'rxjs';
   styleUrls: ['./sync-video.component.scss']
 }
 
-) export class SyncVideoComponent implements OnInit,
-  AfterViewInit {
+) export class SyncVideoComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('video', { static: true }) private video: ElementRef;
-  @Input() vname: string;
-  @Input() src: string;
-  @Input() autoplay: boolean = false;
-  @Input() preload: boolean = false;
-  @Input() loop: boolean = false;
-  @Input() controls: boolean = false;
-  @Input() poster: string = null;
-  private _muted: boolean = false;
+  videoLoaded = true;
+  private syncvideolst = [];
+  //可播放
+  canPlay$;
+  //等待中
+  waiting$;
 
-  @Input() get muted() {
-    return this._muted;
+  constructor(
+    private syncVideoMgrService: SyncVideoMgrService,
+  ) {
+    this.canPlay$ = this.syncVideoMgrService.canPlay$;
+    this.waiting$ = this.syncVideoMgrService.waiting$;
   }
-
-  set muted(v: boolean) {
-    this._muted = v;
-    //console.log(this.video);
-    if (this.video != null) {
-      //console.log(this.video.nativeElement);
-      this.video.nativeElement.muted = this._muted;
-    }
-  }
-
-
-  constructor() { }
-
 
   ngOnInit(): void {
     //console.log(this.video);
     //console.log(this.vname);
-    let vname = this.vname;
+    //let vname = this.vname;
     // this.getVideoTag().addEventListener('canplay', function () {
     //   console.log(`${vname}=>canplay`);
     // });
@@ -59,18 +47,45 @@ import { Observable, fromEvent } from 'rxjs';
   }
 
   ngAfterViewInit(): void { }
+  addVideo(video: MatVideoComponent) {
+    this.syncVideoMgrService.addVideo(video);
+  }
+  // //#region rxjs相關
+  // initcombineLatest() {
+  //   this.init_canplay_combineLatest();
+  //   this.init_waiting_combineLatest();
+  // }
+  // private init_canplay_combineLatest() {
+  //   let obsary = [];
+  //   this.syncvideolst.forEach(item => {
+  //     const event$ = fromEvent(item.getVideoTag(), 'canplay');
+  //     obsary.push(event$);
+  //   });
+  //   const allEvents$ = combineLatest(obsary);
+  //   allEvents$.subscribe(data => {
+  //     //console.dir(data);
+  //     console.log(`allEvents canPlay=${data}`);
+  //     this.canPlay$.next(true);
+  //     this.waiting$.next(false);
+  //   });
+  // }
+  // private init_waiting_combineLatest() {
+  //   let obsary = [];
+  //   this.syncvideolst.forEach(item => {
+  //     const event$ = fromEvent(item.getVideoTag(), 'waiting');
+  //     obsary.push(event$);
+  //   });
+  //   const allEvents$ = combineLatest(obsary);
+  //   allEvents$.subscribe(data => {
+  //     //console.dir(data);
+  //     console.log(`allEvents waiting=${data}`);
+  //     this.canPlay$.next(false);
+  //     this.waiting$.next(true);
+  //   });
+  // }
+  // //#endregion  rxjs相關
 
-  getVideoTag(): HTMLVideoElement | null {
-    return this.video && this.video.nativeElement ? this.video.nativeElement as HTMLVideoElement : null;
-  }
-  play() {
-    this.video.nativeElement.play();
-  }
 
-  canplay(): Observable<any> {
-    return fromEvent(this.getVideoTag(), 'canplay');
-  }
-  waiting(): Observable<any> {
-    return fromEvent(this.getVideoTag(), 'waiting');
-  }
+
+
 }

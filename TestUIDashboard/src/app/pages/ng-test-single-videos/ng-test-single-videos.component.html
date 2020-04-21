@@ -5,7 +5,18 @@
       播放單個影像
     </mat-card-title>
     <mat-card-content>
-      <sync-video #video1 [vname]="'video1'" [muted]="'muted'" controls="true">
+      <div fxLayout="row" fxLayoutAlign="center stretch">
+        <mat-video #video1 [muted]="true" [preload]="false">
+
+        </mat-video>
+        &nbsp;
+        <mat-video #video2 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [preload]="false" [overlay]="false">
+
+        </mat-video>
+
+      </div>
+
+      <!-- <sync-video #video1 [vname]="'video1'" [muted]="'muted'" controls="true">
 
       </sync-video>
       <sync-video #video2 [vname]="'video2'" [muted]="'muted'" controls>
@@ -16,7 +27,7 @@
       </sync-video>
       <sync-video #video4 [vname]="'video4'" [muted]="'muted'" controls>
 
-      </sync-video>
+      </sync-video> -->
       <!-- <sync-video #video5 [vname]="'video5'" [muted]="'muted'" controls>
 
       </sync-video>
@@ -36,6 +47,7 @@
   <mat-card>
     <mat-card-content>
       <button mat-raised-button [disabled]="!(syncVideoMgrService.canPlay$ | async)" (click)="onPlay()">play</button>
+      <sync-video #syncvideo></sync-video>
     </mat-card-content>
   </mat-card>
 </div>

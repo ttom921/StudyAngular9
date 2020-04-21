@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, combineLatest } from 'rxjs';
-import { SyncVideoComponent } from 'src/app/_common/sync-video/sync-video.component';
+import { BehaviorSubject, combineLatest, fromEvent } from 'rxjs';
+import { MatVideoComponent } from '../../video/video.component';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class SyncVideoMgrService {
   waiting$ = new BehaviorSubject(false);
 
   constructor() { }
-  addVideo(video: SyncVideoComponent) {
+  addVideo(video: MatVideoComponent) {
     this.syncvideolst.push(video);
   }
   //#region rxjs相關
@@ -31,12 +31,15 @@ export class SyncVideoMgrService {
   private init_canplay_combineLatest() {
     let obsary = [];
     this.syncvideolst.forEach(item => {
-      obsary.push(item.canplay());
+      //obsary.push(item.canplay());
+      const event$ = fromEvent(item.getVideoTag(), 'canplay');
+      obsary.push(event$);
     });
     const allEvents$ = combineLatest(obsary);
     allEvents$.subscribe(data => {
-      //console.dir(data);
-      //console.log(`allEvents canPlay=${data}`);
+      console.dir(data[0]);
+      console.dir(data[1]);
+      console.log(`allEvents canPlay=${data}`);
       this.canPlay$.next(true);
       this.waiting$.next(false);
     });
@@ -44,12 +47,14 @@ export class SyncVideoMgrService {
   private init_waiting_combineLatest() {
     let obsary = [];
     this.syncvideolst.forEach(item => {
-      obsary.push(item.waiting());
+      //obsary.push(item.waiting());
+      const event$ = fromEvent(item.getVideoTag(), 'waiting');
+      obsary.push(event$);
     });
     const allEvents$ = combineLatest(obsary);
     allEvents$.subscribe(data => {
-      //console.dir(data);
-      //console.log(`allEvents canPlay=${data}`);
+      console.dir(data[0]);
+      console.log(`allEvents waiting=${data}`);
       this.canPlay$.next(false);
       this.waiting$.next(true);
     });
@@ -57,12 +62,12 @@ export class SyncVideoMgrService {
   //#endregion  rxjs相關
   play() {
     this.syncvideolst.forEach(element => {
-      element.play();
+      element.getVideoTag().play();
     });
   }
   pause() {
     this.syncvideolst.forEach(element => {
-      element.pause();
+      element.getVideoTag().pause();
     });
   }
 }

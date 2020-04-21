@@ -21,8 +21,8 @@ import { NgTestToastrComponent } from '../ng-test-toastr/ng-test-toastr.componen
 import { NgTestSSEComponent } from '../ng-test-sse/ng-test-sse.component';
 import { NgTestMultiVideosComponent } from '../ng-test-multi-videos/ng-test-multi-videos.component';
 import { NgTestSingleVideosComponent } from '../ng-test-single-videos/ng-test-single-videos.component';
-import { SyncVideoComponent } from '../../_common/sync-video/sync-video.component';
 import { MatVideoModule } from 'src/app/_common/video/video.module';
+import { SyncVideoModule } from 'src/app/_common/sync-video/sync-video.module';
 
 
 @NgModule({
@@ -42,13 +42,13 @@ import { MatVideoModule } from 'src/app/_common/video/video.module';
     NgTestMultiVideosComponent,
     NgTestSingleVideosComponent,
 
-    SyncVideoComponent,
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     SharedAngularMaterialModule,
     MatVideoModule,
+    SyncVideoModule,
   ]
 })
 export class DashboardModule { }
