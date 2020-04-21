@@ -16,7 +16,7 @@
 
     <div class="menu">
       <div class="left">
-        <mat-play-button (playChanged)="playing = $event" [video]="video" [keyboard]="keyboard"> </mat-play-button>
+        <mat-play-button [playFreeze]="playFreeze" (playChanged)="playing = $event" [video]="video" [keyboard]="keyboard"> </mat-play-button>
 
         <mat-frame-by-frame-control *ngIf="showFrameByFrame" [video]="video" [fps]="fps"></mat-frame-by-frame-control>
 
