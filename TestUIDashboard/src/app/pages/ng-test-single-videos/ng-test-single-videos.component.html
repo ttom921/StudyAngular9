@@ -1,16 +1,23 @@
 <div fxLayout="column" fxLayoutAlign="center stretch">
-
   <mat-card>
     <mat-card-title>
       播放單個影像
     </mat-card-title>
     <mat-card-content>
       <div fxLayout="row" fxLayoutAlign="center stretch">
-        <mat-video #video1 [muted]="true" [preload]="false">
+        <mat-video #video1 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [preload]="false" [overlay]="true">
 
         </mat-video>
         &nbsp;
         <mat-video #video2 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [preload]="false" [overlay]="false">
+
+        </mat-video>
+        &nbsp;
+        <mat-video #video3 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [preload]="false" [overlay]="true">
+
+        </mat-video>
+        &nbsp;
+        <mat-video #video4 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [preload]="false" [overlay]="false">
 
         </mat-video>
 

@@ -32,13 +32,16 @@ export class SyncVideoMgrService {
     let obsary = [];
     this.syncvideolst.forEach(item => {
       //obsary.push(item.canplay());
+      //let myvideo = item.getVideoTag();
       const event$ = fromEvent(item.getVideoTag(), 'canplay');
+      //console.log(item);
       obsary.push(event$);
     });
+    //console.log(obsary);
     const allEvents$ = combineLatest(obsary);
     allEvents$.subscribe(data => {
-      console.dir(data[0]);
-      console.dir(data[1]);
+      //console.dir(data[0]);
+      //console.dir(data[1]);
       console.log(`allEvents canPlay=${data}`);
       this.canPlay$.next(true);
       this.waiting$.next(false);
@@ -49,6 +52,7 @@ export class SyncVideoMgrService {
     this.syncvideolst.forEach(item => {
       //obsary.push(item.waiting());
       const event$ = fromEvent(item.getVideoTag(), 'waiting');
+
       obsary.push(event$);
     });
     const allEvents$ = combineLatest(obsary);

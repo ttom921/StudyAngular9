@@ -1,39 +1,38 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from "@angular/core";
 
-import { EventService } from '../../services/event.service';
-import { FullscreenService } from '../../services/fullscreen.service';
+import { EventService } from "../../services/event.service";
+import { FullscreenService } from "../../services/fullscreen.service";
 
 @Component({
-  selector: 'mat-fullscreen-button',
-  templateUrl: './mat-fullscreen-button.component.html',
-  styleUrls: ['./mat-fullscreen-button.component.css']
+  selector: "mat-fullscreen-button",
+  templateUrl: "./mat-fullscreen-button.component.html",
+  styleUrls: ["./mat-fullscreen-button.component.scss"]
 })
 export class MatFullscreenButtonComponent implements OnInit {
-  canFullscreen: boolean = false;
+  canFullscreen = false;
 
   @Input() player: HTMLVideoElement;
 
-  @Input() fullscreen: boolean = false;
+  @Input() fullscreen = false;
 
   @Output() fullscreenChanged = new EventEmitter<boolean>();
 
-  @Input() keyboard: boolean = true;
+  @Input() keyboard = true;
 
-  constructor(
-    private fscreen: FullscreenService,
-    private evt: EventService
-  ) { }
+  constructor(private fscreen: FullscreenService, private evt: EventService) {}
 
   ngOnInit(): void {
-    if (this.fscreen.isEnabled())
+    if (this.fscreen.isEnabled()) {
       this.canFullscreen = true;
+    }
 
-    this.fscreen.onChange(event => this.fscreen.isFullscreen() ? this.onChangesFullscreen(true) : this.onChangesFullscreen(false));
+    this.fscreen.onChange(event => (this.fscreen.isFullscreen() ? this.onChangesFullscreen(true) : this.onChangesFullscreen(false)));
   }
 
   setFullscreen(value: boolean) {
-    if (this.canFullscreen && this.fullscreen !== value)
+    if (this.canFullscreen && this.fullscreen !== value) {
       this.toggleFullscreen();
+    }
   }
 
   toggleFullscreen(): void {
@@ -51,12 +50,11 @@ export class MatFullscreenButtonComponent implements OnInit {
     this.fullscreenChanged.emit(this.fullscreen);
   }
 
-  @HostListener('document:keyup.f', ['$event'])
+  @HostListener("document:keyup.f", ["$event"])
   onFullscreenKey(event: KeyboardEvent) {
     if (this.keyboard) {
       this.toggleFullscreen();
       event.preventDefault();
     }
   }
-
 }

@@ -4,54 +4,56 @@ import {
   ElementRef,
   EventEmitter,
   Input,
+  OnChanges,
   OnDestroy,
   Output,
   Renderer2,
-  ViewChild,
-} from '@angular/core';
-import { ThemePalette } from '@angular/material/core';
+  SimpleChanges,
+  ViewChild
+} from "@angular/core";
+import { ThemePalette } from "@angular/material/core";
 
-import { EventHandler } from './interfaces/event-handler.interface';
-import { EventService } from './services/event.service';
+import { EventHandler } from "./interfaces/event-handler.interface";
+import { EventService } from "./services/event.service";
 
 @Component({
-  selector: 'mat-video',
-  templateUrl: './video.component.html',
-  styleUrls: ['./video.component.css', './styles/icons.css']
+  selector: "mat-video",
+  templateUrl: "./video.component.html",
+  styleUrls: ["./video.component.scss", "./styles/icons.scss"]
 })
-export class MatVideoComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('player', { static: true }) private player: ElementRef;
-  @ViewChild('video', { static: true }) private video: ElementRef;
+export class MatVideoComponent implements AfterViewInit, OnChanges, OnDestroy {
+  @ViewChild("player", { static: false }) private player: ElementRef;
+  @ViewChild("video", { static: false }) private video: ElementRef;
 
-  @Input() src: string = null;
+  @Input() src: string | MediaStream | MediaSource | Blob = null;
   @Input() title: string = null;
-  @Input() autoplay: boolean = false;
-  @Input() preload: boolean = true;
-  @Input() loop: boolean = false;
-  @Input() quality: boolean = true;
-  @Input() fullscreen: boolean = true;
-  @Input() showFrameByFrame: boolean = false;
-  @Input() fps: number = 29.97;
-  @Input() download: boolean = false;
-  @Input() color: ThemePalette = 'primary';
-  @Input() spinner: string = 'spin';
+  @Input() autoplay = false;
+  @Input() preload = true;
+  @Input() loop = false;
+  @Input() quality = true;
+  @Input() fullscreen = true;
+  @Input() playsinline = false;
+  @Input() showFrameByFrame = false;
+  @Input() fps = 29.97;
+  @Input() download = false;
+  @Input() color: ThemePalette = "primary";
+  @Input() spinner = "spin";
   @Input() poster: string = null;
-  @Input() keyboard: boolean = true;
+  @Input() keyboard = true;
   @Input() overlay: boolean = null;
-  @Input() muted: boolean = false;
+  @Input() muted = false;
   @Output() mutedChange = new EventEmitter<boolean>();
   //不播放
   @Input() playFreeze: boolean = false;
   //是否一定要顯示滑鼠游標
   @Input() mustShowMouseIcon: boolean = false;
-
+  @Output() timeChange = new EventEmitter<number>();
 
   @Input()
   get time() {
     return this.getVideoTag().currentTime;
   }
 
-  @Output() timeChange = new EventEmitter<number>();
   set time(val: number) {
     const video: HTMLVideoElement = this.getVideoTag();
     if (video && val) {
@@ -61,19 +63,19 @@ export class MatVideoComponent implements AfterViewInit, OnDestroy {
       if (val < 0) {
         val = 0;
       }
-      if (val !== video.currentTime) {
+      if (Math.abs(val - video.currentTime) > 0.0001) {
         video.currentTime = val;
       }
-      if (this.lastTime !== video.currentTime) {
+      if (Math.abs(this.lastTime - video.currentTime) > 0.0001) {
         setTimeout(() => this.timeChange.emit(video.currentTime), 0);
         this.lastTime = video.currentTime;
       }
     }
   }
 
-  playing: boolean = false;
+  playing = false;
 
-  isFullscreen: boolean = false;
+  isFullscreen = false;
 
   videoWidth: number;
   videoHeight: number;
@@ -81,31 +83,68 @@ export class MatVideoComponent implements AfterViewInit, OnDestroy {
 
   videoLoaded = false;
 
-  private isMouseMoving: boolean = false;
+  private srcObjectURL: string;
+
+  private isMouseMoving = false;
   //private isMouseMovingTimer: NodeJS.Timer;
   private isMouseMovingTimer: any;
-  private isMouseMovingTimeout: number = 2000;
+  private isMouseMovingTimeout = 2000;
 
   private events: EventHandler[];
 
-  constructor(
-    private renderer: Renderer2,
-    private evt: EventService
-  ) { }
+  constructor(private renderer: Renderer2, private evt: EventService) { }
 
   ngAfterViewInit(): void {
     this.events = [
-      { element: this.video.nativeElement, name: 'loadstart', callback: event => this.videoLoaded = false, dispose: null },
-      { element: this.video.nativeElement, name: 'loadedmetadata', callback: event => this.evLoadedMetadata(event), dispose: null },
-      { element: this.video.nativeElement, name: 'error', callback: event => console.error('Unhandled Video Error', event), dispose: null },
-      { element: this.video.nativeElement, name: 'contextmenu', callback: event => event.preventDefault(), dispose: null },
-      { element: this.video.nativeElement, name: 'timeupdate', callback: event => this.evTimeUpdate(event), dispose: null },
-      { element: this.player.nativeElement, name: 'mousemove', callback: event => this.evMouseMove(event), dispose: null }
+      {
+        element: this.video.nativeElement,
+        name: "loadstart",
+        callback: event => (this.videoLoaded = false),
+        dispose: null
+      },
+      {
+        element: this.video.nativeElement,
+        name: "loadedmetadata",
+        callback: event => this.evLoadedMetadata(event),
+        dispose: null
+      },
+      {
+        element: this.video.nativeElement,
+        name: "error",
+        callback: event => console.error("Unhandled Video Error", event),
+        dispose: null
+      },
+      {
+        element: this.video.nativeElement,
+        name: "contextmenu",
+        callback: event => event.preventDefault(),
+        dispose: null
+      },
+      {
+        element: this.video.nativeElement,
+        name: "timeupdate",
+        callback: event => this.evTimeUpdate(event),
+        dispose: null
+      },
+      {
+        element: this.player.nativeElement,
+        name: "mousemove",
+        callback: event => this.evMouseMove(event),
+        dispose: null
+      }
     ];
 
-    this.video.nativeElement.onloadeddata = () => this.videoLoaded = true;
+    this.video.nativeElement.onloadeddata = () => (this.videoLoaded = true);
 
     this.evt.addEvents(this.renderer, this.events);
+
+    this.setVideoSrc(this.src);
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.src) {
+      console.log(changes);
+      this.setVideoSrc(this.src);
+    }
   }
 
   ngOnDestroy(): void {
@@ -115,12 +154,13 @@ export class MatVideoComponent implements AfterViewInit, OnDestroy {
   }
 
   load(): void {
-    if (this.video && this.video.nativeElement)
+    if (this.video && this.video.nativeElement) {
       this.video.nativeElement.load();
+    }
   }
 
   getVideoTag(): HTMLVideoElement | null {
-    return this.video && this.video.nativeElement ? this.video.nativeElement as HTMLVideoElement : null;
+    return this.video && this.video.nativeElement ? (this.video.nativeElement as HTMLVideoElement) : null;
   }
 
   evLoadedMetadata(event: any): void {
@@ -143,9 +183,8 @@ export class MatVideoComponent implements AfterViewInit, OnDestroy {
 
   getOverlayClass(activeClass: string, inactiveClass: string): any {
     if (this.overlay === null) {
-      return (!this.playing || this.isMouseMoving) ? activeClass : inactiveClass;
+      return !this.playing || this.isMouseMoving ? activeClass : inactiveClass;
     } else {
-      //修改有關滑鼠游標的顯示
       if (activeClass == "show-mouse") {
         if (this.mustShowMouseIcon == true) {
           return this.mustShowMouseIcon ? activeClass : inactiveClass;
@@ -158,4 +197,30 @@ export class MatVideoComponent implements AfterViewInit, OnDestroy {
     }
   }
 
+  private setVideoSrc(src: string | MediaStream | MediaSource | Blob): void {
+    if (this.srcObjectURL) {
+      URL.revokeObjectURL(this.srcObjectURL);
+      this.srcObjectURL = null;
+    }
+
+    if (!this.video || !this.video.nativeElement) {
+      return;
+    }
+
+    if (!src) {
+      this.video.nativeElement.src = null;
+      if ("srcObject" in HTMLVideoElement.prototype) {
+        this.video.nativeElement.srcObject = new MediaStream();
+      }
+    } else if (typeof src === "string") {
+      this.video.nativeElement.src = src;
+    } else if ("srcObject" in HTMLVideoElement.prototype) {
+      this.video.nativeElement.srcObject = src;
+    } else {
+      this.srcObjectURL = URL.createObjectURL(src);
+      this.video.nativeElement.src = this.srcObjectURL;
+    }
+
+    this.video.nativeElement.muted = this.muted;
+  }
 }
