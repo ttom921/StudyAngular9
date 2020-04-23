@@ -1,14 +1,16 @@
 <div #player class="videoplayer">
 
-  <div class="controls" *ngIf="videoLoaded">
+  <!-- <div class="controls"   *ngIf="(syncVideoMgrService.loadstart$ | async)"> -->
+  <div class="controls" [ngClass]="{'disableDiv': !canactioned}">
+    <button (click)="onTestclick()">test</button>
     <!-- <div class="progress">
       <mat-seek-progress-control [color]="color" [video]="video"></mat-seek-progress-control>
     </div> -->
 
     <div class="menu">
       <div class="left">
-        <mat-play-button [canPlay$]="canPlay$">
-        </mat-play-button>
+
+        <mat-play-button #matplaybutton (playChanged)="onClickPlay($event)"></mat-play-button>
 
         <!-- <mat-frame-by-frame-control *ngIf="showFrameByFrame" [video]="video" [fps]="fps"></mat-frame-by-frame-control> -->
 

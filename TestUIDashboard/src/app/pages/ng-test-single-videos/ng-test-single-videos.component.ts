@@ -16,10 +16,10 @@ export class NgTestSingleVideosComponent implements OnInit, AfterViewInit {
   @ViewChild('video2', { static: true }) video2: MatVideoComponent;
   @ViewChild('video3', { static: true }) video3: MatVideoComponent;
   @ViewChild('video4', { static: true }) video4: MatVideoComponent;
-  // @ViewChild('video5', { static: true }) video5: MatVideoComponent;
-  // @ViewChild('video6', { static: true }) video6: MatVideoComponent;
-  // @ViewChild('video7', { static: true }) video7: MatVideoComponent;
-  // @ViewChild('video8', { static: true }) video8: MatVideoComponent;
+  @ViewChild('video5', { static: true }) video5: MatVideoComponent;
+  @ViewChild('video6', { static: true }) video6: MatVideoComponent;
+  @ViewChild('video7', { static: true }) video7: MatVideoComponent;
+  @ViewChild('video8', { static: true }) video8: MatVideoComponent;
 
   @ViewChild('syncvideo', { static: true }) syncvideo: SyncVideoComponent;
   // canPlay$ = new BehaviorSubject(false);
@@ -34,6 +34,16 @@ export class NgTestSingleVideosComponent implements OnInit, AfterViewInit {
 
 
     this.syncVideoMgrService.initcombineLatest();
+
+    //測試
+    // this.syncVideoMgrService.canPlay$.subscribe(data => {
+    //   console.log(`syncVideoMgrService.canPlay$=${data}`);
+    //   this.syncVideoMgrService.play();
+    // });
+    // this.syncVideoMgrService.waiting$.subscribe(data => {
+    //   console.log(`syncVideoMgrService.waiting$=${data}`);
+    //   this.syncVideoMgrService.pause();
+    // });
   }
 
   ngOnInit(): void {
@@ -41,6 +51,11 @@ export class NgTestSingleVideosComponent implements OnInit, AfterViewInit {
     this.syncvideo.addVideo(this.video2);
     this.syncvideo.addVideo(this.video3);
     this.syncvideo.addVideo(this.video4);
+    //
+    this.syncvideo.addVideo(this.video5);
+    this.syncvideo.addVideo(this.video6);
+    this.syncvideo.addVideo(this.video7);
+    this.syncvideo.addVideo(this.video8);
 
 
     this.loadVideo();
@@ -145,6 +160,7 @@ export class NgTestSingleVideosComponent implements OnInit, AfterViewInit {
 
   loadVideo() {
     this.testcarvieo();
+    //this.testcaronlinevideo();
     //let vdapi;
     //let video=this.video1.getVideoTag();
 
@@ -190,14 +206,38 @@ export class NgTestSingleVideosComponent implements OnInit, AfterViewInit {
     vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4";
     this.video3.src = vdapi;
     this.video4.src = vdapi;
+    //
+    //
+    vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4";
 
+    this.video5.src = vdapi;
+    this.video6.src = vdapi;
+    vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
+    this.video7.src = vdapi;
+    this.video8.src = vdapi;
+  }
+  testcaronlinevideo() {
+    let vdapi;
+    vdapi = "http://ttom.tplinkdns.com:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
+    this.video1.src = vdapi;
+    this.video2.src = vdapi;
+    vdapi = "http://ttom.tplinkdns.com:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4";
+    this.video3.src = vdapi;
+    this.video4.src = vdapi;
+    //
+    vdapi = "http://ttom.tplinkdns.com:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
+    this.video5.src = vdapi;
+    this.video6.src = vdapi;
+    vdapi = "http://ttom.tplinkdns.com:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4";
+    this.video7.src = vdapi;
+    this.video8.src = vdapi;
   }
   // getVideoTag(): HTMLVideoElement | null {
   //   return this.video1 && this.video1.nativeElement ? this.video1.nativeElement as HTMLVideoElement : null;
   // }
   onPlay() {
 
-    this.syncVideoMgrService.play();
+    //this.syncVideoMgrService.play();
     // this.video1.play();
     // this.video2.play();
     // this.video3.play();

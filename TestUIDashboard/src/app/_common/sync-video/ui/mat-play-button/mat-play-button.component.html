@@ -1,2 +1,5 @@
 <p>mat-play-button works!</p>
-<button mat-raised-button [disabled]="!(canPlay$ | async)">play</button>
+<button mat-icon-button (click)="toggleVideoPlayback()">
+  <mat-icon *ngIf="!play">play_arrow</mat-icon>
+  <mat-icon *ngIf="play">pause</mat-icon>
+</button>

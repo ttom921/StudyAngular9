@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { SyncVideoMgrService } from '../../service/sync-video-mgr.service';
 
 @Component({
   selector: 'mat-play-button',
@@ -8,12 +9,25 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class MatPlayButtonComponent implements OnInit {
 
-  //可播放
-  @Input() canPlay$ = new BehaviorSubject(false);
+  @Input() play = false;
 
-  constructor() { }
+  @Output() playChanged = new EventEmitter<boolean>();
+
+  constructor(private syncVideoMgrService: SyncVideoMgrService) { }
 
   ngOnInit(): void {
   }
-
+  setVideoPlayback(value: boolean) {
+    if (this.play !== value) {
+      this.toggleVideoPlayback();
+    }
+  }
+  toggleVideoPlayback(): void {
+    this.play = !this.play;
+    this.updateVideoPlayback();
+  }
+  updateVideoPlayback(): void {
+    this.play ? this.syncVideoMgrService.play() : this.syncVideoMgrService.pause();
+    this.playChanged.emit(this.play);
+  }
 }

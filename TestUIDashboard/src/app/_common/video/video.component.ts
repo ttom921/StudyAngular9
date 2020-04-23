@@ -142,7 +142,7 @@ export class MatVideoComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.src) {
-      console.log(changes);
+      //console.log(changes);
       this.setVideoSrc(this.src);
     }
   }
