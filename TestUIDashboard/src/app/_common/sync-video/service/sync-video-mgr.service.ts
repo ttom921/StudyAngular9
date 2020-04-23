@@ -18,24 +18,19 @@ export class SyncVideoMgrService {
   waiting$ = new BehaviorSubject(false);
 
   constructor() { }
+  //加入控制的video
   addVideo(video: MatVideoComponent) {
     this.syncvideolst.push(video);
   }
   //#region rxjs相關
+  //初始化rxjs的事件
   initcombineLatest() {
     this.init_loadedmetadata_combineLatest();
     this.init_loadstart_combineLatest();
     this.init_canplay_combineLatest();
     this.init_waiting_combineLatest();
-
-    // const allEvents$ = combineLatest(this.syncvideolst);
-    // allEvents$.subscribe(data => {
-    //   //console.dir(data);
-    //   //console.log(`allEvents canPlay=${data}`);
-    //   this.canPlay$.next(true);
-    //   this.waiting$.next(false);
-    // });
   }
+  //是否可播放
   private init_canplay_combineLatest() {
     let obsary = [];
     this.syncvideolst.forEach(item => {
@@ -70,6 +65,7 @@ export class SyncVideoMgrService {
       //this.waiting$.next(false);
     });
   }
+  //是否在緩衝
   private init_waiting_combineLatest() {
     let obsary = [];
     this.syncvideolst.forEach(item => {
@@ -106,21 +102,18 @@ export class SyncVideoMgrService {
       obsary.push(event$);
     });
     const allEvents$ = combineLatest(obsary);
-    allEvents$.pipe(delay(200))
-      .subscribe(data => {
-        let ret = true;
-        // data.forEach(element => {
-        //   console.log(`loadstart=>${element["returnValue"]}`);
-        //   if (element["returnValue"] == false) {
-        //     ret = false;
-        //   }
-        // });
-        // console.dir(data[0]);
-        //console.log(`allEvents loadstart=${ret}`);
-        //this.canPlay$.next(false);
-        this.loadstart$.next(ret);
-        this.videoLoaded$.next(ret);
+    allEvents$.subscribe(data => {
+      let ret = true;
+      //檢查全部是否為真
+      ret = data.every(item => {
+        return item["type"] == "loadstart";
       });
+      //console.dir(data[0]);
+      //console.log(`allEvents loadstart=${ret}`);
+      //this.canPlay$.next(false);
+      this.loadstart$.next(ret);
+      this.videoLoaded$.next(ret);
+    });
   }
   private init_loadedmetadata_combineLatest() {
     let obsary = [];
@@ -131,13 +124,11 @@ export class SyncVideoMgrService {
     const allEvents$ = combineLatest(obsary);
     allEvents$.subscribe(data => {
       let ret = true;
-      // data.forEach(element => {
-      //   console.log(`loadedmetadata=>${element["returnValue"]}`);
-      //   if (element["returnValue"] == false) {
-      //     ret = false;
-      //   }
-      // });
-      // console.dir(data[0]);
+      //檢查全部是否為真
+      ret = data.every(item => {
+        return item["type"] == "loadedmetadata";
+      });
+      //console.dir(data[0]);
       //console.log(`allEvents loadedmetadata=${ret}`);
       //this.canPlay$.next(false);
       this.loadedmetadata$.next(ret);

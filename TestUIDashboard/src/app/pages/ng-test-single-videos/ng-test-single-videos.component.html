@@ -45,7 +45,7 @@
   <mat-card>
     <mat-card-content>
       <!-- <button mat-raised-button [disabled]="!(syncVideoMgrService.loadedmetadata$ | async)">讀取完成</button> -->
-      <sync-video #syncvideo></sync-video>
+      <sync-video #syncvideo [mainvideo]="video1"></sync-video>
     </mat-card-content>
   </mat-card>
 </div>
