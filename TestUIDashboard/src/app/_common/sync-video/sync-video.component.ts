@@ -37,12 +37,14 @@ import { delay } from 'rxjs/operators';
 
   ngAfterViewInit(): void {
     //console.log(this.matplaybutton);
+    //test
+
     //是否可播放
     this.syncVideoMgrService.canPlay$.pipe(delay(1000)).subscribe(data => {
       //console.log(`SVC=>canPlay$=${data}`);
       //console.log(`SVC=>playcliceonce=${this.playcliceonce}`)
       if (this.playcliceonce == true) {
-        console.log(`SVC=>play`);
+        //console.log(`SVC=>play`);
         this.matplaybutton.setVideoPlayback(true);
       }
 
@@ -50,8 +52,8 @@ import { delay } from 'rxjs/operators';
     });
     //是否在緩衝
     this.syncVideoMgrService.waiting$.subscribe(data => {
-      console.log(`SVC=>waiting$=${data}`);
-      console.log(`SVC=>pause`);
+      //console.log(`SVC=>waiting$=${data}`);
+      //console.log(`SVC=>pause`);
       this.matplaybutton.setVideoPlayback(false);
       this.canactioned = false;
     });
@@ -59,6 +61,17 @@ import { delay } from 'rxjs/operators';
     this.syncVideoMgrService.videoLoaded$.subscribe(data => {
       //console.log(`SVC=>videoLoaded$=${data}`);
       this.canactioned = data;
+    });
+    //是否時間差
+    this.syncVideoMgrService.difftime$.subscribe(data => {
+      //console.log(`SVC=>difftime=${data}`);
+      let mtime = this.mainvideo.time;
+      //console.log(`SVC=>difftime mainvideo time=${mtime}`);
+      if (data == true) {
+        console.log(`SVC=>difftime=${data}`);
+        console.log(`SVC=>difftime mainvideo time=${mtime}`);
+        this.syncVideoMgrService.setCurrentTime(mtime);
+      }
     });
   }
   addVideo(video: MatVideoComponent) {
@@ -70,11 +83,6 @@ import { delay } from 'rxjs/operators';
       this.playcliceonce = true;
     }
     //console.log(`SVC->onClickPlay=>playcliceonce=${this.playcliceonce}`);
-  }
-  //
-  onTestclick() {
-    //this.export2json();
-    this.captureImage(this.mainvideo.getVideoTag());
   }
   //截取canvas的圖片
   private captureImage(video: HTMLVideoElement) {
@@ -92,28 +100,18 @@ import { delay } from 'rxjs/operators';
       a.click();
       document.body.removeChild(a);
     }, 'image/jpeg', 0.95); // JPEG at 95% quality
-
-    // canvas.toBlob = (blob) => {
-    //   const img = new Image();
-    //   img.src = window.URL.createObjectURL(blob);
-    // };
-
   }
-  // export2json() {
-  //   const data = {
-  //     a: '111',
-  //     b: '222',
-  //     c: '333'
-  //   };
-  //   const a = document.createElement("a");
-  //   a.href = URL.createObjectURL(
-  //     new Blob([JSON.stringify(data, null, 2)], {
-  //       type: "application/json"
-  //     })
-  //   );
-  //   a.setAttribute("download", "data.json");
-  //   document.body.appendChild(a);
-  //   a.click();
-  //   document.body.removeChild(a);
-  // }
+  //
+  onTestclick() {
+    //this.captureImage(this.mainvideo.getVideoTag());
+  }
+  onTestCurrentTime() {
+    let time = this.mainvideo.time;
+    this.syncVideoMgrService.setCurrentTime(time + 5);
+  }
+  onTestRandTime() {
+    //let time = this.mainvideo.time;
+    this.syncVideoMgrService.TestRanderTime();
+  }
+
 }

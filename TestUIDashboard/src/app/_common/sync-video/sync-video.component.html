@@ -1,4 +1,6 @@
 <div #player class="videoplayer">
+  <button (click)="onTestRandTime()">測試隨機加入時間 </button>
+  <button (click)="onTestCurrentTime()">+5 </button>
 
   <!-- <div class="controls"   *ngIf="(syncVideoMgrService.loadstart$ | async)"> -->
   <div class="controls" [ngClass]="{'disableDiv': !canactioned}">
