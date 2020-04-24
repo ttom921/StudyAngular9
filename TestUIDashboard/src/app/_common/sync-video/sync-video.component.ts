@@ -68,8 +68,8 @@ import { delay } from 'rxjs/operators';
       let mtime = this.mainvideo.time;
       //console.log(`SVC=>difftime mainvideo time=${mtime}`);
       if (data == true) {
-        console.log(`SVC=>difftime=${data}`);
-        console.log(`SVC=>difftime mainvideo time=${mtime}`);
+        //console.log(`SVC=>difftime=${data}`);
+        //console.log(`SVC=>difftime mainvideo time=${mtime}`);
         this.syncVideoMgrService.setCurrentTime(mtime);
       }
     });
@@ -106,8 +106,14 @@ import { delay } from 'rxjs/operators';
     //this.captureImage(this.mainvideo.getVideoTag());
   }
   onTestCurrentTime() {
-    let time = this.mainvideo.time;
-    this.syncVideoMgrService.setCurrentTime(time + 5);
+    //let time = this.mainvideo.time;
+    this.mainvideo.time += 5;
+    //this.syncVideoMgrService.setCurrentTime(time + 5);
+  }
+  onTest2CurrentTime() {
+    let myvideo = this.syncVideoMgrService.syncvideolst[2];
+    //let time = myvideo;
+    myvideo.time += 5;
   }
   onTestRandTime() {
     //let time = this.mainvideo.time;

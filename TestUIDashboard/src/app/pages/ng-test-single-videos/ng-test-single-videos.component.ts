@@ -33,7 +33,7 @@ export class NgTestSingleVideosComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
 
 
-    this.syncVideoMgrService.initcombineLatest();
+    this.syncVideoMgrService.initRxJSevent();
 
     //測試
     // this.syncVideoMgrService.canPlay$.subscribe(data => {
