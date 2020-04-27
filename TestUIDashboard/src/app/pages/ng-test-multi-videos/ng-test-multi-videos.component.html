@@ -5,23 +5,51 @@
       播放多個影像
     </mat-card-title>
     <mat-card-content>
+
       <div fxLayout="row" fxLayoutAlign="center stretch">
-        <mat-video class="videos" #video1 [playFreeze]="true" [mustShowMouseIcon]="true" [preload]="false" [overlay]="false">
+        <mat-video #video1 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [preload]="false" [overlay]="true">
 
         </mat-video>
         &nbsp;
-        <mat-video class="videos" #video2 [playFreeze]="true" [mustShowMouseIcon]="true" [preload]="false" [overlay]="false">
+        <mat-video #video2 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [preload]="false" [overlay]="false">
+
+        </mat-video>
+        &nbsp;
+        <mat-video #video3 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [preload]="false" [overlay]="true">
+
+        </mat-video>
+        &nbsp;
+        <mat-video #video4 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [preload]="false" [overlay]="false">
 
         </mat-video>
 
       </div>
+      <div fxLayout="row" fxLayoutAlign="center stretch">
+        <mat-video #video5 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [preload]="false" [overlay]="true">
+
+        </mat-video>
+        &nbsp;
+        <mat-video #video6 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [preload]="false" [overlay]="false">
+
+        </mat-video>
+        &nbsp;
+        <mat-video #video7 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [preload]="false" [overlay]="true">
+
+        </mat-video>
+        &nbsp;
+        <mat-video #video8 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [preload]="false" [overlay]="false">
+
+        </mat-video>
+      </div>
+
 
 
     </mat-card-content>
   </mat-card>
   <mat-card>
     <mat-card-content>
-      <button (click)="onPlay()">play</button>
+      <!-- <button mat-raised-button [disabled]="!(syncVideoMgrService.loadedmetadata$ | async)">讀取完成</button> -->
+      <sync-video #syncvideo [mainvideo]="video1"></sync-video>
     </mat-card-content>
   </mat-card>
 </div>
