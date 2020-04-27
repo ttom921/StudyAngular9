@@ -82,6 +82,7 @@ export class SyncVideoMgrService {
     merge(...obsary).subscribe(data => {
       //console.dir(data);
       this.waiting$.next(true);
+
       //計算時間差
       this.cal_difftime_behavior_subject();
     });

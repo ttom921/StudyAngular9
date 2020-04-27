@@ -22,7 +22,7 @@ import { delay } from 'rxjs/operators';
   @Input() color: ThemePalette = "primary";
   //第一次播放控制
   canactioned = false;
-  playcliceonce = false;
+  playBtnIsClick = false;
   //
   @Input() mainvideo: MatVideoComponent = null;
   constructor(
@@ -32,7 +32,7 @@ import { delay } from 'rxjs/operators';
   }
 
   ngOnInit(): void {
-    this.playcliceonce = false;
+    this.playBtnIsClick = false;
   }
 
   ngAfterViewInit(): void {
@@ -40,10 +40,10 @@ import { delay } from 'rxjs/operators';
     //test
 
     //是否可播放
-    this.syncVideoMgrService.canPlay$.pipe(delay(1000)).subscribe(data => {
+    this.syncVideoMgrService.canPlay$.pipe(delay(15000)).subscribe(data => {
       //console.log(`SVC=>canPlay$=${data}`);
       //console.log(`SVC=>playcliceonce=${this.playcliceonce}`)
-      if (this.playcliceonce == true) {
+      if (this.playBtnIsClick == true) {
         //console.log(`SVC=>play`);
         this.matplaybutton.setVideoPlayback(true);
       }
@@ -79,8 +79,8 @@ import { delay } from 'rxjs/operators';
   }
   onClickPlay(ev) {
     //console.log(ev);
-    if (this.playcliceonce == false) {
-      this.playcliceonce = true;
+    if (this.playBtnIsClick == false) {
+      this.playBtnIsClick = true;
     }
     //console.log(`SVC->onClickPlay=>playcliceonce=${this.playcliceonce}`);
   }
@@ -101,7 +101,7 @@ import { delay } from 'rxjs/operators';
       document.body.removeChild(a);
     }, 'image/jpeg', 0.95); // JPEG at 95% quality
   }
-  //
+  //----以下是測試程式
   onTestclick() {
     //this.captureImage(this.mainvideo.getVideoTag());
   }

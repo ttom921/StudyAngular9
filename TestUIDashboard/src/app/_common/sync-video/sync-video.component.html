@@ -5,7 +5,7 @@
 
   <!-- <div class="controls"   *ngIf="(syncVideoMgrService.loadstart$ | async)"> -->
   <div class="controls" [ngClass]="{'disableDiv': !canactioned}">
-    <button (click)="onTestclick()">test</button>
+    <button mat-raised-button [disabled]="!canactioned" (click)="onTestclick()">test</button>
     <!-- <div class="progress">
       <mat-seek-progress-control [color]="color" [video]="video"></mat-seek-progress-control>
     </div> -->
