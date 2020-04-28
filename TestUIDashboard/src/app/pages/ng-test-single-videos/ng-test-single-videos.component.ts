@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef, ChangeDetectionStrategy, ViewChildren, QueryList } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SyncVideoComponent } from 'src/app/_common/sync-video/sync-video.component';
 import { fromEvent, merge, combineLatest, BehaviorSubject, Observable } from 'rxjs';
@@ -21,9 +21,11 @@ export class NgTestSingleVideosComponent implements OnInit, AfterViewInit {
   @ViewChild('video7', { static: true }) video7: MatVideoComponent;
   @ViewChild('video8', { static: true }) video8: MatVideoComponent;
 
+  hide = false;
+  hidelst = [false, true]
+
+
   @ViewChild('syncvideo', { static: true }) syncvideo: SyncVideoComponent;
-  // canPlay$ = new BehaviorSubject(false);
-  // waiting$ = new BehaviorSubject(false);
   constructor(
     private sanitizer: DomSanitizer,
     public syncVideoMgrService: SyncVideoMgrService,
@@ -31,7 +33,6 @@ export class NgTestSingleVideosComponent implements OnInit, AfterViewInit {
 
   }
   ngAfterViewInit(): void {
-
 
     this.syncVideoMgrService.initRxJSevent();
 
@@ -47,6 +48,7 @@ export class NgTestSingleVideosComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+
     this.syncvideo.addVideo(this.video1);
     this.syncvideo.addVideo(this.video2);
     this.syncvideo.addVideo(this.video3);
@@ -59,6 +61,8 @@ export class NgTestSingleVideosComponent implements OnInit, AfterViewInit {
 
     this.syncVideoMgrService.setMainVideo(this.video1);
     this.loadVideo();
+    //檢查是否src是null
+    this.syncVideoMgrService.checkVideo();
 
 
 
@@ -202,6 +206,7 @@ export class NgTestSingleVideosComponent implements OnInit, AfterViewInit {
     let vdapi;
     vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4";
     this.video1.src = vdapi;
+    //this.video2.src = null;
     this.video2.src = vdapi;
     vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4";
     this.video3.src = vdapi;

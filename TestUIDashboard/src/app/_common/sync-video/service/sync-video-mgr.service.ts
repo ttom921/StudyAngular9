@@ -26,6 +26,16 @@ export class SyncVideoMgrService {
   addVideo(video: MatVideoComponent) {
     this.syncvideolst.push(video);
   }
+  //檢查是否有空的影像
+  checkVideo() {
+    let vary = [];
+    //console.log(this.syncvideolst);
+    this.syncvideolst.forEach(element => {
+      if (element.src != null)
+        vary.push(element);
+    });
+    this.syncvideolst = vary;
+  }
   setMainVideo(video: MatVideoComponent = null) {
     if (!isNullOrUndefined(video))
       this.mainvideo = this.syncvideolst[0];
@@ -115,7 +125,7 @@ export class SyncVideoMgrService {
   //時間差
   private cal_difftime_behavior_subject() {
     let ret = this.syncvideolst.some(item => {
-      return Math.abs(this.mainvideo.time - item.time) > 2;
+      return Math.abs(this.mainvideo.time - item.time) < 0.5;
     });
     //console.log(`difftime$=${ret}`);
     this.difftime$.next(ret);
