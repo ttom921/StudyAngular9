@@ -1,7 +1,7 @@
 <div #player class="videoplayer">
-  <button (click)="onTestRandTime()">測試隨機加入時間mat-icon </button>
+  <!-- <button (click)="onTestRandTime()">測試隨機加入時間mat-icon </button>
   <button (click)="onTestCurrentTime()">+5 0 </button>
-  <button (click)="onTest2CurrentTime()">+5 2 </button>
+  <button (click)="onTest2CurrentTime()">+5 2 </button> -->
 
   <!-- <div class="controls"   *ngIf="(syncVideoMgrService.loadstart$ | async)"> -->
   <div class="controls" [ngClass]="{'disableDiv': !canactioned}">
@@ -14,7 +14,7 @@
       <div class="left">
 
         <mat-play-button #matplaybutton (playChanged)="onClickPlay($event)"></mat-play-button>
-
+        <mat-frame-by-frame-control *ngIf="showFrameByFrame" [video]="mainvideo" [fps]="fps" [oneFrame]="oneFrame"></mat-frame-by-frame-control>
         <!-- <mat-frame-by-frame-control *ngIf="showFrameByFrame" [video]="video" [fps]="fps"></mat-frame-by-frame-control> -->
 
         <!-- <mat-volume-control [muted]="muted" (mutedChanged)="muted = $event; mutedChange.emit(muted);" [color]="color" [video]="video" [keyboard]="keyboard">

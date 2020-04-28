@@ -138,6 +138,14 @@ export class SyncVideoMgrService {
       //console.log(`setCurrentTime af current=${element.time}`);
     });
   }
+  setFrames(nbFrames: number, fps: number) {
+    this.syncvideolst.forEach(element => {
+      const currentFrames = element.getVideoTag().currentTime * fps;
+      const newPos = (currentFrames + nbFrames) / fps + 0.00001;
+      //console.log(`setFrames newPos=${newPos}`);
+      element.getVideoTag().currentTime = newPos;
+    });
+  }
   //測試
   TestRanderTime() {
     this.syncvideolst.forEach(element => {

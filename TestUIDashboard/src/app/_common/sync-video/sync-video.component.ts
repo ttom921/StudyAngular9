@@ -20,6 +20,9 @@ import { delay } from 'rxjs/operators';
 ) export class SyncVideoComponent implements OnInit, AfterViewInit {
   @ViewChild("matplaybutton", { static: true }) private matplaybutton: MatPlayButtonComponent;
   @Input() color: ThemePalette = "primary";
+  @Input() fps = 29.97;
+  @Input() showFrameByFrame = false;
+  @Input() oneFrame = 2;// 30/15
   //第一次播放控制
   canactioned = false;
   playBtnIsClick = false;
