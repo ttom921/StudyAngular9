@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { SyncVideoComponent } from './sync-video.component';
 import { MatPlayButtonComponent } from './ui/mat-play-button/mat-play-button.component';
 import { MatFrameByFrameControlComponent } from './ui/mat-frame-by-frame-control/mat-frame-by-frame-control.component';
+import { MatFullscreenButtonComponent } from './ui/mat-fullscreen-button/mat-fullscreen-button.component';
 
 
 
@@ -14,6 +15,7 @@ import { MatFrameByFrameControlComponent } from './ui/mat-frame-by-frame-control
     MatPlayButtonComponent,
     SyncVideoComponent,
     MatFrameByFrameControlComponent,
+    MatFullscreenButtonComponent,
 
   ],
   imports: [

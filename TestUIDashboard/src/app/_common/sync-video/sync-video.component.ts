@@ -27,6 +27,9 @@ import { delay } from 'rxjs/operators';
   canactioned = false;
   playBtnIsClick = false;
   //
+  //是否顯示全營幕icon
+  @Input() fullscreen = true;
+
   @Input() mainvideo: MatVideoComponent = null;
   constructor(
     public syncVideoMgrService: SyncVideoMgrService,
@@ -40,14 +43,15 @@ import { delay } from 'rxjs/operators';
 
   ngAfterViewInit(): void {
     //console.log(this.matplaybutton);
-    //test
+    //console.log(this.mainvideo);
+    console.dir(this.mainvideo);
 
     //是否可播放
     this.syncVideoMgrService.canPlay$.pipe(delay(15000)).subscribe(data => {
       //console.log(`SVC=>canPlay$=${data}`);
       //console.log(`SVC=>playcliceonce=${this.playcliceonce}`)
       if (this.playBtnIsClick == true) {
-        //console.log(`SVC=>play`);
+        console.log(`SVC=>play`);
         this.matplaybutton.setVideoPlayback(true);
       }
 
@@ -77,6 +81,7 @@ import { delay } from 'rxjs/operators';
       }
     });
   }
+
   addVideo(video: MatVideoComponent) {
     this.syncVideoMgrService.addVideo(video);
   }

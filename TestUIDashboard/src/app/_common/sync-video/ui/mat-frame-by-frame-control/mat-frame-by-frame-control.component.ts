@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatVideoComponent } from 'src/app/_common/video/video.component';
 import { SyncVideoMgrService } from '../../service/sync-video-mgr.service';
 
@@ -11,6 +11,8 @@ export class MatFrameByFrameControlComponent implements OnInit {
   @Input() video: MatVideoComponent;
   @Input() fps = 29.97;
   @Input() oneFrame = 1;// 30/30
+  //指定跳轉時間
+  @Input() jumpTime = 5;
   constructor(
     private syncVideoMgrService: SyncVideoMgrService,
   ) { }
@@ -33,5 +35,13 @@ export class MatFrameByFrameControlComponent implements OnInit {
     }
     //console.log(`this.video.getVideoTag().paused=${this.video.getVideoTag().paused}`);
     this.syncVideoMgrService.setFrames(nbFrames, this.fps);
+  }
+  //往前處理
+  forwardJumeTime() {
+    this.syncVideoMgrService.setJumpTime(this.jumpTime);
+  }
+  //往後處理
+  rewindJumeTime() {
+    this.syncVideoMgrService.setJumpTime(-this.jumpTime);
   }
 }

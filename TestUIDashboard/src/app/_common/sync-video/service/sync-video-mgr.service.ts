@@ -148,6 +148,13 @@ export class SyncVideoMgrService {
       //console.log(`setCurrentTime af current=${element.time}`);
     });
   }
+  setJumpTime(jumptime: number) {
+    this.syncvideolst.forEach(element => {
+      //console.log(`setCurrentTime be current=${element.time} ${setcurtime}`);
+      element.time += jumptime;
+      //console.log(`setCurrentTime af current=${element.time}`);
+    });
+  }
   setFrames(nbFrames: number, fps: number) {
     this.syncvideolst.forEach(element => {
       const currentFrames = element.getVideoTag().currentTime * fps;
