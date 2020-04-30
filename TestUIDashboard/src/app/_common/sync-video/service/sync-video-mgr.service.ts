@@ -19,8 +19,11 @@ export class SyncVideoMgrService {
   waiting$ = new BehaviorSubject(false);
   //時間差
   difftime$ = new BehaviorSubject(false);
+  //全螢幕
+  fullScreen$ = new BehaviorSubject(false);
   //主控頻道
   mainvideo: MatVideoComponent;
+  //
   constructor() { }
   //加入控制的video
   addVideo(video: MatVideoComponent) {

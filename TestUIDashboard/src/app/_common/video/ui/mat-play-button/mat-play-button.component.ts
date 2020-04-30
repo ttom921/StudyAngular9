@@ -2,6 +2,7 @@ import { AfterViewInit, Component, EventEmitter, HostListener, Input, OnDestroy,
 
 import { EventHandler } from "../../interfaces/event-handler.interface";
 import { EventService } from "../../services/event.service";
+import { ConditionalExpr } from '@angular/compiler';
 
 @Component({
   selector: "mat-play-button",
@@ -19,7 +20,8 @@ export class MatPlayButtonComponent implements AfterViewInit, OnDestroy {
 
   //不播放
   @Input() playFreeze: boolean = false;
-
+  //是否全螢幕
+  @Input() isFullscreen = false;
   private events: EventHandler[];
 
   constructor(private renderer: Renderer2, private evt: EventService) { }
@@ -47,7 +49,9 @@ export class MatPlayButtonComponent implements AfterViewInit, OnDestroy {
   }
 
   toggleVideoPlayback(): void {
-    if (this.playFreeze) return;
+    //console.log(`mat-play-button->isFullscreen->${this.isFullscreen}`);
+    //檢查是否不播放
+    if (this.playFreeze && !this.isFullscreen) return;
     this.play = !this.play;
     this.updateVideoPlayback();
   }
