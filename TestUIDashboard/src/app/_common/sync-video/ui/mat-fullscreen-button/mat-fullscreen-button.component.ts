@@ -10,9 +10,8 @@ import { SyncVideoMgrService } from '../../service/sync-video-mgr.service';
 })
 export class MatFullscreenButtonComponent implements OnInit {
   canFullscreen = false;
-  //@Input()
-  player: MatVideoComponent;
-  @Input() fullscreen = false;
+  @Input() player: HTMLVideoElement;
+  //@Input() fullscreen = false;
   // @Input() keyboard = true;
   constructor(
     private fscreen: FullscreenService,
@@ -21,38 +20,36 @@ export class MatFullscreenButtonComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.player = this.syncVideoMgrService.mainvideo;
+    this.player = this.syncVideoMgrService.mainvideo.player.nativeElement;
     if (this.fscreen.isEnabled()) {
       this.canFullscreen = true;
     }
-    //this.player.isFullscreen;
     //console.log(`MatFullscreenButton->canFullscreen=${this.canFullscreen}`);
-    //console.log(`MatFullscreenButton->player=${this.player}`);
     //console.dir(this.player);
     this.fscreen.onChange(event => (this.fscreen.isFullscreen() ? this.onChangesFullscreen(true) : this.onChangesFullscreen(false)));
   }
 
   onChangesFullscreen(value: boolean): void {
-    this.player.isFullscreen = value;
+    this.syncVideoMgrService.mainvideo.isFullscreen = value;
     //傳送是否是全螢幕
     //console.log(`onChangesFullscreen=>${this.player.isFullscreen}`);
-    this.syncVideoMgrService.fullScreen$.next(this.player.isFullscreen);
+    this.syncVideoMgrService.fullScreen$.next(this.syncVideoMgrService.mainvideo.isFullscreen);
     //this.fullscreenChanged.emit(this.fullscreen);
   }
   setFullscreen(value: boolean) {
-    if (this.canFullscreen && this.player.isFullscreen !== value) {
+    if (this.canFullscreen && this.syncVideoMgrService.mainvideo.isFullscreen !== value) {
       this.toggleFullscreen();
     }
   }
 
   toggleFullscreen(): void {
     //console.log(`toggleFullscreen`);
-    this.player.isFullscreen = !this.player.isFullscreen;
+    this.syncVideoMgrService.mainvideo.isFullscreen = !this.syncVideoMgrService.mainvideo.isFullscreen;
     this.updateFullscreen();
   }
 
   updateFullscreen(): void {
-    this.player.isFullscreen ? this.fscreen.request(this.player.getVideoTag()) : this.fscreen.exit();
+    this.syncVideoMgrService.mainvideo.isFullscreen ? this.fscreen.request(this.player) : this.fscreen.exit();
     //this.fullscreenChanged.emit(this.fullscreen);
   }
 }

@@ -163,7 +163,7 @@ export class SyncVideoComponent implements OnInit,
     });
     //是否全螢幕
     this.syncVideoMgrService.fullScreen$.subscribe(data => {
-      //console.log(`fullScreen$=>${data}`);
+      console.log(`fullScreen$=>${data}`);
       if (data == false) {
         //同步和暫停
         this.syncVideoMgrService.difftime$.next(true);
