@@ -11,7 +11,7 @@ import { SyncVideoMgrService } from '../../service/sync-video-mgr.service';
 export class MatFullscreenButtonComponent implements OnInit {
   canFullscreen = false;
   @Input() player: MatVideoComponent;
-  //@Input() fullscreen = false;
+  @Input() fullscreen = false;
   // @Input() keyboard = true;
   constructor(
     private fscreen: FullscreenService,

@@ -60,14 +60,29 @@ import {
 }
 
   from '@angular/platform-browser';
-
+/**
+ * 主要控制的元件，主要功能
+ * 1.同步8個螢幕的播放
+ *   有緩衝，會計算是否同步
+ * 2.有前進和後退單frame的功能
+ *   是以15張（15fps）或30張(30fpx)
+ * 3.有前進和後退10秒（預設）的功能
+ * 4. 全螢幕：
+ *    會以主要選擇的元件，來做全螢幕，在全螢幕返之後，會暫停所有的video元件和同步時間
+ *
+ *
+ * @export
+ * @class SyncVideoComponent
+ * @implements {OnInit}
+ * @implements {AfterViewInit}
+ */
 @Component({
   selector: 'sync-video',
   templateUrl: './sync-video.component.html',
   styleUrls: ['./sync-video.component.scss']
-}
+})
 
-) export class SyncVideoComponent implements OnInit,
+export class SyncVideoComponent implements OnInit,
   AfterViewInit {
   @ViewChild("matplaybutton", {
     static: true
@@ -88,7 +103,8 @@ import {
   //@Input()
   mainvideo: MatVideoComponent = null;
 
-  constructor(public syncVideoMgrService: SyncVideoMgrService,
+  constructor(
+    private syncVideoMgrService: SyncVideoMgrService,
   ) { }
 
   ngOnInit(): void {
@@ -120,7 +136,7 @@ import {
 
     //是否在緩衝
     this.syncVideoMgrService.waiting$.subscribe(data => {
-      //console.log(`SVC=>waiting$=${data}`);
+      console.log(`SVC=>waiting$=${data}`);
       //console.log(`SVC=>pause`);
       this.matplaybutton.setVideoPlayback(false);
       this.canactioned = false;
@@ -134,7 +150,7 @@ import {
 
     //是否時間差
     this.syncVideoMgrService.difftime$.subscribe(data => {
-      //console.log(`SVC=>difftime=${data}`);
+      console.log(`SVC=>difftime=${data}`);
       let mtime = this.mainvideo.time;
 
       //console.log(`SVC=>difftime mainvideo time=${mtime}`);
@@ -146,7 +162,14 @@ import {
     });
     //是否全螢幕
     this.syncVideoMgrService.fullScreen$.subscribe(data => {
-      console.log(`fullScreen$=>${data}`)
+      console.log(`fullScreen$=>${data}`);
+      if (data == false) {
+        //同步和暫停
+        this.syncVideoMgrService.difftime$.next(true);
+        this.syncVideoMgrService.pause();
+      }
+
+
     });
   }
 
