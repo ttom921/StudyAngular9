@@ -3,12 +3,11 @@
     {{ title }}
   </div>
 
-  <video #video class="video" [attr.autoplay]="autoplay ? true : null" [preload]="preload ? 'auto' : 'metadata'" [attr.poster]="poster ? poster : null" [attr.loop]="loop ? loop : null" [attr.playsinline]="playsinline ? true : null">
+  <video #video class="video" crossorigin="anonymous" [attr.autoplay]="autoplay ? true : null" [preload]="preload ? 'auto' : 'metadata'" [attr.poster]="poster ? poster : null" [attr.loop]="loop ? loop : null" [attr.playsinline]="playsinline ? true : null">
     <ng-content select="source"></ng-content>
     <ng-content select="track"></ng-content>
     This browser does not support HTML5 video.
   </video>
-
   <div class="controls" *ngIf="videoLoaded" [ngClass]="getOverlayClass('visible', 'hidden')">
     <div class="progress">
       <mat-seek-progress-control [color]="color" [video]="video"></mat-seek-progress-control>

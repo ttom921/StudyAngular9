@@ -24,7 +24,7 @@ export class MatPhotoButtonComponent implements OnInit {
 
   ngOnInit(): void {
     this.mainvideo = this.syncVideoMgrService.mainvideo;
-    console.log(`mat-photo-button->mainvideo=${this.mainvideo}`);
+    //console.log(`mat-photo-button->mainvideo=${this.mainvideo}`);
   }
   takePhoto() {
     //console.log(`mat-photo-button->takePhoto()`);

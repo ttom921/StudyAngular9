@@ -10,7 +10,8 @@ import { SyncVideoMgrService } from '../../service/sync-video-mgr.service';
 })
 export class MatFullscreenButtonComponent implements OnInit {
   canFullscreen = false;
-  @Input() player: MatVideoComponent;
+  //@Input()
+  player: MatVideoComponent;
   @Input() fullscreen = false;
   // @Input() keyboard = true;
   constructor(
@@ -20,6 +21,7 @@ export class MatFullscreenButtonComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.player = this.syncVideoMgrService.mainvideo;
     if (this.fscreen.isEnabled()) {
       this.canFullscreen = true;
     }
