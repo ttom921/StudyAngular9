@@ -47,6 +47,8 @@ export class MatVideoComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() playFreeze: boolean = false;
   //是否一定要顯示滑鼠游標
   @Input() mustShowMouseIcon: boolean = false;
+  //是否顯示titel
+  @Input() mustShowTitle: boolean = false;
   @Output() timeChange = new EventEmitter<number>();
 
   @Input()
@@ -185,15 +187,23 @@ export class MatVideoComponent implements AfterViewInit, OnChanges, OnDestroy {
     if (this.overlay === null) {
       return !this.playing || this.isMouseMoving ? activeClass : inactiveClass;
     } else {
-      if (activeClass == "show-mouse") {
-        if (this.mustShowMouseIcon == true) {
+      switch (activeClass) {
+        case "show-mouse":
           return this.mustShowMouseIcon ? activeClass : inactiveClass;
-        } else {
+        case "show-title":
+          return this.mustShowTitle ? activeClass : inactiveClass;
+        default:
           return this.overlay ? activeClass : inactiveClass;
-        }
-      } else {
-        return this.overlay ? activeClass : inactiveClass;
       }
+      // if (activeClass == "show-mouse") {
+      //   if (this.mustShowMouseIcon == true) {
+      //     return this.mustShowMouseIcon ? activeClass : inactiveClass;
+      //   } else {
+      //     return this.overlay ? activeClass : inactiveClass;
+      //   }
+      // } else {
+      //   return this.overlay ? activeClass : inactiveClass;
+      // }
     }
   }
 

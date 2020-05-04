@@ -59,7 +59,7 @@ export class NgTestSingleVideosComponent implements OnInit, AfterViewInit {
     this.syncvideo.addVideo(this.video7);
     this.syncvideo.addVideo(this.video8);
 
-    //this.syncVideoMgrService.setMainVideo(this.video3);
+    //this.syncVideoMgrService.setMainVideo(this.video2);
     this.syncVideoMgrService.setMainVideo(this.video1);
     this.loadVideo();
     //檢查是否src是null
