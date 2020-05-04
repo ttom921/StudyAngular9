@@ -8,7 +8,7 @@ import { SyncVideoMgrService } from '../../service/sync-video-mgr.service';
   styleUrls: ['./mat-frame-by-frame-control.component.scss']
 })
 export class MatFrameByFrameControlComponent implements OnInit {
-  @Input() video: MatVideoComponent;
+  video: MatVideoComponent;
   @Input() fps = 29.97;
   @Input() oneFrame = 1;// 30/30
   //指定跳轉時間
@@ -18,6 +18,8 @@ export class MatFrameByFrameControlComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.video = this.syncVideoMgrService.mainvideo;
+    //console.log(`mat-frame-by-frame-control=>video=${this.video}`)
   }
   forwardSeekFrame() {
     this.seekFrames(this.oneFrame);

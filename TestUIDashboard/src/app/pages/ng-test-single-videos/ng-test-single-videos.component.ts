@@ -59,6 +59,7 @@ export class NgTestSingleVideosComponent implements OnInit, AfterViewInit {
     this.syncvideo.addVideo(this.video7);
     this.syncvideo.addVideo(this.video8);
 
+    //this.syncVideoMgrService.setMainVideo(this.video3);
     this.syncVideoMgrService.setMainVideo(this.video1);
     this.loadVideo();
     //檢查是否src是null
@@ -208,8 +209,8 @@ export class NgTestSingleVideosComponent implements OnInit, AfterViewInit {
     this.video1.src = vdapi;
     //this.video2.src = null;
     this.video2.src = vdapi;
-    //vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4";
-    vdapi = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
+    vdapi = "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4";
+    //vdapi = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
     this.video3.src = vdapi;
     this.video4.src = vdapi;
     //
