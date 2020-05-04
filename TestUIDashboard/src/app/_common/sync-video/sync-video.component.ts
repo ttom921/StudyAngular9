@@ -125,7 +125,7 @@ export class SyncVideoComponent implements OnInit,
       //console.log(`SVC=>canPlay$=${data}`);
       //console.log(`SVC=>playcliceonce=${this.playcliceonce}`)
       if (this.playBtnIsClick == true) {
-        console.log(`SVC=>play`);
+        //console.log(`SVC=>play`);
         this.matplaybutton.setVideoPlayback(true);
       }
 
@@ -136,7 +136,7 @@ export class SyncVideoComponent implements OnInit,
 
     //是否在緩衝
     this.syncVideoMgrService.waiting$.subscribe(data => {
-      console.log(`SVC=>waiting$=${data}`);
+      //console.log(`SVC=>waiting$=${data}`);
       //console.log(`SVC=>pause`);
       this.matplaybutton.setVideoPlayback(false);
       this.canactioned = false;
@@ -150,7 +150,7 @@ export class SyncVideoComponent implements OnInit,
 
     //是否時間差
     this.syncVideoMgrService.difftime$.subscribe(data => {
-      console.log(`SVC=>difftime=${data}`);
+      //console.log(`SVC=>difftime=${data}`);
       let mtime = this.mainvideo.time;
 
       //console.log(`SVC=>difftime mainvideo time=${mtime}`);
@@ -162,14 +162,12 @@ export class SyncVideoComponent implements OnInit,
     });
     //是否全螢幕
     this.syncVideoMgrService.fullScreen$.subscribe(data => {
-      console.log(`fullScreen$=>${data}`);
+      //console.log(`fullScreen$=>${data}`);
       if (data == false) {
         //同步和暫停
         this.syncVideoMgrService.difftime$.next(true);
         this.syncVideoMgrService.pause();
       }
-
-
     });
   }
 
