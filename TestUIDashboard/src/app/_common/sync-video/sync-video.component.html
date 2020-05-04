@@ -27,8 +27,7 @@
         <!-- <mat-quality-control *ngIf="quality" [video]="video"></mat-quality-control> -->
 
         <!-- <mat-download-button *ngIf="download" [title]="title" [video]="video"></mat-download-button> -->
-
-        <!-- <mat-fullscreen-button *ngIf="fullscreen" (fullscreenChanged)="isFullscreen = $event" [player]="player" [keyboard]="keyboard"></mat-fullscreen-button> -->
+        <mat-photo-button *ngIf="photoscreen"></mat-photo-button>
         <mat-fullscreen-button *ngIf="fullscreen" [player]="mainvideo"></mat-fullscreen-button>
       </div>
     </div>

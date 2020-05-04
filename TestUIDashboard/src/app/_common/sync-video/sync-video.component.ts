@@ -99,7 +99,8 @@ export class SyncVideoComponent implements OnInit,
   //
   //是否顯示全營幕icon
   @Input() fullscreen = true;
-
+  //是否顯示拍照icon
+  @Input() photoscreen = true;
   //@Input()
   mainvideo: MatVideoComponent = null;
 

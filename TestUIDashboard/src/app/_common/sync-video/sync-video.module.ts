@@ -6,6 +6,7 @@ import { SyncVideoComponent } from './sync-video.component';
 import { MatPlayButtonComponent } from './ui/mat-play-button/mat-play-button.component';
 import { MatFrameByFrameControlComponent } from './ui/mat-frame-by-frame-control/mat-frame-by-frame-control.component';
 import { MatFullscreenButtonComponent } from './ui/mat-fullscreen-button/mat-fullscreen-button.component';
+import { MatPhotoButtonComponent } from './ui/mat-photo-button/mat-photo-button.component';
 
 
 
@@ -16,6 +17,7 @@ import { MatFullscreenButtonComponent } from './ui/mat-fullscreen-button/mat-ful
     SyncVideoComponent,
     MatFrameByFrameControlComponent,
     MatFullscreenButtonComponent,
+    MatPhotoButtonComponent,
 
   ],
   imports: [
