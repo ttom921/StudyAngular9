@@ -29,9 +29,9 @@ export class VideoPlayManagerComponent implements OnInit {
     this.carid = this.activeRoute.snapshot.paramMap.get('carid');
     this.eventid = this.activeRoute.snapshot.paramMap.get('eventid');
     this.token = this.activeRoute.snapshot.paramMap.get('token');
-    //console.log(`carid=${this.carid}`);
-    //console.log(`eventid=${this.eventid}`);
-    //console.log(`token=${this.token}`);
+    // console.log(`carid=${this.carid}`);
+    // console.log(`eventid=${this.eventid}`);
+    // console.log(`token=${this.token}`);
     this.carVideoService.Get(this.carid).subscribe(
       res => {
         this.videolist = res;
