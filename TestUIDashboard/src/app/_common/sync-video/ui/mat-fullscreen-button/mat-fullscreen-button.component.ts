@@ -32,9 +32,10 @@ export class MatFullscreenButtonComponent implements OnInit {
   onChangesFullscreen(value: boolean): void {
     this.syncVideoMgrService.mainvideo.isFullscreen = value;
     //傳送是否是全螢幕
-    //console.log(`onChangesFullscreen=>${this.player.isFullscreen}`);
+    console.log(`onChangesFullscreen=>${this.player.isFullscreen}`);
     this.syncVideoMgrService.fullScreen$.next(this.syncVideoMgrService.mainvideo.isFullscreen);
     //this.fullscreenChanged.emit(this.fullscreen);
+    this.fullscreen = this.syncVideoMgrService.mainvideo.isFullscreen;
   }
   setFullscreen(value: boolean) {
     if (this.canFullscreen && this.syncVideoMgrService.mainvideo.isFullscreen !== value) {
@@ -50,7 +51,7 @@ export class MatFullscreenButtonComponent implements OnInit {
 
   updateFullscreen(): void {
     this.syncVideoMgrService.mainvideo.isFullscreen ? this.fscreen.request(this.player) : this.fscreen.exit();
-    this.fullscreen = this.syncVideoMgrService.mainvideo.isFullscreen;
+
     //this.fullscreenChanged.emit(this.fullscreen);
   }
 }

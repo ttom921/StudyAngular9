@@ -23,7 +23,8 @@ export class CarVideoService {
   TestFakeData() {
     let data = [
       {
-        src: "https://www.w3schools.com/html/mov_bbb.mp4#t=0.5"
+        //src: "https://www.w3schools.com/html/mov_bbb.mp4#t=0.5"
+        src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4#t=2.0"
       },
       {
         src: "https://nkoehler.github.io/mat-video/assets/NASA.mp4"
