@@ -5,10 +5,12 @@ import { VideoPlayManagerRoutingModule } from './video-play-manager-routing.modu
 import { VideoPlayManagerComponent } from './video-play-manager.component';
 import { SharedAngularMaterialModule } from 'src/app/share/shared-angular-material/shared-angular-material.module';
 import { MatVideoModule } from 'src/app/_common/video/video.module';
+import { SyncMgrComponent } from './sync-mgr/sync-mgr.component';
+import { MatPlayButtonComponent } from './sync-mgr/ui/mat-play-button/mat-play-button.component';
 
 
 @NgModule({
-  declarations: [VideoPlayManagerComponent],
+  declarations: [VideoPlayManagerComponent, SyncMgrComponent, MatPlayButtonComponent],
   imports: [
     CommonModule,
     SharedAngularMaterialModule,

@@ -12,11 +12,12 @@ export class CarVideoService {
     //let url = `${this.api}?userid=${data.id}`;
     console.log("carid=" + carid);
     let datas = null;
-    if (carid == "8888") {
-      datas = this.TestFakeData2();
-    } else {
-      datas = this.TestFakeData();
-    }
+    // if (carid == "8888") {
+    //   datas = this.TestFakeData2();
+    // } else {
+    //   datas = this.TestFakeData();
+    // }
+    datas = this.TestFakeData3();
 
     return of(datas);
   }
@@ -58,6 +59,27 @@ export class CarVideoService {
       },
       {
         src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+      },
+
+    ];
+    return data;
+  }
+  TestFakeData3() {
+    let data = [
+      {
+        src: "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+      },
+      {
+        src: "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+      },
+      {
+        src: "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+      },
+      {
+        src: "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
+      },
+      {
+        src: "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
       },
 
     ];

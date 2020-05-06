@@ -1,0 +1,17 @@
+<div #player>
+  <div class="controls" [ngClass]="{'disableDiv': !canactioned}">
+    <button mat-raised-button [disabled]="!canactioned">test</button>
+    <!-- <div class="progress">
+      <mat-seek-progress-control [color]="color" [video]="video"></mat-seek-progress-control>
+    </div> -->
+    <div class="menu">
+      <div class="left">
+        <mat-play-button #matplaybutton></mat-play-button>
+      </div>
+      <div class="right">
+
+      </div>
+    </div>
+
+  </div>
+</div>
