@@ -22,7 +22,7 @@ export class MatVideoSpinnerComponent implements AfterViewInit, OnDestroy {
 
   private events: EventHandler[] = [];
 
-  constructor(private renderer: Renderer2, private evt: EventService) {}
+  constructor(private renderer: Renderer2, private evt: EventService) { }
 
   ngAfterViewInit(): void {
     this.events = [

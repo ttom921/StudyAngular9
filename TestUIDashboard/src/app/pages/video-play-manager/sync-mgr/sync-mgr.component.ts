@@ -28,11 +28,14 @@ export class SyncMgrComponent implements OnInit, AfterViewInit {
     //console.log(`SyncMgrComponent->ngAfterViewInit`);
     //是否可播放
     this.syncMgrService.canPlay$.pipe(delay(10000)).subscribe(data => {
-      //console.log(`SVC=>canPlay$=${data}`);
       console.log(`SVC=>canPlay$=${data}`);
       if (this.playBtnIsClick == true) {
-        console.log(`SVC=>play`);
-        this.matplaybutton.setVideoPlayback(true);
+        //console.log(`SVC=>play data=${data}`);
+        //this.matplaybutton.setVideoPlayback(true);
+        if (data == true) {
+          this.matplaybutton.setVideoPlayback(true);
+        }
+
       }
       this.canactioned = true;
     });

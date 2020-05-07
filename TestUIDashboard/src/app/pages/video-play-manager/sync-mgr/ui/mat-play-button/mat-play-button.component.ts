@@ -7,7 +7,7 @@ import { SyncMgrService } from '../../service/sync-mgr.service';
   styleUrls: ['./mat-play-button.component.scss']
 })
 export class MatPlayButtonComponent implements OnInit {
-  play = false;
+  //play = false;
   @Output() playChanged = new EventEmitter<boolean>();
   constructor(
     public syncMgrService: SyncMgrService
@@ -16,18 +16,21 @@ export class MatPlayButtonComponent implements OnInit {
   ngOnInit(): void {
   }
   setVideoPlayback(value: boolean) {
-    //console.log(`setVideoPlayback->${this.play} value=${value}`);
-    if (this.play !== value) {
-      this.toggleVideoPlayback();
-    }
+    this.syncMgrService.setVideoPlayback(value);
+    // //console.log(`setVideoPlayback->${this.play} value=${value}`);
+    // if (this.play !== value) {
+    //   this.toggleVideoPlayback();
+    // }
   }
   toggleVideoPlayback(): void {
-    this.play = !this.play;
-    this.updateVideoPlayback();
+    // this.play = !this.play;
+    // this.updateVideoPlayback();
+    this.syncMgrService.toggleVideoPlayback();
+    this.playChanged.emit(this.syncMgrService.playstate$.value);
   }
-  updateVideoPlayback(): void {
-    this.play ? this.syncMgrService.play() : this.syncMgrService.pause();
-    this.syncMgrService.playstate$.next(this.play);
-    this.playChanged.emit(this.play);
-  }
+  // updateVideoPlayback(): void {
+  //   // this.play ? this.syncMgrService.playAction() : this.syncMgrService.pause();
+  //   // this.syncMgrService.playstate$.next(this.play);
+  //   this.playChanged.emit(this.play);
+  // }
 }

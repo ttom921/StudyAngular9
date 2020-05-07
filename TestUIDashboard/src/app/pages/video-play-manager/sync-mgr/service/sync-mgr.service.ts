@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, fromEvent, combineLatest, merge } from 'rxjs';
+import { BehaviorSubject, fromEvent, combineLatest, merge, forkJoin } from 'rxjs';
 import { MatVideoComponent } from 'src/app/_common/video/video.component';
+import { combineAll } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ export class SyncMgrService {
   syncvideolst = [];
   //播放狀態
   playstate$ = new BehaviorSubject(false);
+  playAction = false;
   //加載完成
   videoLoaded$ = new BehaviorSubject(false);
   private loadstart$ = new BehaviorSubject(false);
@@ -44,7 +46,9 @@ export class SyncMgrService {
     });
     //console.log(obsary);
     //全部收到再發射
+    //console.log(`init_canplay_combineLatest syncvideolst=${this.syncvideolst.length}`);
     combineLatest(...obsary).subscribe(data => {
+      //console.log(`combineLatest->data=${data}`)
       this.canPlay$.next(true);
     });
   }
@@ -103,23 +107,57 @@ export class SyncMgrService {
       this.videoLoaded$.next(true);
     });
   }
-  ////#endregionrxjs相關
-  play() {
-    //console.log(`SyncMgrService->play()`);
+  //#endregion rxjs相關
+
+  //#region 播放控制相關
+  setVideoPlayback(value: boolean) {
+    if (this.playAction !== value) {
+      this.toggleVideoPlayback();
+    }
+  }
+  toggleVideoPlayback(): void {
+    this.playAction = !this.playAction;
+    this.updateVideoPlayback();
+  }
+  updateVideoPlayback(): void {
+    this.playAction ? this.play() : this.pause();
+  }
+  private play() {
+    console.log(`SyncMgrService->play()`);
     this.syncvideolst.forEach(element => {
       element.getVideoTag().play();
     });
-    //this.mainvideo.getVideoTag().play();
-    //this.playstate$.next(true);
+    this.playstate$.next(true);
   }
-  pause() {
-    //console.log(`SyncMgrService->pause()`);
+  private pause() {
+    console.log(`SyncMgrService->pause()`);
     this.syncvideolst.forEach(element => {
       element.getVideoTag().pause();
     });
-    //this.mainvideo.getVideoTag().pause();
-    //this.playstate$.next(false);
+    this.playstate$.next(false);
   }
+  // play() {
+  //   //console.log(`SyncMgrService->play()`);
+  //   this.syncvideolst.forEach(element => {
+  //     element.getVideoTag().play();
+  //   });
+  //   //this.mainvideo.getVideoTag().play();
+  //   //this.playstate$.next(true);
+  // }
+  // pause() {
+  //   //console.log(`SyncMgrService->pause()`);
+  //   this.syncvideolst.forEach(element => {
+  //     element.getVideoTag().pause();
+  //   });
+  //   //this.mainvideo.getVideoTag().pause();
+  //   //this.playstate$.next(false);
+  // }
+
+
+  //#endregion 播放控制相關
+
+
+
   setCurrentTime(setcurtime: number) {
     this.syncvideolst.forEach(element => {
       //console.log(`setCurrentTime be current=${element.time} ${setcurtime}`);
