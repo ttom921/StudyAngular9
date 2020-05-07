@@ -75,7 +75,8 @@ export class SyncMgrComponent implements OnInit, AfterViewInit {
   videoSrcChange(matvideo: MatVideoComponent, src: string) {
     let orgtime = this.syncMgrService.mainvideo.time;
     //console.log(`videoSrcChange time=${orgtime}`);
-    this.syncMgrService.pause();
+    //this.syncMgrService.pause();
+    this.matplaybutton.setVideoPlayback(false);
     matvideo.src = src;
     matvideo.getVideoTag().src = src;
     matvideo.time = orgtime;
