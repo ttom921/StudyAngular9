@@ -63,6 +63,8 @@ export class VideoPlayManagerComponent implements OnInit, AfterViewInit {
       this.syncmgr.addMatVideo(matvideo);
       if (idx == array.length - 1) {
         //console.log("all done");
+        //加入主要的
+        this.syncmgr.addMatVideo(this.matMainVideo);
         this.syncmgr.initRxJSevent();
       }
     });

@@ -67,8 +67,13 @@ export class SyncMgrService {
   }
   //時間差
   private cal_difftime_behavior_subject() {
+
     let ret = this.syncvideolst.some(item => {
-      return Math.abs(this.mainvideo.time - item.time) < 0.5;
+      //console.log(`cal_difftime -> mainvideo.time=${this.mainvideo.time} item.time=${item.time}`);
+      let calret = Math.abs(this.mainvideo.time - item.time);
+      //console.log(`cal_difftime calret=${calret}`);
+      if (calret > 0.5)
+        return true;
     });
     //console.log(`difftime$=${ret}`);
     this.difftime$.next(ret);
@@ -100,18 +105,20 @@ export class SyncMgrService {
   }
   ////#endregionrxjs相關
   play() {
+    //console.log(`SyncMgrService->play()`);
     this.syncvideolst.forEach(element => {
       element.getVideoTag().play();
     });
     //this.mainvideo.getVideoTag().play();
-    this.playstate$.next(true);
+    //this.playstate$.next(true);
   }
   pause() {
+    //console.log(`SyncMgrService->pause()`);
     this.syncvideolst.forEach(element => {
       element.getVideoTag().pause();
     });
     //this.mainvideo.getVideoTag().pause();
-    this.playstate$.next(false);
+    //this.playstate$.next(false);
   }
   setCurrentTime(setcurtime: number) {
     this.syncvideolst.forEach(element => {

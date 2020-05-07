@@ -13,7 +13,7 @@ export class SyncMgrComponent implements OnInit, AfterViewInit {
   @ViewChild("matplaybutton", { static: true }) private matplaybutton: MatPlayButtonComponent;
 
   canactioned = false;
-
+  playBtnIsClick = false;
   @Input() mainvideo: MatVideoComponent;
   constructor(
     private syncMgrService: SyncMgrService
@@ -29,12 +29,16 @@ export class SyncMgrComponent implements OnInit, AfterViewInit {
     //是否可播放
     this.syncMgrService.canPlay$.pipe(delay(10000)).subscribe(data => {
       //console.log(`SVC=>canPlay$=${data}`);
-      this.matplaybutton.setVideoPlayback(true);
+      console.log(`SVC=>canPlay$=${data}`);
+      if (this.playBtnIsClick == true) {
+        console.log(`SVC=>play`);
+        this.matplaybutton.setVideoPlayback(true);
+      }
       this.canactioned = true;
     });
     //是否在緩衝
     this.syncMgrService.waiting$.subscribe(data => {
-      //console.log(`SVC=>waiting$=${data}`);
+      console.log(`SVC=>waiting$=${data}`);
       //console.log(`SVC=>pause`);
       this.matplaybutton.setVideoPlayback(false);
       this.canactioned = false;
@@ -70,10 +74,20 @@ export class SyncMgrComponent implements OnInit, AfterViewInit {
   //設定MatVideoComponent元件的影像來源
   videoSrcChange(matvideo: MatVideoComponent, src: string) {
     let orgtime = this.syncMgrService.mainvideo.time;
+    //console.log(`videoSrcChange time=${orgtime}`);
     this.syncMgrService.pause();
     matvideo.src = src;
     matvideo.getVideoTag().src = src;
     matvideo.time = orgtime;
 
+  }
+  onClickPlay(ev) {
+
+    //console.log(ev);
+    if (this.playBtnIsClick == false) {
+      this.playBtnIsClick = true;
+    }
+
+    //console.log(`SVC->onClickPlay=>playcliceonce=${this.playcliceonce}`);
   }
 }
