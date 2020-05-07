@@ -123,14 +123,14 @@ export class SyncMgrService {
     this.playAction ? this.play() : this.pause();
   }
   private play() {
-    console.log(`SyncMgrService->play()`);
+    //console.log(`SyncMgrService->play()`);
     this.syncvideolst.forEach(element => {
       element.getVideoTag().play();
     });
     this.playstate$.next(true);
   }
   private pause() {
-    console.log(`SyncMgrService->pause()`);
+    //console.log(`SyncMgrService->pause()`);
     this.syncvideolst.forEach(element => {
       element.getVideoTag().pause();
     });
