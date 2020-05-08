@@ -1,0 +1,21 @@
+<button mat-icon-button class="close-button" [mat-dialog-close]="true" (click)="onNoClick()">
+  <mat-icon class="close-icon" color="warn">close</mat-icon>
+</button>
+<mat-dialog-content>
+  <div class="videoWrapper">
+    <!-- <iframe src="http://localhost:4200/videoplaymanager/わ2-674/eventid123/tokendata" frameborder="0" allowfullscreen>
+      <p>Your browser does not support iframes.</p>
+    </iframe> -->
+    <iframe [src]="safeURL" frameborder="0" allowfullscreen>
+      <p>Your browser does not support iframes.</p>
+    </iframe>
+  </div>
+  <!-- <div class="iframe-container">
+    <iframe src="http://localhost:4200/videoplaymanager/わ2-674/eventid123/tokendata" frameborder="0" allowfullscreen>
+      <p>Your browser does not support iframes.</p>
+    </iframe>
+  </div> -->
+  <!-- <div class="iframe-video">
+    <iframe width="600" height="600" src="//vine.co/v/iMJzrThFhDL/embed/simple"></iframe>
+  </div> -->
+</mat-dialog-content>

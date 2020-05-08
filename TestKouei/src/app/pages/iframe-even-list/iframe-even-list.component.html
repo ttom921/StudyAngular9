@@ -1,0 +1,39 @@
+<!-- <button mar-raised-button color="primary" (click)="shwoViewVideoDialog()">查看</button> -->
+
+<div class="user-list-main ">
+  <div class="user-list-container mat-elevation-z2 ">
+    <mat-table [dataSource]="eventDataSource">
+
+      <ng-container matColumnDef="eventid">
+        <mat-header-cell *matHeaderCellDef> 事件ID </mat-header-cell>
+        <mat-cell *matCellDef=" let row;"> {{ row.eventid }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="carid">
+        <mat-header-cell *matHeaderCellDef> 車牌 </mat-header-cell>
+        <mat-cell *matCellDef=" let row;"> {{ row.carid }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="eventname">
+        <mat-header-cell *matHeaderCellDef> 事件名稱 </mat-header-cell>
+        <mat-cell *matCellDef=" let row;"> {{ row.eventname }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="management">
+        <mat-header-cell *matHeaderCellDef>動作</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+
+          <!-- <button mat-raised-button color="primary" (click)="Edit(row)">EDIT</button> -->
+          <button mat-raised-button color="primary" (click)="View(row)">iframe查看</button>
+
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="['eventid','carid','eventname','management']"></mat-header-row>
+      <mat-row *matRowDef="let eachrow;columns:['eventid','carid','eventname','management']"></mat-row>
+
+    </mat-table>
+
+
+  </div>
+</div>

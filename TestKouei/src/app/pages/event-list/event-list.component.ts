@@ -43,6 +43,6 @@ export class EventListComponent implements OnInit {
     let tokendata = "thisatokendataverylong";
     let url = `${vurl}/${carnum}/${eventid}/${tokendata}`
     //window.open('http://localhost:4200/videoplaymanager/わ2-674/eventid123/tokendata');
-    window.open(url);
+    window.open(url, 'myTab');
   }
 }
