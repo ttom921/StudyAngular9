@@ -17,7 +17,8 @@ export class CarVideoService {
     // } else {
     //   datas = this.TestFakeData();
     // }
-    datas = this.TestFakeData3();
+    //datas = this.TestFakeData3();
+    datas = this.TestFakeData4();
 
     return of(datas);
   }
@@ -80,6 +81,27 @@ export class CarVideoService {
       },
       {
         src: "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
+      },
+
+    ];
+    return data;
+  }
+  TestFakeData4() {
+    let data = [
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
       },
 
     ];

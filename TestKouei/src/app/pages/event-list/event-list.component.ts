@@ -36,7 +36,8 @@ export class EventListComponent implements OnInit {
   }
   View(row) {
     console.log(row);
-    let vurl = 'http://localhost:4200/videoplaymanager';
+    //let vurl = 'http://localhost:4200/videoplaymanager';
+    let vurl = 'http://172.18.2.33:4200/videoplaymanager';
     let carnum = row.carid;
     let eventid = row.eventid;
     let tokendata = "thisatokendataverylong";
