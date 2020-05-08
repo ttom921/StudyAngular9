@@ -7,10 +7,11 @@ import { SharedAngularMaterialModule } from 'src/app/share/shared-angular-materi
 import { MatVideoModule } from 'src/app/_common/video/video.module';
 import { SyncMgrComponent } from './sync-mgr/sync-mgr.component';
 import { MatPlayButtonComponent } from './sync-mgr/ui/mat-play-button/mat-play-button.component';
+import { MatFrameByFrameControlComponent } from './sync-mgr/ui/mat-frame-by-frame-control/mat-frame-by-frame-control.component';
 
 
 @NgModule({
-  declarations: [VideoPlayManagerComponent, SyncMgrComponent, MatPlayButtonComponent],
+  declarations: [VideoPlayManagerComponent, SyncMgrComponent, MatPlayButtonComponent, MatFrameByFrameControlComponent],
   imports: [
     CommonModule,
     SharedAngularMaterialModule,

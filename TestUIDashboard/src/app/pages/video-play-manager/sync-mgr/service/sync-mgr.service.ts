@@ -129,7 +129,7 @@ export class SyncMgrService {
     });
     this.playstate$.next(true);
   }
-  private pause() {
+  pause() {
     //console.log(`SyncMgrService->pause()`);
     this.syncvideolst.forEach(element => {
       element.getVideoTag().pause();
@@ -163,6 +163,15 @@ export class SyncMgrService {
       //console.log(`setCurrentTime be current=${element.time} ${setcurtime}`);
       element.time = setcurtime;
       //console.log(`setCurrentTime af current=${element.time}`);
+    });
+  }
+  //控制張數
+  setFrames(nbFrames: number, fps: number) {
+    this.syncvideolst.forEach(element => {
+      const currentFrames = element.getVideoTag().currentTime * fps;
+      const newPos = (currentFrames + nbFrames) / fps + 0.00001;
+      //console.log(`setFrames newPos=${newPos}`);
+      element.getVideoTag().currentTime = newPos;
     });
   }
 }
