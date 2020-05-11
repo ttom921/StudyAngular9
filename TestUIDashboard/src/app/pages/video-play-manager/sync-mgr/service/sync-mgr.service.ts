@@ -123,46 +123,34 @@ export class SyncMgrService {
     this.playAction ? this.play() : this.pause();
   }
   private play() {
-    //console.log(`SyncMgrService->play()`);
+    console.log(`SyncMgrService->play()`);
     this.syncvideolst.forEach(element => {
       element.getVideoTag().play();
     });
     this.playstate$.next(true);
   }
   pause() {
-    //console.log(`SyncMgrService->pause()`);
+    console.log(`SyncMgrService->pause()`);
     this.syncvideolst.forEach(element => {
       element.getVideoTag().pause();
     });
     this.playstate$.next(false);
   }
-  // play() {
-  //   //console.log(`SyncMgrService->play()`);
-  //   this.syncvideolst.forEach(element => {
-  //     element.getVideoTag().play();
-  //   });
-  //   //this.mainvideo.getVideoTag().play();
-  //   //this.playstate$.next(true);
-  // }
-  // pause() {
-  //   //console.log(`SyncMgrService->pause()`);
-  //   this.syncvideolst.forEach(element => {
-  //     element.getVideoTag().pause();
-  //   });
-  //   //this.mainvideo.getVideoTag().pause();
-  //   //this.playstate$.next(false);
-  // }
-
-
   //#endregion 播放控制相關
-
-
-
+  //設定播放時間
   setCurrentTime(setcurtime: number) {
     this.syncvideolst.forEach(element => {
       //console.log(`setCurrentTime be current=${element.time} ${setcurtime}`);
       element.time = setcurtime;
       //console.log(`setCurrentTime af current=${element.time}`);
+    });
+  }
+  //設定移動n秒
+  setJumpTime(jumptime: number) {
+    this.syncvideolst.forEach(element => {
+      //console.log(`setJumpTime be current=${element.time} ${setcurtime}`);
+      element.time += jumptime;
+      //console.log(`setJumpTime af current=${element.time}`);
     });
   }
   //控制張數

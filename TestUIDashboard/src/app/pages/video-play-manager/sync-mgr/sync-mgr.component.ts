@@ -16,6 +16,7 @@ export class SyncMgrComponent implements OnInit, AfterViewInit {
   @Input() fps = 29.97;
   @Input() showFrameByFrame = false;
   @Input() oneFrame = 2; // 30/15
+  @Input() jumpTime = 10;
 
   canactioned = false;
   playBtnIsClick = false;
@@ -35,7 +36,7 @@ export class SyncMgrComponent implements OnInit, AfterViewInit {
     this.syncMgrService.canPlay$.pipe(delay(10000)).subscribe(data => {
       //console.log(`SVC=>canPlay$=${data}`);
       if (this.playBtnIsClick == true) {
-        //console.log(`SVC=>play data=${data}`);
+        console.log(`SVC=>play data=${data}`);
         //this.matplaybutton.setVideoPlayback(true);
         if (data == true) {
           this.matplaybutton.setVideoPlayback(true);
@@ -46,7 +47,7 @@ export class SyncMgrComponent implements OnInit, AfterViewInit {
     });
     //是否在緩衝
     this.syncMgrService.waiting$.subscribe(data => {
-      //console.log(`SVC=>waiting$=${data}`);
+      console.log(`SVC=>waiting$=${data}`);
       //console.log(`SVC=>pause`);
       this.matplaybutton.setVideoPlayback(false);
       this.canactioned = false;
@@ -58,7 +59,7 @@ export class SyncMgrComponent implements OnInit, AfterViewInit {
     });
     //是否時間差
     this.syncMgrService.difftime$.subscribe(data => {
-      //console.log(`SVC=>difftime=${data}`);
+      console.log(`SVC=>difftime=${data}`);
       let mtime = this.mainvideo.time;
 
       //console.log(`SVC=>difftime mainvideo time=${mtime}`);
