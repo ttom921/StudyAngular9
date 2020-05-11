@@ -10,7 +10,7 @@ import { MatVideoComponent } from 'src/app/_common/video/video.component';
 export class MatFrameByFrameControlComponent implements OnInit {
   @Input() video: MatVideoComponent;
   @Input() fps = 29.97;
-  @Input() oneFrame = 1;// 30/30 30/15
+  @Input() oneFrame = 1;// 30/30
   //指定跳轉時間
   @Input() jumpTime = 5;
   constructor(

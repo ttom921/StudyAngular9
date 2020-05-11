@@ -21,6 +21,9 @@ export class SyncMgrComponent implements OnInit, AfterViewInit {
   canactioned = false;
   playBtnIsClick = false;
   @Input() mainvideo: MatVideoComponent;
+  //是否顯示全營幕icon
+  @Input() fullscreen = false;
+
   constructor(
     private syncMgrService: SyncMgrService
   ) { }
@@ -28,7 +31,7 @@ export class SyncMgrComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     //console.log(`SyncMgrComponent->ngOnInit`);
-
+    //console.log(`SyncMgrComponent->ngOnInit->mainvideo=${this.mainvideo}`);
   }
   ngAfterViewInit(): void {
     //console.log(`SyncMgrComponent->ngAfterViewInit`);

@@ -20,7 +20,6 @@ export class VideoPlayManagerComponent implements OnInit, AfterViewInit {
   @ViewChild('mainvideoid', { static: true }) matMainVideo: MatVideoComponent;
   @ViewChildren(MatVideoComponent) matVideos: QueryList<MatVideoComponent>;
   @ViewChild('syncmgr', { static: true }) syncmgr: SyncMgrComponent;
-  //elmainvideo: HTMLVideoElement;
   mainvideo = {
     src: ""
   };
@@ -55,6 +54,7 @@ export class VideoPlayManagerComponent implements OnInit, AfterViewInit {
   }
   ngAfterViewInit(): void {
     //console.log(`VideoPlayManagerComponent->ngAfterViewInit`);
+
     this.matVideos.forEach((matvideo, idx, array) => {
       //console.log(`idx=${idx},matvideo=${matvideo}`);
       // if (idx == 1) {

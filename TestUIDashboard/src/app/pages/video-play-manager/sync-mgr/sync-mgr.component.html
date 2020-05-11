@@ -10,7 +10,7 @@
         <mat-frame-by-frame-control *ngIf="showFrameByFrame" [fps]="fps" [oneFrame]="oneFrame" [jumpTime]="jumpTime" [video]="mainvideo"></mat-frame-by-frame-control>
       </div>
       <div class="right">
-
+        <mat-fullscreen-button *ngIf="fullscreen" [mainvideo]="mainvideo"></mat-fullscreen-button>
       </div>
     </div>
 
