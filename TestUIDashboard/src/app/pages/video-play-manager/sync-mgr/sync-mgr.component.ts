@@ -36,13 +36,13 @@ export class SyncMgrComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     //console.log(`SyncMgrComponent->ngAfterViewInit`);
     //是否可播放
-    this.syncMgrService.canPlay$.pipe(delay(10000)).subscribe(data => {
+    this.syncMgrService.canPlay$.pipe(delay(300)).subscribe(data => {
       //console.log(`SVC=>canPlay$=${data}`);
       if (this.playBtnIsClick == true) {
         console.log(`SVC=>play data=${data}`);
         //this.matplaybutton.setVideoPlayback(true);
         if (data == true) {
-          this.matplaybutton.setVideoPlayback(true);
+          this.matplaybutton.setVideoPlayback(false);
         }
 
       }
@@ -52,8 +52,11 @@ export class SyncMgrComponent implements OnInit, AfterViewInit {
     this.syncMgrService.waiting$.subscribe(data => {
       console.log(`SVC=>waiting$=${data}`);
       //console.log(`SVC=>pause`);
-      this.matplaybutton.setVideoPlayback(false);
-      this.canactioned = false;
+      if (data == true) {
+        this.matplaybutton.setVideoPlayback(false);
+      }
+      this.canactioned = data;
+
     });
     //是否載入完成
     this.syncMgrService.videoLoaded$.subscribe(data => {
