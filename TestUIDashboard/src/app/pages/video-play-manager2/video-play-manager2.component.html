@@ -1,0 +1,56 @@
+<div fxLayout="column" fxLayoutAlign="stretch" style="height:100%;">
+
+  <div fxFlex="80" fxLayout="row">
+    <div fxFill>
+      <mat-video #video1 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+      </mat-video>
+    </div>
+    <div>
+      <mat-video #video2 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+      </mat-video>
+    </div>
+    <div>
+      <mat-video #video3 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+      </mat-video>
+    </div>
+    <div>
+      <mat-video #video4 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+      </mat-video>
+    </div>
+    <!--<div fxFlex="100" class="color5">
+      v5
+    </div>
+    <div fxFlex="100" class="color6">
+      v6
+    </div>
+    <div fxFlex="100" class="color7">
+      v7
+    </div>
+    <div fxFlex="100" class="color8">
+      v8
+    </div> -->
+  </div>
+
+  <div fxFlex="20">
+    <div fxFill class="color2">
+      控制相關
+      <button mat-icon-button>
+        <mat-icon>filter_1</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>filter_4</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>filter_8</mat-icon>
+      </button>
+
+      <button mat-icon-button (click)="ChangeMain(-1)">
+        <mat-icon>skip_previous</mat-icon>
+      </button>
+      <button mat-icon-button (click)="ChangeMain(1)">
+        <mat-icon>skip_next</mat-icon>
+      </button>
+
+    </div>
+  </div>
+</div>

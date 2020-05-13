@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'videoplaymanager/:carid/:eventid/:token',
     loadChildren: () => import('./pages/video-play-manager/video-play-manager.module').then(m => m.VideoPlayManagerModule)
   },
+  {
+    path: 'videoplaymanager2/:carid/:eventid/:token',
+    loadChildren: () => import('./pages/video-play-manager2/video-play-manager2.module').then(m => m.VideoPlayManager2Module)
+  },
 ];
 
 @NgModule({
