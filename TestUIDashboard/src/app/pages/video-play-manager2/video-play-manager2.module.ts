@@ -11,7 +11,10 @@ import { MatVideoModule } from 'src/app/_common/video/video.module';
 
 
 @NgModule({
-  declarations: [VideoPlayManager2Component, LayoutType1Component, LayoutType2Component, LayoutType3Component],
+  declarations: [VideoPlayManager2Component,
+    LayoutType1Component,
+    LayoutType2Component,
+    LayoutType3Component],
   imports: [
     CommonModule,
     SharedAngularMaterialModule,

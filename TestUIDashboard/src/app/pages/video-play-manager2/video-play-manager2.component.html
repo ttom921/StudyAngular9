@@ -5,15 +5,15 @@
       <mat-video #video1 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
       </mat-video>
     </div>
-    <div>
+    <div [ngClass]="{'LayoutType1': videoLayoutType==VideoLayoutType.Type1}">
       <mat-video #video2 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
       </mat-video>
     </div>
-    <div>
+    <div [ngClass]="{'LayoutType1': videoLayoutType==VideoLayoutType.Type1}">
       <mat-video #video3 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
       </mat-video>
     </div>
-    <div>
+    <div [ngClass]="{'LayoutType1': videoLayoutType==VideoLayoutType.Type1}">
       <mat-video #video4 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
       </mat-video>
     </div>
@@ -44,10 +44,10 @@
         <mat-icon>filter_8</mat-icon>
       </button>
 
-      <button mat-icon-button (click)="ChangeMain(-1)">
+      <button mat-icon-button (click)="ChangePage(VideoPageDirect.Left)">
         <mat-icon>skip_previous</mat-icon>
       </button>
-      <button mat-icon-button (click)="ChangeMain(1)">
+      <button mat-icon-button (click)="ChangePage(VideoPageDirect.Right)">
         <mat-icon>skip_next</mat-icon>
       </button>
 
