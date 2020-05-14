@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LayoutType2Component } from './layout-type2.component';
+import { LayoutType4Component } from './layout-type4.component';
 
-describe('LayoutType2Component', () => {
-  let component: LayoutType2Component;
-  let fixture: ComponentFixture<LayoutType2Component>;
+describe('LayoutType4Component', () => {
+  let component: LayoutType4Component;
+  let fixture: ComponentFixture<LayoutType4Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LayoutType2Component ]
+      declarations: [ LayoutType4Component ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LayoutType2Component);
+    fixture = TestBed.createComponent(LayoutType4Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

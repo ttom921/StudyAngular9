@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LayoutType3Component } from './layout-type3.component';
+import { LayoutType8Component } from './layout-type8.component';
 
-describe('LayoutType3Component', () => {
-  let component: LayoutType3Component;
-  let fixture: ComponentFixture<LayoutType3Component>;
+describe('LayoutType8Component', () => {
+  let component: LayoutType8Component;
+  let fixture: ComponentFixture<LayoutType8Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LayoutType3Component ]
+      declarations: [ LayoutType8Component ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LayoutType3Component);
+    fixture = TestBed.createComponent(LayoutType8Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
