@@ -15,6 +15,10 @@ export class LayoutType1Component implements OnInit, OnDestroy {
   @ViewChild('video2', { static: true }) video2: MatVideoComponent;
   @ViewChild('video3', { static: true }) video3: MatVideoComponent;
   @ViewChild('video4', { static: true }) video4: MatVideoComponent;
+  @ViewChild('video5', { static: true }) video5: MatVideoComponent;
+  @ViewChild('video6', { static: true }) video6: MatVideoComponent;
+  @ViewChild('video7', { static: true }) video7: MatVideoComponent;
+  @ViewChild('video8', { static: true }) video8: MatVideoComponent;
   videolist = [];
   mailindex = 0;
   sub = new Subscription();

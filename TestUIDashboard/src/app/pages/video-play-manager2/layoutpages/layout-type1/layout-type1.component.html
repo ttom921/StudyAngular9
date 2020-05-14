@@ -15,16 +15,21 @@
     <mat-video #video4 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
     </mat-video>
   </div>
-  <!-- <div fxFlex="100" class="color5 LayoutType1">
-    v5
+  <div fxFlex="100" [ngClass]="(mailindex===4) ?'show-layout': 'hide-layout'">
+    <mat-video #video5 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+    </mat-video>
   </div>
-  <div fxFlex="100" class="color6 LayoutType1">
-    v6
+  <div fxFlex="100" [ngClass]="(mailindex===5) ?'show-layout': 'hide-layout'">
+    <mat-video #video6 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+    </mat-video>
   </div>
-  <div fxFlex="100" class="color7 LayoutType1">
-    v7
+  <div fxFlex="100" [ngClass]="(mailindex===6) ?'show-layout': 'hide-layout'">
+    <mat-video #video7 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+    </mat-video>
   </div>
-  <div fxFlex="100" class="color8 LayoutType1">
-    v8
-  </div> -->
+  <div fxFlex="100" [ngClass]="(mailindex===7) ?'show-layout': 'hide-layout'">
+    <mat-video #video8 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+    </mat-video>
+  </div>
+
 </div>

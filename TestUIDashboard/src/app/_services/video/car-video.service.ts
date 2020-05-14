@@ -121,6 +121,12 @@ export class CarVideoService {
       {
         src: "http://172.18.2.33:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
       },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
+      },
     ];
     return data;
   }
