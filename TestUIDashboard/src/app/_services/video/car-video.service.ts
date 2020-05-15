@@ -17,8 +17,11 @@ export class CarVideoService {
     // } else {
     //   datas = this.TestFakeData();
     // }
+
+    //datas = this.TestFakeData1();
     //datas = this.TestFakeData3();
-    datas = this.TestFakeData1();
+    datas = this.TestFakeData5();
+    //datas = this.TestFakeData8();
 
     return of(datas);
   }
@@ -138,6 +141,35 @@ export class CarVideoService {
       },
       {
         src: "http://172.18.2.33:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
+      },
+    ];
+    return data;
+  }
+  TestFakeData8() {
+    let data = [
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH01.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH02.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH03.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH04.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH05.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH07.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH08.mp4"
       },
     ];
     return data;
