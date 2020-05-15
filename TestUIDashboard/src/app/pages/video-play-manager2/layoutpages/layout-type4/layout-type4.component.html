@@ -1,25 +1,41 @@
 <div class="color9" fxLayout="row" fxLayoutAlign="stretch" style="height:100%;width:100vw;">
-  <!--左部-->
+  <!--Page0-->
   <div fxLayout="column" [fxFlex]="(mailindex===0) ? flexChangePageSize: '0'" [fxShow]="(mailindex===0) ?true: false">
-    <div [fxFlex]="100">
-      <div class="color1" [fxFlex]="100">1</div>
-      <div class="color2" [fxFlex]="100">2</div>
+    <div [fxFlex]="page0UhalfFlex" [fxShow]="page0UhalfShow">
+      <div class="color1" [fxFlex]="page0LUFlex" [fxShow]="page0LUShow" (dblclick)="Dbclick('video1',video1)">
+        <mat-video #video1 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" title="ch1" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+        </mat-video>
+      </div>
+      <div class="color2" [fxFlex]="page0RUFlex" [fxShow]="page0RUShow" (dblclick)="Dbclick('video2',video2)">
+        <mat-video #video2 [fxHide]="(video2.src==null) ? true:false" [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" title="ch2" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+        </mat-video>
+        <div class="novideo" [fxShow]="(video2.src==null) ? true:false">
+          <mat-icon class="novideoicon">videocam_off</mat-icon>
+        </div>
+
+      </div>
     </div>
-    <div [fxFlex]="100">
-      <div class="color3" [fxFlex]="100">3</div>
-      <div class="color4" [fxFlex]="100">4</div>
+    <div [fxFlex]="page0DhalfFlex" [fxShow]="page0DhalfShow">
+      <div class="color3" [fxFlex]="page0LDFlex" [fxShow]="page0LDShow" (dblclick)="Dbclick('video3',video3)">
+        <mat-video #video3 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" title="ch3" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+        </mat-video>
+      </div>
+      <div class="color4" [fxFlex]="page0RDFlex" [fxShow]="page0RDShow" (dblclick)="Dbclick('video4',video4)">
+        <mat-video #video4 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" title="ch4" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+        </mat-video>
+      </div>
     </div>
   </div>
 
-  <!--右部-->
+  <!--Page1-->
   <div fxLayout="column" [fxFlex]="(mailindex===1) ? flexChangePageSize: '0'" [fxShow]="(mailindex===1) ?true: false">
-    <div [fxFlex]="100" class="hide-layout">
-      <div class="color5 " [fxFlex]="100">5</div>
-      <div class="color6 " [fxFlex]="100">6</div>
+    <div [fxFlex]="50">
+      <div class="color5 " [fxFlex]="50">5</div>
+      <div class="color6 " [fxFlex]="50">6</div>
     </div>
-    <div [fxFlex]="100">
-      <div class="color7 " [fxFlex]="100">7</div>
-      <div class="color8 " [fxFlex]="100">8</div>
+    <div [fxFlex]="50">
+      <div class="color7 " [fxFlex]="50">7</div>
+      <div class="color8 " [fxFlex]="50">8</div>
     </div>
   </div>
 
