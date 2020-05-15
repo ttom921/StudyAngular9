@@ -15,7 +15,7 @@ export class SyncMgrComponent implements OnInit, AfterViewInit {
   @Input() color: ThemePalette = "primary";
   @Input() fps = 29.97;
   @Input() showFrameByFrame = false;
-  @Input() oneFrame = 2; // 30/15
+  @Input() oneFrame = 1; // 30/15
   @Input() jumpTime = 10;
 
   canactioned = false;

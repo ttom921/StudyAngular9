@@ -18,7 +18,7 @@ export class CarVideoService {
     //   datas = this.TestFakeData();
     // }
     //datas = this.TestFakeData3();
-    datas = this.TestFakeData5();
+    datas = this.TestFakeData1();
 
     return of(datas);
   }
@@ -39,6 +39,18 @@ export class CarVideoService {
       },
       {
         src: "http://localhost:4200/assets/[DATE(2016-08-14)TIME(13-00-00)]CH05.mp4"
+      },
+
+    ];
+    return data;
+  }
+  TestFakeData1() {
+    let data = [
+      {
+        //src: "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+        //30fps
+        src: "http://localhost:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH02.mp4"
+
       },
 
     ];

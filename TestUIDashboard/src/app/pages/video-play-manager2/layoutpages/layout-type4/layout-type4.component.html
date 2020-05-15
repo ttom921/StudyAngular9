@@ -1,2 +1,26 @@
-<div class="color8" fxLayout="row" fxLayoutAlign="none stretch" style="height:100%;width: 100vw;">
+<div class="color9" fxLayout="row" fxLayoutAlign="stretch" style="height:100%;width:100vw;">
+  <!--左部-->
+  <div fxLayout="column" [fxFlex]="(mailindex===0) ? flexChangePageSize: '0'" [fxShow]="(mailindex===0) ?true: false">
+    <div [fxFlex]="100">
+      <div class="color1" [fxFlex]="100">1</div>
+      <div class="color2" [fxFlex]="100">2</div>
+    </div>
+    <div [fxFlex]="100">
+      <div class="color3" [fxFlex]="100">3</div>
+      <div class="color4" [fxFlex]="100">4</div>
+    </div>
+  </div>
+
+  <!--右部-->
+  <div fxLayout="column" [fxFlex]="(mailindex===1) ? flexChangePageSize: '0'" [fxShow]="(mailindex===1) ?true: false">
+    <div [fxFlex]="100" class="hide-layout">
+      <div class="color5 " [fxFlex]="100">5</div>
+      <div class="color6 " [fxFlex]="100">6</div>
+    </div>
+    <div [fxFlex]="100">
+      <div class="color7 " [fxFlex]="100">7</div>
+      <div class="color8 " [fxFlex]="100">8</div>
+    </div>
+  </div>
+
 </div>
