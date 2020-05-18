@@ -1,0 +1,12 @@
+<p>test-app-barcode works!</p>
+<div class="vid">
+  <zxing-scanner [formats]="formatsEnabled" (scanSuccess)="onCodeResult($event)"></zxing-scanner>
+</div>
+
+<section class="results" *ngIf="qrResultString">
+  <div>
+    <small>Result</small>
+    <strong>{{ qrResultString }}</strong>
+  </div>
+  <button mat-icon-button (click)="clearResult()">&times;</button>
+</section>
