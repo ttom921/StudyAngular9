@@ -34,21 +34,25 @@ export class LayoutType4Component implements OnInit, OnDestroy {
   page0RDFlex = 50;//page0的右下
   page0RDShow = true;//page0的右下
   //page1
+  page1UhalfFlex = 50;  //pag0的上半部
+  page1UhalfShow = true;//pag0的上半部
+
+  page1LUFlex = 50;//page0的左上
+  page1LUShow = true;//page0的左上
+
+  page1RUFlex = 50;//page0的右上
+  page1RUShow = true;//page0的右上
+
+  page1DhalfFlex = 50;  //page0的下半部
+  page1DhalfShow = true;//page0的下半部
+
+  page1LDFlex = 50;//page0的左下
+  page1LDShow = true;//page0的左下
+
+  page1RDFlex = 50;//page0的右下
+  page1RDShow = true;//page0的右下
 
 
-  divlushow = true;//左上
-  divlufxFlex = 50;
-  div1show = true;
-  div1fxFlex = 50;
-  div2show = true;
-  div2fxFlex = 50;
-  //
-  divldshow = true;//左下
-  divldfxFlex = 50;
-  div3show = true;
-  div3fxFlex = 50;
-  div4show = true;
-  div4fxFlex = 50;
   constructor(
     private communicationService: CommunicationService
   ) { }
@@ -79,6 +83,11 @@ export class LayoutType4Component implements OnInit, OnDestroy {
         break;
     }
     console.log(`this.mailindex=${this.mailindex}`);
+    if (this.mailindex == 0) {
+      this.showPage0();
+    } else {
+      this.showPage1();
+    }
   }
   Dbclick(whoclick: string, whovideo: any) {
     //console.dir(whoclick);
@@ -99,12 +108,27 @@ export class LayoutType4Component implements OnInit, OnDestroy {
       case "video4":
         this.selectvideo4();
         break;
+      //------------------
+      case "video5":
+        this.selectvideo5();
+        break;
+      case "video6":
+        this.selectvideo6();
+        break;
+      case "video7":
+        this.selectvideo7();
+        break;
+      case "video8":
+        this.selectvideo8();
+        break;
       default:
         break;
     }
   }
+  //#region page0相關
   //顯示page0
   private showPage0() {
+    this.bigScreen = false;
     this.page0UhalfFlex = 50;  //pag0的上半部
     this.page0UhalfShow = true;//pag0的上半部
     //
@@ -124,6 +148,7 @@ export class LayoutType4Component implements OnInit, OnDestroy {
     this.page0RDShow = true;//page0的右下
 
   }
+
   //只顯示page0的上半部
   private showPage0UpHalf() {
     this.page0UhalfFlex = 100;  //pag0的上半部
@@ -172,6 +197,81 @@ export class LayoutType4Component implements OnInit, OnDestroy {
     this.page0RDFlex = 100;//page0的右下
     this.page0RDShow = true;//page0的右下
   }
+  //#endregion page0相關
+
+  //#region page1相關
+  //顯示page1---------------------
+  private showPage1() {
+    this.bigScreen = false;
+    this.page1UhalfFlex = 50;  //pag1的上半部
+    this.page1UhalfShow = true;//pag1的上半部
+    //
+    this.page1DhalfFlex = 50;  //page1的下半部
+    this.page1DhalfShow = true;//page1的下半部
+    //
+    this.page1LUFlex = 50;//page1的左上
+    this.page1LUShow = true;//page1的左上
+
+    this.page1RUFlex = 50;//page1的右上
+    this.page1RUShow = true;//page1的右上
+
+    this.page1LDFlex = 50;//page1的左下
+    this.page1LDShow = true;//page1的左下
+
+    this.page1RDFlex = 50;//page1的右下
+    this.page1RDShow = true;//page1的右下
+  }
+  //只顯示page1的上半部
+  private showPage1UpHalf() {
+    this.page1UhalfFlex = 100;  //pag1的上半部
+    this.page1UhalfShow = true;//pag1的上半部
+    //
+    this.page1DhalfFlex = 0;  //page1的下半部
+    this.page1DhalfShow = false;//page1的下半部
+  }
+  //只顯示page1的下半部
+  private showPage1DownHalf() {
+    this.page1UhalfFlex = 0;  //pag1的上半部
+    this.page1UhalfShow = false;//pag1的上半部
+    //
+    this.page1DhalfFlex = 100;  //page1的下半部
+    this.page1DhalfShow = true;//page1的下半部
+  }
+  //只顯示page1的左上
+  private showPage1LeftUp() {
+    this.page1LUFlex = 100;//page1的左上
+    this.page1LUShow = true;//page1的左上
+
+    this.page1RUFlex = 50;//page1的右上
+    this.page1RUShow = false;//page1的右上
+  }
+  //只顯示page1的右上
+  private showPage1RightUp() {
+    this.page1LUFlex = 50;//page1的左上
+    this.page1LUShow = false;//page1的左上
+
+    this.page1RUFlex = 100;//page1的右上
+    this.page1RUShow = true;//page1的右上
+  }
+  //只顯示page1的左下
+  private showPage1LeftDown() {
+    this.page1LDFlex = 100;//page1的左下
+    this.page1LDShow = true;//page1的左下
+
+    this.page1RDFlex = 50;//page1的右下
+    this.page1RDShow = false;//page1的右下
+  }
+  //只顯示page0的右下
+  private showPage1RightDown() {
+    this.page1LDFlex = 50;//page1的左下
+    this.page1LDShow = false;//page1的左下
+
+    this.page1RDFlex = 100;//page1的右下
+    this.page1RDShow = true;//page1的右下
+  }
+  //#endregion page1相關
+
+  //
   private selectvideo1() {
     if (this.bigScreen) {
       //只顯示page0的上半部
@@ -214,6 +314,51 @@ export class LayoutType4Component implements OnInit, OnDestroy {
     } else {
       //顯示page0
       this.showPage0();
+    }
+  }
+  //
+  private selectvideo5() {
+    if (this.bigScreen) {
+      //只顯示page1的上半部
+      this.showPage1UpHalf();
+      //只顯示page1的左上
+      this.showPage1LeftUp();
+    } else {
+      //顯示page1
+      this.showPage1();
+    }
+  }
+  private selectvideo6() {
+    if (this.bigScreen) {
+      //只顯示page1的上半部
+      this.showPage1UpHalf();
+      //只顯示page1的右上
+      this.showPage1RightUp();
+    } else {
+      //顯示page1
+      this.showPage1();
+    }
+  }
+  private selectvideo7() {
+    if (this.bigScreen) {
+      //只顯示page1的下半部
+      this.showPage1DownHalf();
+      //只顯示page1的左下
+      this.showPage1LeftDown();
+    } else {
+      //顯示page1
+      this.showPage1();
+    }
+  }
+  private selectvideo8() {
+    if (this.bigScreen) {
+      //只顯示page1的下半部
+      this.showPage1DownHalf();
+      //只顯示page1的右下
+      this.showPage1RightDown();
+    } else {
+      //顯示page1
+      this.showPage1();
     }
   }
 

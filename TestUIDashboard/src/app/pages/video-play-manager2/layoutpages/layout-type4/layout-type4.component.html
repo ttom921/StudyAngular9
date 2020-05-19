@@ -29,13 +29,25 @@
 
   <!--Page1-->
   <div fxLayout="column" [fxFlex]="(mailindex===1) ? flexChangePageSize: '0'" [fxShow]="(mailindex===1) ?true: false">
-    <div [fxFlex]="50">
-      <div class="color5 " [fxFlex]="50">5</div>
-      <div class="color6 " [fxFlex]="50">6</div>
+    <div [fxFlex]="page1UhalfFlex" [fxShow]="page1UhalfShow">
+      <div class="color5 " [fxFlex]="page1LUFlex" [fxShow]="page1LUShow" (dblclick)="Dbclick('video5',video5)">
+        <mat-video #video5 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" title="ch5" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+        </mat-video>
+      </div>
+      <div class="color6 " [fxFlex]="page1RUFlex" [fxShow]="page1RUShow" (dblclick)="Dbclick('video6',video6)">
+        <mat-video #video6 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" title="ch6" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+        </mat-video>
+      </div>
     </div>
-    <div [fxFlex]="50">
-      <div class="color7 " [fxFlex]="50">7</div>
-      <div class="color8 " [fxFlex]="50">8</div>
+    <div [fxFlex]="page1DhalfFlex" [fxShow]="page1DhalfShow">
+      <div class="color7 " [fxFlex]="page1LDFlex" [fxShow]="page1LDShow" (dblclick)="Dbclick('video7',video7)">
+        <mat-video #video7 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" title="ch7" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+        </mat-video>
+      </div>
+      <div class="color8 " [fxFlex]="page1RDFlex" [fxShow]="page1RDShow" (dblclick)="Dbclick('video8',video8)">
+        <mat-video #video8 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" title="ch8" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+        </mat-video>
+      </div>
     </div>
   </div>
 
