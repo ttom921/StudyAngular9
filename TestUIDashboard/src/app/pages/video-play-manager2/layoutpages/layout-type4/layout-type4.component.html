@@ -2,11 +2,14 @@
   <!--Page0-->
   <div fxLayout="column" [fxFlex]="(mailindex===0) ? flexChangePageSize: '0'" [fxShow]="(mailindex===0) ?true: false">
     <div [fxFlex]="page0UhalfFlex" [fxShow]="page0UhalfShow">
-      <div class="color1" [fxFlex]="page0LUFlex" [fxShow]="page0LUShow" (dblclick)="Dbclick('video1',video1)">
-        <mat-video #video1 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" title="ch1" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+      <div [fxFlex]="page0LUFlex" [fxShow]="page0LUShow" (dblclick)="Dbclick('video1',video1)">
+        <mat-video #video1 [fxHide]="(video1.src==null) ? true:false" [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" title="ch1" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
         </mat-video>
+        <div class="novideo" [fxShow]="(video1.src==null) ? true:false">
+          <mat-icon class="novideoicon">videocam_off</mat-icon>
+        </div>
       </div>
-      <div class="color2" [fxFlex]="page0RUFlex" [fxShow]="page0RUShow" (dblclick)="Dbclick('video2',video2)">
+      <div [fxFlex]="page0RUFlex" [fxShow]="page0RUShow" (dblclick)="Dbclick('video2',video2)">
         <mat-video #video2 [fxHide]="(video2.src==null) ? true:false" [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" title="ch2" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
         </mat-video>
         <div class="novideo" [fxShow]="(video2.src==null) ? true:false">
@@ -16,13 +19,19 @@
       </div>
     </div>
     <div [fxFlex]="page0DhalfFlex" [fxShow]="page0DhalfShow">
-      <div class="color3" [fxFlex]="page0LDFlex" [fxShow]="page0LDShow" (dblclick)="Dbclick('video3',video3)">
-        <mat-video #video3 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" title="ch3" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+      <div [fxFlex]="page0LDFlex" [fxShow]="page0LDShow" (dblclick)="Dbclick('video3',video3)">
+        <mat-video #video3 [fxHide]="(video3.src==null) ? true:false" [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" title="ch3" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
         </mat-video>
+        <div class="novideo" [fxShow]="(video3.src==null) ? true:false">
+          <mat-icon class="novideoicon">videocam_off</mat-icon>
+        </div>
       </div>
-      <div class="color4" [fxFlex]="page0RDFlex" [fxShow]="page0RDShow" (dblclick)="Dbclick('video4',video4)">
-        <mat-video #video4 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" title="ch4" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+      <div [fxFlex]="page0RDFlex" [fxShow]="page0RDShow" (dblclick)="Dbclick('video4',video4)">
+        <mat-video #video4 [fxHide]="(video4.src==null) ? true:false" [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" title="ch4" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
         </mat-video>
+        <div class="novideo" [fxShow]="(video4.src==null) ? true:false">
+          <mat-icon class="novideoicon">videocam_off</mat-icon>
+        </div>
       </div>
     </div>
   </div>
@@ -30,23 +39,35 @@
   <!--Page1-->
   <div fxLayout="column" [fxFlex]="(mailindex===1) ? flexChangePageSize: '0'" [fxShow]="(mailindex===1) ?true: false">
     <div [fxFlex]="page1UhalfFlex" [fxShow]="page1UhalfShow">
-      <div class="color5 " [fxFlex]="page1LUFlex" [fxShow]="page1LUShow" (dblclick)="Dbclick('video5',video5)">
-        <mat-video #video5 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" title="ch5" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+      <div [fxFlex]="page1LUFlex" [fxShow]="page1LUShow" (dblclick)="Dbclick('video5',video5)">
+        <mat-video #video5 [fxHide]="(video5.src==null) ? true:false" [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" title="ch5" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
         </mat-video>
+        <div class="novideo" [fxShow]="(video5.src==null) ? true:false">
+          <mat-icon class="novideoicon">videocam_off</mat-icon>
+        </div>
       </div>
       <div class="color6 " [fxFlex]="page1RUFlex" [fxShow]="page1RUShow" (dblclick)="Dbclick('video6',video6)">
-        <mat-video #video6 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" title="ch6" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+        <mat-video #video6 [fxHide]="(video6.src==null) ? true:false" [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" title="ch6" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
         </mat-video>
+        <div class="novideo" [fxShow]="(video6.src==null) ? true:false">
+          <mat-icon class="novideoicon">videocam_off</mat-icon>
+        </div>
       </div>
     </div>
     <div [fxFlex]="page1DhalfFlex" [fxShow]="page1DhalfShow">
       <div class="color7 " [fxFlex]="page1LDFlex" [fxShow]="page1LDShow" (dblclick)="Dbclick('video7',video7)">
-        <mat-video #video7 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" title="ch7" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+        <mat-video #video7 [fxHide]="(video7.src==null) ? true:false" [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" title="ch7" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
         </mat-video>
+        <div class="novideo" [fxShow]="(video7.src==null) ? true:false">
+          <mat-icon class="novideoicon">videocam_off</mat-icon>
+        </div>
       </div>
       <div class="color8 " [fxFlex]="page1RDFlex" [fxShow]="page1RDShow" (dblclick)="Dbclick('video8',video8)">
-        <mat-video #video8 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" title="ch8" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+        <mat-video #video8 [fxHide]="(video8.src==null) ? true:false" [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" title="ch8" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
         </mat-video>
+        <div class="novideo" [fxShow]="(video8.src==null) ? true:false">
+          <mat-icon class="novideoicon">videocam_off</mat-icon>
+        </div>
       </div>
     </div>
   </div>

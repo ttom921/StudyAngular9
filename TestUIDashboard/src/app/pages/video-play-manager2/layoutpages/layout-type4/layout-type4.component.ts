@@ -82,7 +82,7 @@ export class LayoutType4Component implements OnInit, OnDestroy {
         //this.communicationService.videoSrcChange(this.video1, this.videolist[this.mailindex].src);
         break;
     }
-    console.log(`this.mailindex=${this.mailindex}`);
+    //console.log(`this.mailindex=${this.mailindex}`);
     if (this.mailindex == 0) {
       this.showPage0();
     } else {
