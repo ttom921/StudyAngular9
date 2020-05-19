@@ -1,7 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { VideoPageDirect } from '../../video-play-mgrs.enum';
 import { CommunicationService } from '../../services/communication.service';
 import { Subscription } from 'rxjs';
+import { MatVideoComponent } from 'src/app/_common/video/video.component';
 
 @Component({
   selector: 'app-layout-type4',
@@ -9,8 +10,17 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./layout-type4.component.scss']
 })
 export class LayoutType4Component implements OnInit, OnDestroy {
-  sub = new Subscription();
+  @ViewChild('video1', { static: true }) video1: MatVideoComponent;
+  @ViewChild('video2', { static: true }) video2: MatVideoComponent;
+  @ViewChild('video3', { static: true }) video3: MatVideoComponent;
+  @ViewChild('video4', { static: true }) video4: MatVideoComponent;
+  @ViewChild('video5', { static: true }) video5: MatVideoComponent;
+  @ViewChild('video6', { static: true }) video6: MatVideoComponent;
+  @ViewChild('video7', { static: true }) video7: MatVideoComponent;
+  @ViewChild('video8', { static: true }) video8: MatVideoComponent;
+  videolist = [];
   mailindex = 0;
+  sub = new Subscription();
   flexChangePageSize = 100;
   pages = 2;
   //放大縮小相關
@@ -67,6 +77,15 @@ export class LayoutType4Component implements OnInit, OnDestroy {
       this.changePage(data);
     });
     this.sub.add(obsSub);
+    const obssub1 = this.communicationService.videolist$.subscribe((data: any[]) => {
+      this.videolist = data;
+      for (let index = 0; index < this.videolist.length; index++) {
+        let elm = this.videolist[index];
+        this[`video${index + 1}`]['src'] = elm.src;
+        this[`video${index + 1}`]['title'] = `ch${index + 1}`;
+      }
+    });
+    this.sub.add(obssub1);
   }
   changePage(direct: VideoPageDirect) {
     //console.log(`LayoutType4Component=>${direct}`);

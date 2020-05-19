@@ -74,7 +74,8 @@ export class MatVideoComponent implements AfterViewInit, OnChanges, OnDestroy {
       }
     }
   }
-
+  //保持釀寬比例
+  @Input() AspectRatio = true;
   playing = false;
 
   isFullscreen = false;
