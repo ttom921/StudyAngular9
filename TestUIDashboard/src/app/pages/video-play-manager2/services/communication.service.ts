@@ -6,13 +6,13 @@ import { MatVideoComponent } from 'src/app/_common/video/video.component';
   providedIn: 'root'
 })
 export class CommunicationService {
-  //#region 切換頁面相關
-  private pagechangeSource = new Subject();
-  pagechange$ = this.pagechangeSource.asObservable();
-  nextPage(val: VideoPageDirect) {
-    this.pagechangeSource.next(val);
-  }
-  //#endregion
+  // //#region 切換頁面相關
+  // private pagechangeSource = new Subject();
+  // pagechange$ = this.pagechangeSource.asObservable();
+  // nextPage(val: VideoPageDirect) {
+  //   this.pagechangeSource.next(val);
+  // }
+  // //#endregion
   private vidoelistSource = new ReplaySubject();
   videolist$ = this.vidoelistSource.asObservable();
   nextVideolst(val: any[]) {

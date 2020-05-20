@@ -4,6 +4,7 @@ import { CommunicationService } from '../../services/communication.service';
 import { Subscription } from 'rxjs';
 import { MatVideoComponent } from 'src/app/_common/video/video.component';
 import { isNullOrUndefined } from 'util';
+import { SyncMgrService } from '../../sync-mgr/services/sync-mgr.service';
 
 @Component({
   selector: 'app-layout-type8',
@@ -27,7 +28,8 @@ export class LayoutType8Component implements OnInit, OnDestroy {
 
   sub = new Subscription();
   constructor(
-    private communicationService: CommunicationService
+    private communicationService: CommunicationService,
+    private syncMgrService: SyncMgrService,
   ) { }
   ngOnDestroy(): void {
     //console.log(`LayoutType8Component=>ngOnDestroy`);
@@ -35,7 +37,7 @@ export class LayoutType8Component implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    const obsSub = this.communicationService.pagechange$.subscribe(data => {
+    const obsSub = this.syncMgrService.pagechange$.subscribe(data => {
       //console.log(`LayoutType8Component=>${data}`);
     });
     this.sub.add(obsSub);
@@ -60,7 +62,7 @@ export class LayoutType8Component implements OnInit, OnDestroy {
     let elm = this.matvideolist[this.mainindex];
     this[`mainvideo`]['src'] = elm.src;
     this[`mainvideo`]['title'] = `ch${this.mainindex + 1}`;
-    console.log(`setmainvideo index=${this.mainindex}`);
+    //console.log(`setmainvideo index=${this.mainindex}`);
   }
   clickvideo(whoclick: string, whovideo: MatVideoComponent) {
     if (isNullOrUndefined(whovideo.src) == true) return;

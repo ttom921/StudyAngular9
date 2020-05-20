@@ -3,6 +3,7 @@ import { VideoPageDirect } from '../../video-play-mgrs.enum';
 import { CommunicationService } from '../../services/communication.service';
 import { Subscription } from 'rxjs';
 import { MatVideoComponent } from 'src/app/_common/video/video.component';
+import { SyncMgrService } from '../../sync-mgr/services/sync-mgr.service';
 
 @Component({
   selector: 'app-layout-type4',
@@ -64,7 +65,8 @@ export class LayoutType4Component implements OnInit, OnDestroy {
 
 
   constructor(
-    private communicationService: CommunicationService
+    private communicationService: CommunicationService,
+    private syncMgrService: SyncMgrService,
   ) { }
   ngOnDestroy(): void {
     //console.log(`LayoutType4Component=>ngOnDestroy`);
@@ -72,7 +74,7 @@ export class LayoutType4Component implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    const obsSub = this.communicationService.pagechange$.subscribe((data: VideoPageDirect) => {
+    const obsSub = this.syncMgrService.pagechange$.subscribe((data: VideoPageDirect) => {
       //console.log(`LayoutType4Component=>${data}`);
       this.changePage(data);
     });
@@ -110,10 +112,10 @@ export class LayoutType4Component implements OnInit, OnDestroy {
   }
   Dbclick(whoclick: string, whovideo: any) {
     //console.dir(whoclick);
-    console.log(`Dbclick ${whoclick}`);
+    //console.log(`Dbclick ${whoclick}`);
     //if (whovideo.src == null) return;
     this.bigScreen = !this.bigScreen;
-    console.log(`bigScreen ${this.bigScreen}`);
+    //console.log(`bigScreen ${this.bigScreen}`);
     switch (whoclick) {
       case "video1":
         this.selectvideo1();

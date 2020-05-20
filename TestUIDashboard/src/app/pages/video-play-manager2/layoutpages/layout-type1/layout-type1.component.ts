@@ -3,6 +3,7 @@ import { VideoPageDirect, VideoLayoutType } from '../../video-play-mgrs.enum';
 import { CommunicationService } from '../../services/communication.service';
 import { Subscription } from 'rxjs';
 import { MatVideoComponent } from 'src/app/_common/video/video.component';
+import { SyncMgrService } from '../../sync-mgr/services/sync-mgr.service';
 
 @Component({
   selector: 'app-layout-type1',
@@ -23,7 +24,8 @@ export class LayoutType1Component implements OnInit, OnDestroy {
   mailindex = 0;
   sub = new Subscription();
   constructor(
-    private communicationService: CommunicationService
+    private communicationService: CommunicationService,
+    private syncMgrService: SyncMgrService,
   ) {
 
   }
@@ -33,7 +35,7 @@ export class LayoutType1Component implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    const obsSub = this.communicationService.pagechange$.subscribe((data: VideoPageDirect) => {
+    const obsSub = this.syncMgrService.pagechange$.subscribe((data: VideoPageDirect) => {
       //console.log(`LayoutType1Component=>${data}`);
       this.changePage(data);
     });

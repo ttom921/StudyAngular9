@@ -2,11 +2,11 @@ import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/
 import { ActivatedRoute } from '@angular/router';
 import { LayoutType1Component } from './layoutpages/layout-type1/layout-type1.component';
 import { CarVideoService } from 'src/app/_services/video/car-video.service';
-import { MatVideoComponent } from 'src/app/_common/video/video.component';
 import { VideoPageDirect, VideoLayoutType } from './video-play-mgrs.enum';
 import { LayoutType4Component } from './layoutpages/layout-type4/layout-type4.component';
 import { LayoutType8Component } from './layoutpages/layout-type8/layout-type8.component';
 import { CommunicationService } from './services/communication.service';
+import { SyncMgrService } from './sync-mgr/services/sync-mgr.service';
 
 @Component({
   selector: 'app-video-play-manager2',
@@ -18,7 +18,7 @@ export class VideoPlayManager2Component implements OnInit {
   // @ViewChild('video2', { static: true }) video2: MatVideoComponent;
   // @ViewChild('video3', { static: true }) video3: MatVideoComponent;
   // @ViewChild('video4', { static: true }) video4: MatVideoComponent;
-  VideoPageDirect = VideoPageDirect;
+  //VideoPageDirect = VideoPageDirect;
   VideoLayoutType = VideoLayoutType;
   videoLayoutType: VideoLayoutType = VideoLayoutType.Type1;
   carid = "";
@@ -31,7 +31,8 @@ export class VideoPlayManager2Component implements OnInit {
   constructor(
     private activeRoute: ActivatedRoute,
     private carVideoService: CarVideoService,
-    private communicationService: CommunicationService
+    private communicationService: CommunicationService,
+    private syncMgrService: SyncMgrService
   ) {
     //取得車牌
     //this.activeRoute.params.subscribe(value => console.log(value));
@@ -49,6 +50,10 @@ export class VideoPlayManager2Component implements OnInit {
         this.communicationService.nextVideolst(this.videolist);
       }
     );
+    this.syncMgrService.layoutType$.subscribe(data => {
+      //console.log(data);
+      this.changeLayoutType(data);
+    });
   }
 
 
@@ -57,7 +62,7 @@ export class VideoPlayManager2Component implements OnInit {
     //this.DynComp = LayoutType1Component;
     //this.DynComp = LayoutType4Component;
     //this.DynComp = LayoutType8Component;
-    this.changeLayoutType(VideoLayoutType.Type8);
+    //this.changeLayoutType(VideoLayoutType.Type8);
     //console.log(this.videolist[0]);
     // for (let index = 0; index < this.videolist.length; index++) {
     //   let elm = this.videolist[index];
@@ -88,62 +93,7 @@ export class VideoPlayManager2Component implements OnInit {
     //console.log(`end videoLayoutType=${this.videoLayoutType}`);
     //console.log(`this.DynComp,${this.DynComp}`);
   }
-  //#region 切換上下頁
-  changePage(direct: VideoPageDirect) {
-    this.communicationService.nextPage(direct);
-    // console.log(`videoLayoutType=${this.videoLayoutType}`);
-    // switch (this.videoLayoutType) {
-    //   case VideoLayoutType.Type1:
 
-
-    //     //(this.DynComp as LayoutType1Component).changePage(direct);
-    //     //this.DynComp.changePage(direct);
-
-    //     //this.Type1ChangePage(direct);
-    //     break;
-    //   case VideoLayoutType.Type4:
-    //     //this.DynComp.changePage(direct);
-    //     //this.Type4ChangePage(direct)
-    //     break;
-    //   case VideoLayoutType.Type8:
-    //     break;
-    //   default:
-    //     break;
-    // }
-  }
-  // private Type4ChangePage(direct: VideoPageDirect) {
-
-  // }
-  // private Type1ChangePage(direct: VideoPageDirect) {
-  //   //console.log(this.videolist.length);
-  //   switch (direct) {
-  //     case VideoPageDirect.Left:
-  //       console.log("<<");
-  //       this.mailindex = (this.mailindex + this.videolist.length - 1) % this.videolist.length;
-  //       //this.video1.src = this.videolist[this.mailindex].src;
-  //       //this.videoSrcChange(this.video1, this.videolist[this.mailindex].src);
-  //       break;
-  //     case VideoPageDirect.Right:
-  //       console.log(">>");
-  //       this.mailindex = (this.mailindex + 1) % this.videolist.length;
-  //       //this.video1.src = this.videolist[this.mailindex].src;
-  //       //this.videoSrcChange(this.video1, this.videolist[this.mailindex].src);
-  //       break;
-  //   }
-  //   console.log(`this.mailindex=${this.mailindex}`);
-  // }
-  //#endregion 切換上下頁
-  //設定MatVideoComponent元件的影像來源
-  // videoSrcChange(matvideo: MatVideoComponent, src: string) {
-  //   //let orgtime = this.syncMgrService.mainvideo.time;
-  //   //console.log(`videoSrcChange time=${orgtime}`);
-  //   //this.syncMgrService.pause();
-  //   //this.matplaybutton.setVideoPlayback(false);
-  //   matvideo.src = src;
-  //   matvideo.getVideoTag().src = src;
-  //   //matvideo.time = orgtime;
-
-  // }
   //以下是測試程式
 
 }
