@@ -1,36 +1,51 @@
 <div class="color9" fxLayout="column" fxLayoutAlign="stretch" style="height:100%;width:100vw;">
-  <div class="color6" [fxFlex]="80">
-    <div class="color3" [fxFlex]="80">
-
+  <div [fxFlex]="80">
+    <div [fxFlex]="80">
+      <mat-video #mainvideo [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+      </mat-video>
     </div>
-    <div class="color4" [fxFlex]="20" fxLayout="column" fxLayoutAlign="stretch" style="height:100%;">
-      <div class="color1" [fxFlex]="25">
-
+    <div [fxFlex]="20" fxLayout="column" fxLayoutAlign="stretch" style="height:100%;">
+      <div [fxFlex]="25">
+        <mat-video #video8 [fxHide]="(video8.src==null) ? true:false" [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+        </mat-video>
+        <div class="novideo" [fxShow]="(video8.src==null) ? true:false">
+          <mat-icon class="novideoicon">videocam_off</mat-icon>
+        </div>
       </div>
-      <div class="color2" [fxFlex]="25">
-
+      <div [fxFlex]="25">
+        <mat-video #video7 [fxHide]="(video7.src==null) ? true:false" [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+        </mat-video>
+        <div class="novideo" [fxShow]="(video7.src==null) ? true:false">
+          <mat-icon class="novideoicon">videocam_off</mat-icon>
+        </div>
       </div>
-      <div class="color1" [fxFlex]="25">
-
+      <div [fxFlex]="25">
+        <mat-video #video6 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+        </mat-video>
       </div>
-      <div class="color2" [fxFlex]="25">
-
+      <div [fxFlex]="25">
+        <mat-video #video5 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+        </mat-video>
       </div>
     </div>
   </div>
 
   <div [fxFlex]="20">
-    <div class="color8" [fxFlex]="25">
-
+    <div [fxFlex]="25">
+      <mat-video #video1 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+      </mat-video>
     </div>
-    <div class="color7" [fxFlex]="25">
-
+    <div [fxFlex]="25">
+      <mat-video #video2 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+      </mat-video>
     </div>
-    <div class="color8" [fxFlex]="25">
-
+    <div [fxFlex]="25">
+      <mat-video #video3 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+      </mat-video>
     </div>
-    <div class="color7" [fxFlex]="25">
-
+    <div [fxFlex]="25">
+      <mat-video #video4 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+      </mat-video>
     </div>
   </div>
 </div>
