@@ -1,5 +1,5 @@
 <div fxLayout="column" fxLayoutAlign="stretch" style="height:100%;">
-  <div fxFlex="80" fxLayout="row">
+  <div fxFlex="90" fxLayout="row">
     <ng-container [ngComponentOutlet]="DynComp"></ng-container>
     <router-outlet></router-outlet>
   </div>
@@ -8,7 +8,7 @@
 
 
 
-  <div fxFlex="20">
+  <div fxFlex="10">
     <div fxFill class="color2">
       控制相關
       <button mat-icon-button (click)="changeLayoutType(VideoLayoutType.Type1)">
@@ -21,10 +21,10 @@
         <mat-icon>filter_8</mat-icon>
       </button>
 
-      <button mat-icon-button (click)="changePage(VideoPageDirect.Left)">
+      <button mat-icon-button *ngIf="videoLayoutType!=VideoLayoutType.Type8" (click)="changePage(VideoPageDirect.Left)">
         <mat-icon>skip_previous</mat-icon>
       </button>
-      <button mat-icon-button (click)="changePage(VideoPageDirect.Right)">
+      <button mat-icon-button *ngIf="videoLayoutType!=VideoLayoutType.Type8" (click)="changePage(VideoPageDirect.Right)">
         <mat-icon>skip_next</mat-icon>
       </button>
 

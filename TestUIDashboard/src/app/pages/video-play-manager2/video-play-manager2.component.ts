@@ -55,7 +55,9 @@ export class VideoPlayManager2Component implements OnInit {
   ngOnInit(): void {
 
     //this.DynComp = LayoutType1Component;
-    this.DynComp = LayoutType4Component;
+    //this.DynComp = LayoutType4Component;
+    //this.DynComp = LayoutType8Component;
+    this.changeLayoutType(VideoLayoutType.Type8);
     //console.log(this.videolist[0]);
     // for (let index = 0; index < this.videolist.length; index++) {
     //   let elm = this.videolist[index];
