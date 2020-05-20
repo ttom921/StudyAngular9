@@ -5,25 +5,25 @@
       </mat-video>
     </div>
     <div [fxFlex]="20" fxLayout="column" fxLayoutAlign="stretch" style="height:100%;">
-      <div [fxFlex]="25">
+      <div [fxFlex]="25" (click)="clickvideo('video8',video8)">
         <mat-video #video8 [fxHide]="(video8.src==null) ? true:false" [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
         </mat-video>
         <div class="novideo" [fxShow]="(video8.src==null) ? true:false">
           <mat-icon class="novideoicon">videocam_off</mat-icon>
         </div>
       </div>
-      <div [fxFlex]="25">
+      <div [fxFlex]="25" (click)="clickvideo('video7',video7)">
         <mat-video #video7 [fxHide]="(video7.src==null) ? true:false" [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
         </mat-video>
         <div class="novideo" [fxShow]="(video7.src==null) ? true:false">
           <mat-icon class="novideoicon">videocam_off</mat-icon>
         </div>
       </div>
-      <div [fxFlex]="25">
+      <div [fxFlex]="25" (click)="clickvideo('video6',video6)">
         <mat-video #video6 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
         </mat-video>
       </div>
-      <div [fxFlex]="25">
+      <div [fxFlex]="25" (click)="clickvideo('video5',video5)">
         <mat-video #video5 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
         </mat-video>
       </div>
@@ -31,19 +31,19 @@
   </div>
 
   <div [fxFlex]="20">
-    <div [fxFlex]="25">
+    <div [fxFlex]="25" (click)="clickvideo('video1',video1)">
       <mat-video #video1 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
       </mat-video>
     </div>
-    <div [fxFlex]="25">
+    <div [fxFlex]="25" (click)="clickvideo('video2',video2)">
       <mat-video #video2 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
       </mat-video>
     </div>
-    <div [fxFlex]="25">
+    <div [fxFlex]="25" (click)="clickvideo('video3',video3)">
       <mat-video #video3 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
       </mat-video>
     </div>
-    <div [fxFlex]="25">
+    <div [fxFlex]="25" (click)="clickvideo('video4',video4)">
       <mat-video #video4 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
       </mat-video>
     </div>

@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { VideoPageDirect } from '../../video-play-mgrs.enum';
 import { CommunicationService } from '../../services/communication.service';
 import { Subscription } from 'rxjs';
 import { MatVideoComponent } from 'src/app/_common/video/video.component';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-layout-type8',
@@ -19,9 +20,10 @@ export class LayoutType8Component implements OnInit, OnDestroy {
   @ViewChild('video7', { static: true }) video7: MatVideoComponent;
   @ViewChild('video8', { static: true }) video8: MatVideoComponent;
   @ViewChild('mainvideo', { static: true }) mainvideo: MatVideoComponent;
-
+  @ViewChildren(MatVideoComponent) matVideos: QueryList<MatVideoComponent>;
   videolist = [];
-  mainindex = 0;
+  matvideolist = [];
+  mainindex = -1;
 
   sub = new Subscription();
   constructor(
@@ -43,6 +45,7 @@ export class LayoutType8Component implements OnInit, OnDestroy {
         let elm = this.videolist[index];
         this[`video${index + 1}`]['src'] = elm.src;
         this[`video${index + 1}`]['title'] = `ch${index + 1}`;
+        this.matvideolist.push(this[`video${index + 1}`]);
       }
       this.setmainvideo();
     });
@@ -52,9 +55,27 @@ export class LayoutType8Component implements OnInit, OnDestroy {
     console.log(`LayoutType8Component=>${direct}`)
   }
   private setmainvideo(index = 0) {
+    if (this.mainindex == index) return;
     this.mainindex = index;
-    let elm = this.videolist[this.mainindex];
+    let elm = this.matvideolist[this.mainindex];
     this[`mainvideo`]['src'] = elm.src;
     this[`mainvideo`]['title'] = `ch${this.mainindex + 1}`;
+    console.log(`setmainvideo index=${this.mainindex}`);
+  }
+  clickvideo(whoclick: string, whovideo: MatVideoComponent) {
+    if (isNullOrUndefined(whovideo.src) == true) return;
+    //console.log(`clickvideo=${whoclick},whovide=${whovideo}`);
+    //console.dir(whovideo);
+    //console.dir(this.video1);
+    //console.log(whovideo.src);
+
+    let selectvideo = this.matVideos.find(item => item == whovideo);
+    //console.dir(selectvideo)
+
+    let index = this.matvideolist.findIndex((element) => {
+      return element == selectvideo;
+    });
+    //console.log(`click index=${index}`);
+    this.setmainvideo(index);
   }
 }
