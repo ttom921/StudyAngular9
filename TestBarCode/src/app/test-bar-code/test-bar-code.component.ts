@@ -19,7 +19,8 @@ export class TestBarCodeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.initqrcode();
+    this.initbarcode();
+    //this.initqrcode();
 
 
     //console.log(this.codeReader);
@@ -28,6 +29,7 @@ export class TestBarCodeComponent implements OnInit {
   initbarcode() {
     this.barcodeReader = new BrowserBarcodeReader();
     console.log(this.barcodeReader);
+    this.message = "init barcode";
   }
   initqrcode() {
     this.qrcodeReader = new BrowserQRCodeReader();
@@ -90,6 +92,7 @@ export class TestBarCodeComponent implements OnInit {
 
   }
   decodebarcodeclick() {
+    this.message = "click barcode";
     try {
       this.barcodeReader.decodeFromImageUrl(this.imgURL)
         .then(result => {
