@@ -1,5 +1,4 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { VideoLayoutType, VideoPageDirect } from '../video-play-mgrs.enum';
 import { SyncMgrService } from './services/sync-mgr.service';
 
 @Component({
@@ -9,8 +8,6 @@ import { SyncMgrService } from './services/sync-mgr.service';
 })
 export class SyncMgrComponent implements OnInit {
 
-  //@Output() changeLayoutType = new EventEmitter<VideoLayoutType>();
-  VideoPageDirect = VideoPageDirect;
   canactioned = false;
   constructor(
     private syncMgrService: SyncMgrService
@@ -18,8 +15,4 @@ export class SyncMgrComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  layoutChange(layouttype: VideoLayoutType) {
-    console.log(`SyncMgr=>layoutChange=${layouttype}`);
-  }
-
 }
