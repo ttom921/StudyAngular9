@@ -55,8 +55,10 @@ export class SyncMgrComponent implements OnInit, AfterViewInit {
     //是否時間差
     this.syncMgrService.difftime$.subscribe(data => {
       console.log(`SVC=>difftime=${data}`);
-      if (isNullOrUndefined(this.syncMgrService.mainvideo)) return;
-      let mtime = this.syncMgrService.mainvideo.time;
+      //if (isNullOrUndefined(this.syncMgrService.mainvideo)) return;
+      if (this.syncMgrService.isMainvideo()) return;
+      //let mtime = this.syncMgrService.mainvideo.time;
+      let mtime = this.syncMgrService.getMainTime();
 
       //console.log(`SVC=>difftime mainvideo time=${mtime}`);
       if (data == true) {

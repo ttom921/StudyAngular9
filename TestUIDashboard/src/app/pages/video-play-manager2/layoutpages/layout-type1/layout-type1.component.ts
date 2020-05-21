@@ -87,8 +87,9 @@ export class LayoutType1Component implements OnInit, AfterViewInit, OnDestroy {
         this.sub.add(obswaiting);
 
 
-        //設定主控
-        this.syncMgrService.mainvideo = this[`video${0 + 1}`];
+        //設定主控頻道
+        //this.syncMgrService.mainvideo = this[`video${0 + 1}`];
+        this.syncMgrService.setMainVideo(this[`video${0 + 1}`]);
       }
     }
     console.log(this.syncMgrService.syncvideolst);

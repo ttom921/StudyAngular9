@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject, fromEvent, combineLatest, Subscription, merge } from 'rxjs';
 import { VideoLayoutType, VideoPageDirect } from '../../video-play-mgrs.enum';
 import { MatVideoComponent } from 'src/app/_common/video/video.component';
+import { isNullOrUndefined } from 'util';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +32,8 @@ export class SyncMgrService {
   //時間差
   difftime$ = new BehaviorSubject(false);
   //主控頻道
-  mainvideo: MatVideoComponent;
+  private mainvideo: MatVideoComponent;
+
   //初始化rxjs的事件
   // initMatVideoRxJSevent() {
   //   this.init_loadedmetadata_combineLatest();
@@ -144,6 +147,23 @@ export class SyncMgrService {
     this.playstate$.next(false);
   }
   //#endregion 播放控制相關
+  //#region 主控頻道相關
+  //設定主控頻道
+  setMainVideo(mvideo: MatVideoComponent) {
+    this.mainvideo = mvideo;
+  }
+  //檢查是否有主頻道
+  isMainvideo() {
+    if (isNullOrUndefined(this.mainvideo))
+      return true;
+    else
+      return false;
+  }
+  getMainTime(): number {
+    return this.mainvideo.time;
+  }
+  //#endregion 主控頻道相關
+
   //設定播放時間
   setCurrentTime(setcurtime: number) {
     this.syncvideolst.forEach(element => {
