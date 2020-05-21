@@ -7,9 +7,9 @@
 <button mat-icon-button (click)="changeLayoutType(VideoLayoutType.Type8)">
   <mat-icon>filter_8</mat-icon>
 </button>
-<button mat-icon-button *ngIf="videoLayoutType!=VideoLayoutType.Type8" (click)="changePage(VideoPageDirect.Left)">
+<button mat-icon-button [disabled]="videoLayoutType==VideoLayoutType.Type8" (click)="changePage(VideoPageDirect.Left)">
   <mat-icon>skip_previous</mat-icon>
 </button>
-<button mat-icon-button *ngIf="videoLayoutType!=VideoLayoutType.Type8" (click)="changePage(VideoPageDirect.Right)">
+<button mat-icon-button [disabled]="videoLayoutType==VideoLayoutType.Type8" (click)="changePage(VideoPageDirect.Right)">
   <mat-icon>skip_next</mat-icon>
 </button>
