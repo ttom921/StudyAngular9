@@ -10,6 +10,7 @@ import { LayoutType4Component } from './layoutpages/layout-type4/layout-type4.co
 import { LayoutType8Component } from './layoutpages/layout-type8/layout-type8.component';
 import { SyncMgrComponent } from './sync-mgr/sync-mgr.component';
 import { MatLayoutButtonComponent } from './sync-mgr/ui/mat-layout-button/mat-layout-button.component';
+import { MatPlayButtonComponent } from './sync-mgr/ui/mat-play-button/mat-play-button.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { MatLayoutButtonComponent } from './sync-mgr/ui/mat-layout-button/mat-la
     LayoutType4Component,
     LayoutType8Component,
     SyncMgrComponent,
-    MatLayoutButtonComponent],
+    MatLayoutButtonComponent,
+    MatPlayButtonComponent],
   imports: [
     CommonModule,
     SharedAngularMaterialModule,

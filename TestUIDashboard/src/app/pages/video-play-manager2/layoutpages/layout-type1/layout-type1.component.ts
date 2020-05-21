@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
 import { VideoPageDirect, VideoLayoutType } from '../../video-play-mgrs.enum';
 import { CommunicationService } from '../../services/communication.service';
 import { Subscription } from 'rxjs';
@@ -11,7 +11,7 @@ import { SyncMgrService } from '../../sync-mgr/services/sync-mgr.service';
   styleUrls: ['./layout-type1.component.scss']
 })
 
-export class LayoutType1Component implements OnInit, OnDestroy {
+export class LayoutType1Component implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('video1', { static: true }) video1: MatVideoComponent;
   @ViewChild('video2', { static: true }) video2: MatVideoComponent;
   @ViewChild('video3', { static: true }) video3: MatVideoComponent;
@@ -29,8 +29,10 @@ export class LayoutType1Component implements OnInit, OnDestroy {
   ) {
 
   }
+
   ngOnDestroy(): void {
-    //console.log(`LayoutType1Component=>ngOnDestroy`);
+    console.log(`LayoutType1Component=>ngOnDestroy`);
+    this.syncMgrService.clearVideolist();
     this.sub.unsubscribe();
   }
 
@@ -59,6 +61,37 @@ export class LayoutType1Component implements OnInit, OnDestroy {
       //this[`video1`]['src'] = this.videolist[0].src;
     });
     this.sub.add(obssub1);
+  }
+  ngAfterViewInit(): void {
+    //console.log(`layout1 ngAfterViewInit->videolist=${this.videolist}`);
+    for (let index = 0; index < this.videolist.length; index++) {
+      // let elm = this.videolist[index];
+      // this[`video${index + 1}`]['src'] = elm.src;
+      // this[`video${index + 1}`]['title'] = `ch${index + 1}`;
+      this.syncMgrService.syncvideolst.push(this[`video${index + 1}`]);
+      if (index == this.videolist.length - 1) {
+        console.log("all done");
+        //this.syncMgrService.initMatVideoRxJSevent();
+
+        //是否可播放
+        const obscaplay = this.syncMgrService.init_canplay_combineLatest();
+        this.sub.add(obscaplay);
+        //讀取完成
+        const obsSub1 = this.syncMgrService.init_loadedmetadata_combineLatest();
+        const obsSub2 = this.syncMgrService.init_loadstart_combineLatest();
+        this.sub.add(obsSub1);
+        this.sub.add(obsSub2);
+        //是否在緩衝
+        const obswaiting = this.syncMgrService.init_waiting_merge();
+
+        this.sub.add(obswaiting);
+
+
+        //設定主控
+        this.syncMgrService.mainvideo = this[`video${0 + 1}`];
+      }
+    }
+    console.log(this.syncMgrService.syncvideolst);
   }
   changePage(direct: VideoPageDirect) {
     //console.log(`LayoutType1Component=>${direct}`);

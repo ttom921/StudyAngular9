@@ -1,0 +1,4 @@
+<button mat-icon-button (click)="toggleVideoPlayback()">
+  <mat-icon *ngIf="!(syncMgrService.playstate$ | async)">play_arrow</mat-icon>
+  <mat-icon *ngIf="(syncMgrService.playstate$ | async)">pause</mat-icon>
+</button>

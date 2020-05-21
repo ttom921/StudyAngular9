@@ -3,7 +3,7 @@
   <div fxLayout="column" [fxFlex]="(mailindex===0) ? flexChangePageSize: '0'" [fxShow]="(mailindex===0) ?true: false">
     <div [fxFlex]="page0UhalfFlex" [fxShow]="page0UhalfShow">
       <div [fxFlex]="page0LUFlex" [fxShow]="page0LUShow" (dblclick)="Dbclick('video1',video1)">
-        <mat-video #video1 [fxHide]="(video1.src==null) ? true:false" [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+        <mat-video #video1 [fxHide]="(video1.src==null) ? true:false" [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="true">
         </mat-video>
         <div class="novideo" [fxShow]="(video1.src==null) ? true:false">
           <mat-icon class="novideoicon">videocam_off</mat-icon>
