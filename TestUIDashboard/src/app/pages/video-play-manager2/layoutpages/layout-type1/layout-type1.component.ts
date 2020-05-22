@@ -92,7 +92,7 @@ export class LayoutType1Component implements OnInit, AfterViewInit, OnDestroy {
         this.syncMgrService.setMainVideo(this[`video${0 + 1}`]);
       }
     }
-    console.log(this.syncMgrService.syncvideolst);
+    //console.log(this.syncMgrService.syncvideolst);
   }
   changePage(direct: VideoPageDirect) {
     //console.log(`LayoutType1Component=>${direct}`);
