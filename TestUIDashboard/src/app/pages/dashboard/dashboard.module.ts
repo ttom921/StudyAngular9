@@ -23,6 +23,7 @@ import { NgTestMultiVideosComponent } from '../ng-test-multi-videos/ng-test-mult
 import { NgTestSingleVideosComponent } from '../ng-test-single-videos/ng-test-single-videos.component';
 import { MatVideoModule } from 'src/app/_common/video/video.module';
 import { SyncVideoModule } from 'src/app/_common/sync-video/sync-video.module';
+import { NgTestIE11videoComponent } from '../ng-test-ie11video/ng-test-ie11video.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { SyncVideoModule } from 'src/app/_common/sync-video/sync-video.module';
     SvgbarComponent,
     SpinnerComponent,
     CircleProgressComponent,
+
     OsmViewComponent,
     NgCircleProgressComponent,
     NgTestSilderComponent,
@@ -41,6 +43,8 @@ import { SyncVideoModule } from 'src/app/_common/sync-video/sync-video.module';
     NgTestSSEComponent,
     NgTestMultiVideosComponent,
     NgTestSingleVideosComponent,
+    NgTestIE11videoComponent,
+
 
   ],
   imports: [

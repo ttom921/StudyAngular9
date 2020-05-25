@@ -10,6 +10,7 @@ import { NgTestToastrComponent } from '../ng-test-toastr/ng-test-toastr.componen
 import { NgTestSSEComponent } from '../ng-test-sse/ng-test-sse.component';
 import { NgTestMultiVideosComponent } from '../ng-test-multi-videos/ng-test-multi-videos.component';
 import { NgTestSingleVideosComponent } from '../ng-test-single-videos/ng-test-single-videos.component';
+import { NgTestIE11videoComponent } from '../ng-test-ie11video/ng-test-ie11video.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
       { path: 'ngtestsse', component: NgTestSSEComponent },
       { path: 'ngtestmultivideos', component: NgTestMultiVideosComponent },
       { path: 'ngtestsinglevideos', component: NgTestSingleVideosComponent },
+      { path: 'ngtestie11video', component: NgTestIE11videoComponent },
     ]
   }
 ];

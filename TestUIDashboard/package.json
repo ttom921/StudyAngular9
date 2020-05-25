@@ -25,10 +25,12 @@
     "@ngx-translate/core": "^12.1.2",
     "@ngx-translate/http-loader": "^4.0.0",
     "animate.css": "^3.7.2",
+    "classlist.js": "^1.1.20150312",
     "leaflet": "^1.6.0",
     "ngx-toastr": "^12.0.1",
     "rxjs": "~6.5.5",
     "tslib": "^1.10.0",
+    "web-animations-js": "^2.3.2",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

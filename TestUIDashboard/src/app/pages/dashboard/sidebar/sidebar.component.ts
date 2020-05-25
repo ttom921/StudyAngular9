@@ -44,6 +44,12 @@ export class SidebarComponent implements OnInit {
       route: '',
       children: [
         {
+          displayName: '測試IE11播放影像',
+          iconName: 'star_rate',
+          route: 'dashboard/ngtestie11video'
+
+        },
+        {
           displayName: '測試同步播放多個影像',
           iconName: 'star_rate',
           route: 'dashboard/ngtestmultivideos'
