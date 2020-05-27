@@ -5,10 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatVideoModule } from './_common/video/video.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgTestMultiMatVideoComponent } from './ng-test-multi-mat-video/ng-test-multi-mat-video.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NgTestMultiMatVideoComponent
   ],
   imports: [
     BrowserModule,
