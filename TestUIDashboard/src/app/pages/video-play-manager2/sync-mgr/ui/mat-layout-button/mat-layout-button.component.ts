@@ -17,7 +17,7 @@ export class MatLayoutButtonComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.changeLayoutType(VideoLayoutType.Type4);
+    this.changeLayoutType(VideoLayoutType.Type1);
   }
   changeLayoutType(layouttye: VideoLayoutType) {
     switch (layouttye) {

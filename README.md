@@ -27,3 +27,10 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 
 測試[GPXParser.js](https://github.com/Luuka/GPXParser.js)的使用
 
+## TestBarCode
+
+測試barcode的使用，使用程式庫[zxing-js](https://github.com/zxing-js)/**[library](https://github.com/zxing-js/library)**
+
+## ie-test
+
+測試angular9，在ie上的顯示

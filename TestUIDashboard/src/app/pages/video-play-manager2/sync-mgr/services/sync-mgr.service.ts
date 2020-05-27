@@ -192,7 +192,7 @@ export class SyncMgrService {
 
   //#region  排版相關
   //layouttype 排版
-  layoutType$: BehaviorSubject<VideoLayoutType> = new BehaviorSubject(VideoLayoutType.Type4);
+  layoutType$: BehaviorSubject<VideoLayoutType> = new BehaviorSubject(VideoLayoutType.Type1);
   //#endregion 排版相關
   //#region 切換頁面相關
   private pagechangeSource = new Subject();

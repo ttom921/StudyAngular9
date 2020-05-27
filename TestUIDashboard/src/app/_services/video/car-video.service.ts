@@ -18,10 +18,22 @@ export class CarVideoService {
     //   datas = this.TestFakeData();
     // }
 
-    //datas = this.TestFakeData1();
+
+
+    //datas = this.TestFakeData();
     //datas = this.TestFakeData3();
-    datas = this.TestFakeData5();
+    //datas = this.TestFakeData5();
+
+    //datas = this.TestFakeData1();
+
     //datas = this.TestFakeData8();
+    //datas = this.TestFakeData9();
+
+
+
+    //IE
+    //datas = this.TestFakeData7();
+    datas = this.TestFakeDataIE7();
 
     return of(datas);
   }
@@ -41,7 +53,7 @@ export class CarVideoService {
         src: "http://static.videogular.com/assets/videos/elephants-dream.mp4#t=1.0"
       },
       {
-        src: "http://localhost:4200/assets/[DATE(2016-08-14)TIME(13-00-00)]CH05.mp4"
+        src: "http://localhost:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
       },
 
     ];
@@ -52,7 +64,7 @@ export class CarVideoService {
       {
         //src: "http://localhost:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
         //30fps
-        src: "http://localhost:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH02.mp4"
+        src: "http://localhost:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
 
       },
 
@@ -145,6 +157,109 @@ export class CarVideoService {
     ];
     return data;
   }
+  TestFakeData6() {
+    let data = [
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
+      },
+    ];
+    return data;
+  }
+  TestFakeData7() {
+    let data = [
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+      },
+    ];
+    return data;
+  }
+  //https://nkoehler.github.io/mat-video/assets/NASA.mp4
+  TestFakeDataIE7() {
+    let data = [
+      {
+        src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+      },
+      {
+        src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+      },
+      {
+        src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+      },
+      {
+        src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+      },
+      {
+        src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+      },
+      {
+        src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+      },
+      {
+        src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+      },
+    ];
+    return data;
+  }
+
+  // TestFakeDataIE7() {
+  //   let data = [
+  //     {
+  //       src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+  //     },
+  //     {
+  //       src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+  //     },
+  //     {
+  //       src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+  //     },
+  //     {
+  //       src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+  //     },
+  //     {
+  //       src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+  //     },
+  //     {
+  //       src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+  //     },
+  //     {
+  //       src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+  //     },
+  //   ];
+  //   return data;
+  // }
   TestFakeData8() {
     let data = [
       {
@@ -170,6 +285,35 @@ export class CarVideoService {
       },
       {
         src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH08.mp4"
+      },
+    ];
+    return data;
+  }
+  TestFakeData9() {
+    let data = [
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+      },
+      {
+        src: "http://172.18.2.33:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
       },
     ];
     return data;

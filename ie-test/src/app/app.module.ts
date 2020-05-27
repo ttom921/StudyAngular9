@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { MatVideoModule } from './_common/video/video.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgTestMultiMatVideoComponent } from './ng-test-multi-mat-video/ng-test-multi-mat-video.component';
+import { NgTestMultiIEVideosComponent } from './ng-test-multi-ievideos/ng-test-multi-ievideos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NgTestMultiMatVideoComponent
+    NgTestMultiMatVideoComponent,
+    NgTestMultiIEVideosComponent
   ],
   imports: [
     BrowserModule,
