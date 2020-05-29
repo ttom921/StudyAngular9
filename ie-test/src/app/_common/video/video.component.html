@@ -3,15 +3,7 @@
     {{ title }}
   </div>
 
-  <video
-    #video
-    class="video"
-    [attr.autoplay]="autoplay ? true : null"
-    [preload]="preload ? 'auto' : 'metadata'"
-    [attr.poster]="poster ? poster : null"
-    [attr.loop]="loop ? loop : null"
-    [attr.playsinline]="playsinline ? true : null"
-  >
+  <video #video class="video" [attr.autoplay]="autoplay ? true : null" [preload]="preload ? 'auto' : 'metadata'" [attr.poster]="poster ? poster : null" [attr.loop]="loop ? loop : null" [attr.playsinline]="playsinline ? true : null">
     <ng-content select="source"></ng-content>
     <ng-content select="track"></ng-content>
     This browser does not support HTML5 video.
@@ -28,29 +20,18 @@
 
         <mat-frame-by-frame-control *ngIf="showFrameByFrame" [video]="video" [fps]="fps"></mat-frame-by-frame-control>
 
-        <mat-volume-control
-          [muted]="muted"
-          (mutedChanged)="muted = $event; mutedChange.emit(muted)"
-          [color]="color"
-          [video]="video"
-          [keyboard]="keyboard"
-        >
+        <mat-volume-control [muted]="muted" (mutedChanged)="muted = $event; mutedChange.emit(muted)" [color]="color" [video]="video" [keyboard]="keyboard">
         </mat-volume-control>
 
         <mat-time-control [video]="video"></mat-time-control>
       </div>
 
       <div class="right">
-        <mat-quality-control *ngIf="quality" [video]="video"></mat-quality-control>
+        <!-- <mat-quality-control *ngIf="quality" [video]="video"></mat-quality-control>
 
         <mat-download-button *ngIf="download" [title]="title" [video]="video"></mat-download-button>
 
-        <mat-fullscreen-button
-          *ngIf="fullscreen"
-          (fullscreenChanged)="isFullscreen = $event"
-          [player]="player"
-          [keyboard]="keyboard"
-        ></mat-fullscreen-button>
+        <mat-fullscreen-button *ngIf="fullscreen" (fullscreenChanged)="isFullscreen = $event" [player]="player" [keyboard]="keyboard"></mat-fullscreen-button> -->
       </div>
     </div>
   </div>
