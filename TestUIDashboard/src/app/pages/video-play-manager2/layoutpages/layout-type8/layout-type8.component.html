@@ -20,12 +20,18 @@
         </div>
       </div>
       <div [fxFlex]="25" (click)="clickvideo('video6',video6)">
-        <mat-video #video6 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+        <mat-video #video6 [fxHide]="(video6.src==null) ? true:false" [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
         </mat-video>
+        <div class="novideo" [fxShow]="(video6.src==null) ? true:false">
+          <mat-icon class="novideoicon">videocam_off</mat-icon>
+        </div>
       </div>
       <div [fxFlex]="25" (click)="clickvideo('video5',video5)">
-        <mat-video #video5 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+        <mat-video #video5 [fxHide]="(video5.src==null) ? true:false" [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
         </mat-video>
+        <div class="novideo" [fxShow]="(video5.src==null) ? true:false">
+          <mat-icon class="novideoicon">videocam_off</mat-icon>
+        </div>
       </div>
     </div>
   </div>
@@ -36,16 +42,25 @@
       </mat-video>
     </div>
     <div [fxFlex]="25" (click)="clickvideo('video2',video2)">
-      <mat-video #video2 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+      <mat-video #video2 [fxHide]="(video2.src==null) ? true:false" [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
       </mat-video>
+      <div class="novideo" [fxShow]="(video2.src==null) ? true:false">
+        <mat-icon class="novideoicon">videocam_off</mat-icon>
+      </div>
     </div>
     <div [fxFlex]="25" (click)="clickvideo('video3',video3)">
-      <mat-video #video3 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+      <mat-video #video3 [fxHide]="(video3.src==null) ? true:false" [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
       </mat-video>
+      <div class="novideo" [fxShow]="(video3.src==null) ? true:false">
+        <mat-icon class="novideoicon">videocam_off</mat-icon>
+      </div>
     </div>
     <div [fxFlex]="25" (click)="clickvideo('video4',video4)">
-      <mat-video #video4 [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
+      <mat-video #video4 [fxHide]="(video4.src==null) ? true:false" [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
       </mat-video>
+      <div class="novideo" [fxShow]="(video4.src==null) ? true:false">
+        <mat-icon class="novideoicon">videocam_off</mat-icon>
+      </div>
     </div>
   </div>
 </div>

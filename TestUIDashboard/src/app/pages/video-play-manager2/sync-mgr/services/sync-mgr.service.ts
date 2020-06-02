@@ -54,9 +54,9 @@ export class SyncMgrService {
         sub.add(obscaplay);
         //讀取完成
         const obsSub1 = this.init_loadedmetadata_combineLatest();
-        const obsSub2 = this.init_loadstart_combineLatest();
+        //const obsSub2 = this.init_loadstart_combineLatest();
         sub.add(obsSub1);
-        sub.add(obsSub2);
+        //sub.add(obsSub2);
         //是否在緩衝
         const obswaiting = this.init_waiting_merge();
         sub.add(obswaiting);
