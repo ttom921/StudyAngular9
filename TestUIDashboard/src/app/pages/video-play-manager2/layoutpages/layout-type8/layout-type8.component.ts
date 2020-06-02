@@ -74,6 +74,10 @@ export class LayoutType8Component implements OnInit, AfterViewInit, OnDestroy {
     let elm = this.matvideolist[this.mainindex];
     this[`mainvideo`]['src'] = elm.src;
     this[`mainvideo`]['title'] = `ch${this.mainindex + 1}`;
+    if (!isNullOrUndefined(this.mainvideo.getVideoTag())) {
+      //console.log(this.mainvideo.getVideoTag());
+      this.mainvideo.getVideoTag().src = elm.src;
+    }
     //console.log(`setmainvideo index=${this.mainindex}`);
   }
   clickvideo(whoclick: string, whovideo: MatVideoComponent) {
