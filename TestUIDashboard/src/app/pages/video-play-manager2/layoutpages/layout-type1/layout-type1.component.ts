@@ -63,36 +63,42 @@ export class LayoutType1Component implements OnInit, AfterViewInit, OnDestroy {
     this.sub.add(obssub1);
   }
   ngAfterViewInit(): void {
-    //console.log(`layout1 ngAfterViewInit->videolist=${this.videolist}`);
+    //取得所有的MatVideoComponent元件
+    let matvideos: MatVideoComponent[] = [];
     for (let index = 0; index < this.videolist.length; index++) {
-      // let elm = this.videolist[index];
-      // this[`video${index + 1}`]['src'] = elm.src;
-      // this[`video${index + 1}`]['title'] = `ch${index + 1}`;
-      this.syncMgrService.syncvideolst.push(this[`video${index + 1}`]);
-      if (index == this.videolist.length - 1) {
-        console.log("all done");
-        //this.syncMgrService.initMatVideoRxJSevent();
-
-        //是否可播放
-        const obscaplay = this.syncMgrService.init_canplay_combineLatest();
-        this.sub.add(obscaplay);
-        //讀取完成
-        const obsSub1 = this.syncMgrService.init_loadedmetadata_combineLatest();
-        const obsSub2 = this.syncMgrService.init_loadstart_combineLatest();
-        this.sub.add(obsSub1);
-        this.sub.add(obsSub2);
-        //是否在緩衝
-        const obswaiting = this.syncMgrService.init_waiting_merge();
-
-        this.sub.add(obswaiting);
-
-
-        //設定主控頻道
-        //this.syncMgrService.mainvideo = this[`video${0 + 1}`];
-        this.syncMgrService.setMainVideo(this[`video${0 + 1}`]);
-      }
+      matvideos.push(this[`video${index + 1}`]);
     }
-    //console.log(this.syncMgrService.syncvideolst);
+    this.syncMgrService.initVideoRxJSevent(matvideos, this.sub);
+    //console.log(`layout1 ngAfterViewInit->videolist=${this.videolist}`);
+    // for (let index = 0; index < this.videolist.length; index++) {
+    //   // let elm = this.videolist[index];
+    //   // this[`video${index + 1}`]['src'] = elm.src;
+    //   // this[`video${index + 1}`]['title'] = `ch${index + 1}`;
+    //   this.syncMgrService.syncvideolst.push(this[`video${index + 1}`]);
+    //   if (index == this.videolist.length - 1) {
+    //     console.log("type1 all done");
+    //     //this.syncMgrService.initMatVideoRxJSevent();
+
+    //     //是否可播放
+    //     const obscaplay = this.syncMgrService.init_canplay_combineLatest();
+    //     this.sub.add(obscaplay);
+    //     //讀取完成
+    //     const obsSub1 = this.syncMgrService.init_loadedmetadata_combineLatest();
+    //     const obsSub2 = this.syncMgrService.init_loadstart_combineLatest();
+    //     this.sub.add(obsSub1);
+    //     this.sub.add(obsSub2);
+    //     //是否在緩衝
+    //     const obswaiting = this.syncMgrService.init_waiting_merge();
+
+    //     this.sub.add(obswaiting);
+
+
+    //     //設定主控頻道
+    //     //this.syncMgrService.mainvideo = this[`video${0 + 1}`];
+    //     this.syncMgrService.setMainVideo(this[`video${0 + 1}`]);
+    //   }
+    // }
+    // //console.log(this.syncMgrService.syncvideolst);
   }
   changePage(direct: VideoPageDirect) {
     //console.log(`LayoutType1Component=>${direct}`);

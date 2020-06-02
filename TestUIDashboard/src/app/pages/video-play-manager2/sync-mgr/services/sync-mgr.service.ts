@@ -19,7 +19,7 @@ export class SyncMgrService {
   clearVideolist() {
     this.syncvideolst = [];
   }
-  //#region 播放相關
+  //#region 播放相關Rxjs
   //播放狀態
   playstate$ = new BehaviorSubject(false);
   playAction = false;
@@ -39,6 +39,34 @@ export class SyncMgrService {
   //   this.init_loadedmetadata_combineLatest();
   //   this.init_loadstart_combineLatest();
   // }
+  initVideoRxJSevent(matvideolist: MatVideoComponent[], sub: Subscription) {
+    for (let index = 0; index < matvideolist.length; index++) {
+      const element = matvideolist[index];
+      this.syncvideolst.push(element);
+    }
+    console.log(`this.syncvideolst=${this.syncvideolst}`);
+    for (let index = 0; index < matvideolist.length; index++) {
+
+      if (index == matvideolist.length - 1) {
+        console.log("initVideoRxJSevent all done");
+        //是否可播放
+        const obscaplay = this.init_canplay_combineLatest();
+        sub.add(obscaplay);
+        //讀取完成
+        const obsSub1 = this.init_loadedmetadata_combineLatest();
+        const obsSub2 = this.init_loadstart_combineLatest();
+        sub.add(obsSub1);
+        sub.add(obsSub2);
+        //是否在緩衝
+        const obswaiting = this.init_waiting_merge();
+        sub.add(obswaiting);
+        //設定主控頻道
+        //this.syncMgrService.mainvideo = this[`video${0 + 1}`];
+        this.setMainVideo(this[`video${0 + 1}`]);
+      }
+
+    }
+  }
 
   //是否可播放
   init_canplay_combineLatest(): Subscription {

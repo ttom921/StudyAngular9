@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
 import { VideoPageDirect } from '../../video-play-mgrs.enum';
 import { CommunicationService } from '../../services/communication.service';
 import { Subscription } from 'rxjs';
@@ -10,7 +10,7 @@ import { SyncMgrService } from '../../sync-mgr/services/sync-mgr.service';
   templateUrl: './layout-type4.component.html',
   styleUrls: ['./layout-type4.component.scss']
 })
-export class LayoutType4Component implements OnInit, OnDestroy {
+export class LayoutType4Component implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('video1', { static: true }) video1: MatVideoComponent;
   @ViewChild('video2', { static: true }) video2: MatVideoComponent;
   @ViewChild('video3', { static: true }) video3: MatVideoComponent;
@@ -68,8 +68,10 @@ export class LayoutType4Component implements OnInit, OnDestroy {
     private communicationService: CommunicationService,
     private syncMgrService: SyncMgrService,
   ) { }
+
   ngOnDestroy(): void {
-    //console.log(`LayoutType4Component=>ngOnDestroy`);
+    console.log(`LayoutType4Component=>ngOnDestroy`);
+    this.syncMgrService.clearVideolist();
     this.sub.unsubscribe();
   }
 
@@ -88,6 +90,15 @@ export class LayoutType4Component implements OnInit, OnDestroy {
       }
     });
     this.sub.add(obssub1);
+  }
+  ngAfterViewInit(): void {
+    //console.log(`layout4 ngAfterViewInit->videolist=${this.videolist}`);
+    //取得所有的MatVideoComponent元件
+    let matvideos: MatVideoComponent[] = [];
+    for (let index = 0; index < this.videolist.length; index++) {
+      matvideos.push(this[`video${index + 1}`]);
+    }
+    this.syncMgrService.initVideoRxJSevent(matvideos, this.sub);
   }
   changePage(direct: VideoPageDirect) {
     //console.log(`LayoutType4Component=>${direct}`);

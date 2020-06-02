@@ -40,6 +40,7 @@ export class SyncMgrComponent implements OnInit, AfterViewInit {
     this.syncMgrService.videoLoaded$.subscribe(data => {
       console.log(`SVC=>videoLoaded=${data}`);
       this.canactioned = data;
+      this.matplaybutton.setVideoPlayback(false);
     });
 
     //是否在緩衝
