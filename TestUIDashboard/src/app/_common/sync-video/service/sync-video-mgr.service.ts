@@ -59,12 +59,13 @@ export class SyncVideoMgrService {
     this.init_loadstart_combineLatest();
     this.init_canplay_combineLatest();
     this.init_waiting_merge();
-    // //測試
-    // const event$ = fromEvent(this.mainvideo.getVideoTag(), "waiting");
+    this.init_ended__combineLatest();
+    //測試
+    // const event$ = fromEvent(this.mainvideo.getVideoTag(), "ended");
     // //combineLatest( event$)
     // event$.subscribe(data => {
     //   console.dir(data);
-    //   console.log(`event waiting=${data}`);
+    //   console.log(`event ended=${data}`);
     // });
   }
   //是否可播放
@@ -132,6 +133,17 @@ export class SyncVideoMgrService {
     });
     //console.log(`difftime$=${ret}`);
     this.difftime$.next(ret);
+  }
+  private init_ended__combineLatest() {
+    let obsary = [];
+    this.syncvideolst.forEach(item => {
+      const event$ = fromEvent(item.getVideoTag(), 'ended');
+      obsary.push(event$);
+    });
+    combineLatest(...obsary).subscribe(data => {
+      console.log(`allEvents ended`);
+
+    });
   }
   //#endregion  rxjs相關
   play() {

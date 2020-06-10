@@ -60,6 +60,9 @@ export class SyncMgrService {
         //是否在緩衝
         const obswaiting = this.init_waiting_merge();
         sub.add(obswaiting);
+        //是否播放結束
+        const obplayended = this.init_ended__combineLatest();
+        sub.add(obplayended);
         //設定主控頻道
         //this.syncMgrService.mainvideo = this[`video${0 + 1}`];
         this.setMainVideo(this[`video${0 + 1}`]);
@@ -119,20 +122,21 @@ export class SyncMgrService {
     //console.log(`difftime$=${ret}`);
     this.difftime$.next(ret);
   }
-  //讀取完成
-  init_loadstart_combineLatest(): Subscription {
-    let obsary = [];
-    this.syncvideolst.forEach(item => {
-      const event$ = fromEvent(item.getVideoTag(), 'loadstart');
-      obsary.push(event$);
-    });
-    const obsSub = combineLatest(...obsary).subscribe(data => {
-      //console.log(`allEvents loadstart`);
-      //this.loadstart$.next(true);
-      this.videoLoaded$.next(true);
-    });
-    return obsSub;
-  }
+
+  // 讀取完成
+  // init_loadstart_combineLatest(): Subscription {
+  //   let obsary = [];
+  //   this.syncvideolst.forEach(item => {
+  //     const event$ = fromEvent(item.getVideoTag(), 'loadstart');
+  //     obsary.push(event$);
+  //   });
+  //   const obsSub = combineLatest(...obsary).subscribe(data => {
+  //     //console.log(`allEvents loadstart`);
+  //     //this.loadstart$.next(true);
+  //     this.videoLoaded$.next(true);
+  //   });
+  //   return obsSub;
+  // }
   init_loadedmetadata_combineLatest(): Subscription {
     let obsary = [];
     this.syncvideolst.forEach(item => {
@@ -143,6 +147,19 @@ export class SyncMgrService {
       //console.log(`allEvents loadedmetadata`);
       //this.loadedmetadata$.next(true);
       this.videoLoaded$.next(true);
+    });
+    return obsSub;
+  }
+  //是否播放結束
+  init_ended__combineLatest(): Subscription {
+    let obsary = [];
+    this.syncvideolst.forEach(item => {
+      const event$ = fromEvent(item.getVideoTag(), 'ended');
+      obsary.push(event$);
+    });
+    const obsSub = combineLatest(...obsary).subscribe(data => {
+      console.log(`allEvents ended`);
+      this.playstate$.next(false);
     });
     return obsSub;
   }
