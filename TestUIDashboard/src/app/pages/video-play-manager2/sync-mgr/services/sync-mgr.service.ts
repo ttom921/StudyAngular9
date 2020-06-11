@@ -3,7 +3,6 @@ import { BehaviorSubject, Subject, fromEvent, combineLatest, Subscription, merge
 import { VideoLayoutType, VideoPageDirect } from '../../video-play-mgrs.enum';
 import { MatVideoComponent } from 'src/app/_common/video/video.component';
 import { isNullOrUndefined } from 'util';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -45,30 +44,23 @@ export class SyncMgrService {
       this.syncvideolst.push(element);
     }
     console.log(`this.syncvideolst=${this.syncvideolst}`);
-    for (let index = 0; index < matvideolist.length; index++) {
 
-      if (index == matvideolist.length - 1) {
-        console.log("initVideoRxJSevent all done");
-        //是否可播放
-        const obscaplay = this.init_canplay_combineLatest();
-        sub.add(obscaplay);
-        //讀取完成
-        const obsSub1 = this.init_loadedmetadata_combineLatest();
-        //const obsSub2 = this.init_loadstart_combineLatest();
-        sub.add(obsSub1);
-        //sub.add(obsSub2);
-        //是否在緩衝
-        const obswaiting = this.init_waiting_merge();
-        sub.add(obswaiting);
-        //是否播放結束
-        const obplayended = this.init_ended__combineLatest();
-        sub.add(obplayended);
-        //設定主控頻道
-        //this.syncMgrService.mainvideo = this[`video${0 + 1}`];
-        this.setMainVideo(this[`video${0 + 1}`]);
-      }
+    console.log("initVideoRxJSevent all done");
+    //是否可播放
+    const obscaplay = this.init_canplay_combineLatest();
+    sub.add(obscaplay);
+    //讀取完成
+    const obsSub1 = this.init_loadedmetadata_combineLatest();
+    //const obsSub2 = this.init_loadstart_combineLatest();
+    sub.add(obsSub1);
+    //sub.add(obsSub2);
+    //是否在緩衝
+    const obswaiting = this.init_waiting_merge();
+    sub.add(obswaiting);
+    //是否播放結束
+    const obplayended = this.init_ended__combineLatest();
+    sub.add(obplayended);
 
-    }
   }
 
   //是否可播放
@@ -111,7 +103,7 @@ export class SyncMgrService {
   }
   //時間差
   private cal_difftime_behavior_subject() {
-
+    //if (isNullOrUndefined(this.mainvideo)) return;
     let ret = this.syncvideolst.some(item => {
       //console.log(`cal_difftime -> mainvideo.time=${this.mainvideo.time} item.time=${item.time}`);
       let calret = Math.abs(this.mainvideo.time - item.time);
@@ -159,7 +151,8 @@ export class SyncMgrService {
     });
     const obsSub = combineLatest(...obsary).subscribe(data => {
       console.log(`allEvents ended`);
-      this.playstate$.next(false);
+      //this.playstate$.next(false);
+      this.setVideoPlayback(false);
     });
     return obsSub;
   }
