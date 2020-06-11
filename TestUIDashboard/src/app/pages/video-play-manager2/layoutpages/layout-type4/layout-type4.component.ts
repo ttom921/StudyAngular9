@@ -99,6 +99,8 @@ export class LayoutType4Component implements OnInit, AfterViewInit, OnDestroy {
       matvideos.push(this[`video${index + 1}`]);
     }
     this.syncMgrService.initVideoRxJSevent(matvideos, this.sub);
+    //設定主控頻道
+    this.syncMgrService.setMainVideo(this[`video${0 + 1}`]);
   }
   changePage(direct: VideoPageDirect) {
     //console.log(`LayoutType4Component=>${direct}`);
