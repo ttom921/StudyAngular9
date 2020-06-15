@@ -151,9 +151,10 @@ export class SyncMgrService {
     });
     const obsSub = combineLatest(...obsary).subscribe(data => {
       console.log(`allEvents ended`);
-      //this.playstate$.next(false);
+      this.playstate$.next(false);
+
       //this.setVideoPlayback(false);
-      this.canPlay$.next(true)
+
     });
     return obsSub;
   }
