@@ -24,7 +24,7 @@ export class SyncMgrComponent implements OnInit, AfterViewInit {
 
     //是否可播放
     this.syncMgrService.canPlay$.pipe(delay(300)).subscribe(data => {
-      //console.log(`SVC=>canPlay$=${data}`);
+      console.log(`SVC=>canPlay$=${data}`);
       if (this.playBtnIsClick == true) {
         console.log(`SVC=>play data=${data}`);
         //this.matplaybutton.setVideoPlayback(true);
