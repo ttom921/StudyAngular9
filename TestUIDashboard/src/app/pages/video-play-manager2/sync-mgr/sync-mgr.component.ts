@@ -1,8 +1,9 @@
-import { Component, OnInit, Output, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, AfterViewInit, ViewChild, Input } from '@angular/core';
 import { SyncMgrService } from './services/sync-mgr.service';
 import { delay } from 'rxjs/operators';
 import { MatPlayButtonComponent } from './ui/mat-play-button/mat-play-button.component';
 import { isNullOrUndefined } from 'util';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'sync-mgr',
@@ -11,6 +12,12 @@ import { isNullOrUndefined } from 'util';
 })
 export class SyncMgrComponent implements OnInit, AfterViewInit {
   @ViewChild("matplaybutton", { static: true }) private matplaybutton: MatPlayButtonComponent;
+  @Input() color: ThemePalette = "primary";
+  @Input() fps = 29.97;
+  @Input() showFrameByFrame = false;
+  @Input() oneFrame = 1; // 30/15
+  @Input() jumpTime = 10;
+
   canactioned = false;
   playBtnIsClick = false;
   constructor(

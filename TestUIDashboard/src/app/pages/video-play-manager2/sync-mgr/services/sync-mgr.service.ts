@@ -192,6 +192,9 @@ export class SyncMgrService {
   setMainVideo(mvideo: MatVideoComponent) {
     this.mainvideo = mvideo;
   }
+  getMainVideo() {
+    return this.mainvideo;
+  }
   //檢查是否有主頻道
   isMainvideo() {
     if (isNullOrUndefined(this.mainvideo))

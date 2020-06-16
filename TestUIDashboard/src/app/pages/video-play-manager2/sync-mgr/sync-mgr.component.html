@@ -7,6 +7,7 @@
     <div class="menu">
       <div class="left" [ngClass]="{'disableDiv': !canactioned}">
         <mat-play-button #matplaybutton></mat-play-button>
+        <mat-frame-by-frame-control *ngIf="showFrameByFrame" [fps]="fps" [oneFrame]="oneFrame"></mat-frame-by-frame-control>
       </div>
       <div class="right">
         <mat-layout-button></mat-layout-button>
