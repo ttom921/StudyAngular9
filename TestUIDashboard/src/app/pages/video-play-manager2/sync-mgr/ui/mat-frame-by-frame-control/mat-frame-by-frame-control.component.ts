@@ -19,7 +19,7 @@ export class MatFrameByFrameControlComponent implements OnInit {
 
   ngOnInit(): void {
     this.video = this.syncMgrService.getMainVideo();
-    console.log(`mat-frame-by-frame-control=>video=${this.video}`);
+    //console.log(`mat-frame-by-frame-control=>video=${this.video}`);
   }
   forwardSeekFrame() {
     this.seekFrames(this.oneFrame);

@@ -31,6 +31,7 @@ export class SyncMgrService {
   //時間差
   difftime$ = new BehaviorSubject(false);
   //主控頻道
+  mainvideo$ = new BehaviorSubject(false);
   private mainvideo: MatVideoComponent;
 
   //初始化rxjs的事件
@@ -190,9 +191,13 @@ export class SyncMgrService {
   //#region 主控頻道相關
   //設定主控頻道
   setMainVideo(mvideo: MatVideoComponent) {
+    console.log(`SyncMgrService->setMainVideo`);
     this.mainvideo = mvideo;
+    this.mainvideo$.next(true);
   }
   getMainVideo() {
+    console.log(`SyncMgrService->getMainVideo`);
+    this.mainvideo$.next(false);
     return this.mainvideo;
   }
   //檢查是否有主頻道

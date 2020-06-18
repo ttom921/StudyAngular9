@@ -4,6 +4,7 @@ import { delay } from 'rxjs/operators';
 import { MatPlayButtonComponent } from './ui/mat-play-button/mat-play-button.component';
 import { isNullOrUndefined } from 'util';
 import { ThemePalette } from '@angular/material/core';
+import { MatTimeControlComponent } from './ui/mat-time-control/mat-time-control.component';
 
 @Component({
   selector: 'sync-mgr',
@@ -12,6 +13,7 @@ import { ThemePalette } from '@angular/material/core';
 })
 export class SyncMgrComponent implements OnInit, AfterViewInit {
   @ViewChild("matplaybutton", { static: true }) private matplaybutton: MatPlayButtonComponent;
+  @ViewChild("mattimecontrol", { static: true }) private mattimecontrol: MatTimeControlComponent;
   @Input() color: ThemePalette = "primary";
   @Input() fps = 29.97;
   @Input() showFrameByFrame = false;
@@ -75,6 +77,16 @@ export class SyncMgrComponent implements OnInit, AfterViewInit {
         this.syncMgrService.setCurrentTime(mtime);
       }
     });
+    //是否切探主控頻道
+    this.syncMgrService.mainvideo$.subscribe(data => {
+      console.log(`SVC=>mainvideo$=${data}`);
+      if (data == true) {
+        this.reloadTimeControl();
+      }
+    });
 
+  }
+  reloadTimeControl() {
+    this.mattimecontrol.reLoad();
   }
 }

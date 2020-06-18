@@ -64,6 +64,8 @@ export class LayoutType8Component implements OnInit, AfterViewInit, OnDestroy {
     }
     matvideos.push(this[`mainvideo`]);
     this.syncMgrService.initVideoRxJSevent(matvideos, this.sub);
+    //設定主控頻道
+    this.syncMgrService.setMainVideo(this.mainvideo);
   }
   changePage(direct: VideoPageDirect) {
     console.log(`LayoutType8Component=>${direct}`)
@@ -82,6 +84,9 @@ export class LayoutType8Component implements OnInit, AfterViewInit, OnDestroy {
   }
   clickvideo(whoclick: string, whovideo: MatVideoComponent) {
     if (isNullOrUndefined(whovideo.src) == true) return;
+    //取得目前播放時間
+    let currenttime = this.syncMgrService.getMainTime();
+    //console.log(`type8 srv mainvideo time=${currenttime}`);
     //console.log(`clickvideo=${whoclick},whovide=${whovideo}`);
     //console.dir(whovideo);
     //console.dir(this.video1);
@@ -95,5 +100,9 @@ export class LayoutType8Component implements OnInit, AfterViewInit, OnDestroy {
     });
     //console.log(`click index=${index}`);
     this.setmainvideo(index);
+    this.mainvideo.time = currenttime;
+    //console.log(`type8 mainvideo time=${this.mainvideo.time}`);
+    //設定主控頻道
+    this.syncMgrService.setMainVideo(this.mainvideo);
   }
 }

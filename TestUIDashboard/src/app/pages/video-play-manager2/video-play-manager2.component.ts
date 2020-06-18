@@ -7,6 +7,7 @@ import { LayoutType4Component } from './layoutpages/layout-type4/layout-type4.co
 import { LayoutType8Component } from './layoutpages/layout-type8/layout-type8.component';
 import { CommunicationService } from './services/communication.service';
 import { SyncMgrService } from './sync-mgr/services/sync-mgr.service';
+import { SyncMgrComponent } from './sync-mgr/sync-mgr.component';
 
 @Component({
   selector: 'app-video-play-manager2',
@@ -18,6 +19,8 @@ export class VideoPlayManager2Component implements OnInit {
   // @ViewChild('video2', { static: true }) video2: MatVideoComponent;
   // @ViewChild('video3', { static: true }) video3: MatVideoComponent;
   // @ViewChild('video4', { static: true }) video4: MatVideoComponent;
+  @ViewChild('synmgr', { static: true }) synmgr: SyncMgrComponent;
+
   //VideoPageDirect = VideoPageDirect;
   VideoLayoutType = VideoLayoutType;
   videoLayoutType: VideoLayoutType = VideoLayoutType.Type1;
@@ -62,19 +65,23 @@ export class VideoPlayManager2Component implements OnInit {
   }
   //改變layout
   changeLayoutType(layouttye: VideoLayoutType) {
-    //console.log(`start videoLayoutType=${this.videoLayoutType}`);
+    console.log(`changeLayoutType videoLayoutType=${this.videoLayoutType}`);
+    //console.log(`this.synmgr=${this.synmgr}`);
     switch (layouttye) {
       case VideoLayoutType.Type1:
         this.videoLayoutType = VideoLayoutType.Type1;
         this.DynComp = LayoutType1Component;
+
         break;
       case VideoLayoutType.Type4:
         this.videoLayoutType = VideoLayoutType.Type4;
         this.DynComp = LayoutType4Component;
+
         break;
       case VideoLayoutType.Type8:
         this.videoLayoutType = VideoLayoutType.Type8;
         this.DynComp = LayoutType8Component;
+
         break;
       default:
         break;

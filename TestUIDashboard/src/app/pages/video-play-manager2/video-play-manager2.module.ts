@@ -12,17 +12,23 @@ import { SyncMgrComponent } from './sync-mgr/sync-mgr.component';
 import { MatLayoutButtonComponent } from './sync-mgr/ui/mat-layout-button/mat-layout-button.component';
 import { MatPlayButtonComponent } from './sync-mgr/ui/mat-play-button/mat-play-button.component';
 import { MatFrameByFrameControlComponent } from './sync-mgr/ui/mat-frame-by-frame-control/mat-frame-by-frame-control.component';
+import { MatTimeControlComponent } from './sync-mgr/ui/mat-time-control/mat-time-control.component';
+import { SecondsToTimePipe } from './sync-mgr/pipes/seconds-to-time.pipe';
 
 
 @NgModule({
-  declarations: [VideoPlayManager2Component,
+  declarations: [
+    VideoPlayManager2Component,
     LayoutType1Component,
     LayoutType4Component,
     LayoutType8Component,
     SyncMgrComponent,
+    SecondsToTimePipe,
     MatLayoutButtonComponent,
     MatPlayButtonComponent,
-    MatFrameByFrameControlComponent],
+    MatFrameByFrameControlComponent,
+    MatTimeControlComponent,
+  ],
   imports: [
     CommonModule,
     SharedAngularMaterialModule,
