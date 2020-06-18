@@ -31,7 +31,7 @@ export class LayoutType1Component implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log(`LayoutType1Component=>ngOnDestroy`);
+    //console.log(`LayoutType1Component=>ngOnDestroy`);
     this.syncMgrService.clearVideolist();
     this.sub.unsubscribe();
   }

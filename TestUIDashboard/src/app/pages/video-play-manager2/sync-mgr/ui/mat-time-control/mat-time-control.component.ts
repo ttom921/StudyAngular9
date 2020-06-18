@@ -15,10 +15,10 @@ export class MatTimeControlComponent implements OnInit {
 
   ngOnInit(): void {
     this.video = this.syncMgrService.getMainVideo().getVideoTag();
-    console.log(`mat-time-control=>video=${this.video}`);
+    //console.log(`mat-time-control=>video=${this.video}`);
   }
   reLoad() {
     this.video = this.syncMgrService.getMainVideo().getVideoTag();
-    console.log(`mat-time-control=>video->reLoad ${this.video.currentTime}`);
+    //console.log(`mat-time-control=>video->reLoad ${this.video.currentTime}`);
   }
 }

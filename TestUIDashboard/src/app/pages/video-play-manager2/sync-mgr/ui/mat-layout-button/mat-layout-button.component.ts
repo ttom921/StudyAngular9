@@ -23,17 +23,17 @@ export class MatLayoutButtonComponent implements OnInit {
 
     switch (layouttye) {
       case VideoLayoutType.Type1:
-        console.log(`MatLayoutButton->MatLayoutButton`);
+        //console.log(`MatLayoutButton->MatLayoutButton`);
         this.videoLayoutType = VideoLayoutType.Type1;
         this.syncMgrService.layoutType$.next(VideoLayoutType.Type1);
         break;
       case VideoLayoutType.Type4:
-        console.log(`MatLayoutButton->MatLayoutButton`);
+        //console.log(`MatLayoutButton->MatLayoutButton`);
         this.videoLayoutType = VideoLayoutType.Type4;
         this.syncMgrService.layoutType$.next(VideoLayoutType.Type4);
         break;
       case VideoLayoutType.Type8:
-        console.log(`MatLayoutButton->MatLayoutButton`);
+        //console.log(`MatLayoutButton->MatLayoutButton`);
         this.videoLayoutType = VideoLayoutType.Type8;
         this.syncMgrService.layoutType$.next(VideoLayoutType.Type8);
         break;

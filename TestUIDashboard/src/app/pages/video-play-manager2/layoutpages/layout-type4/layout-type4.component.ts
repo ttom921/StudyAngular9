@@ -70,7 +70,7 @@ export class LayoutType4Component implements OnInit, AfterViewInit, OnDestroy {
   ) { }
 
   ngOnDestroy(): void {
-    console.log(`LayoutType4Component=>ngOnDestroy`);
+    //console.log(`LayoutType4Component=>ngOnDestroy`);
     this.syncMgrService.clearVideolist();
     this.sub.unsubscribe();
   }

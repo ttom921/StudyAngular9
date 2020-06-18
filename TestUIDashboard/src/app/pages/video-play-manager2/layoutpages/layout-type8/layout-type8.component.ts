@@ -33,7 +33,7 @@ export class LayoutType8Component implements OnInit, AfterViewInit, OnDestroy {
   ) { }
 
   ngOnDestroy(): void {
-    console.log(`LayoutType8Component=>ngOnDestroy`);
+    //console.log(`LayoutType8Component=>ngOnDestroy`);
     this.syncMgrService.clearVideolist();
     this.sub.unsubscribe();
   }
@@ -68,7 +68,7 @@ export class LayoutType8Component implements OnInit, AfterViewInit, OnDestroy {
     this.syncMgrService.setMainVideo(this.mainvideo);
   }
   changePage(direct: VideoPageDirect) {
-    console.log(`LayoutType8Component=>${direct}`)
+    //console.log(`LayoutType8Component=>${direct}`)
   }
   private setmainvideo(index = 0) {
     if (this.mainindex == index) return;

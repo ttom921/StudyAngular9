@@ -47,14 +47,14 @@ export class SyncMgrComponent implements OnInit, AfterViewInit {
 
     //是否載入完成
     this.syncMgrService.videoLoaded$.subscribe(data => {
-      console.log(`SVC=>videoLoaded=${data}`);
+      //console.log(`SVC=>videoLoaded=${data}`);
       this.canactioned = data;
       this.matplaybutton.setVideoPlayback(false);
     });
 
     //是否在緩衝
     this.syncMgrService.waiting$.subscribe(data => {
-      console.log(`SVC=>waiting$=${data}`);
+      //console.log(`SVC=>waiting$=${data}`);
       //console.log(`SVC=>pause`);
       if (data == true) {
         this.matplaybutton.setVideoPlayback(false);
@@ -64,7 +64,7 @@ export class SyncMgrComponent implements OnInit, AfterViewInit {
     });
     //是否時間差
     this.syncMgrService.difftime$.subscribe(data => {
-      console.log(`SVC=>difftime=${data}`);
+      //console.log(`SVC=>difftime=${data}`);
       //if (isNullOrUndefined(this.syncMgrService.mainvideo)) return;
       if (this.syncMgrService.isMainvideo()) return;
       //let mtime = this.syncMgrService.mainvideo.time;
@@ -79,7 +79,7 @@ export class SyncMgrComponent implements OnInit, AfterViewInit {
     });
     //是否切探主控頻道
     this.syncMgrService.mainvideo$.subscribe(data => {
-      console.log(`SVC=>mainvideo$=${data}`);
+      //console.log(`SVC=>mainvideo$=${data}`);
       if (data == true) {
         this.reloadTimeControl();
       }

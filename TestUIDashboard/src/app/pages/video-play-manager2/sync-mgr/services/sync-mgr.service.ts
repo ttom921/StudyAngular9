@@ -44,7 +44,7 @@ export class SyncMgrService {
       const element = matvideolist[index];
       this.syncvideolst.push(element);
     }
-    console.log(`this.syncvideolst=${this.syncvideolst}`);
+    //console.log(`this.syncvideolst=${this.syncvideolst}`);
 
     console.log("initVideoRxJSevent all done");
     //是否可播放
@@ -191,12 +191,12 @@ export class SyncMgrService {
   //#region 主控頻道相關
   //設定主控頻道
   setMainVideo(mvideo: MatVideoComponent) {
-    console.log(`SyncMgrService->setMainVideo`);
+    //console.log(`SyncMgrService->setMainVideo`);
     this.mainvideo = mvideo;
     this.mainvideo$.next(true);
   }
   getMainVideo() {
-    console.log(`SyncMgrService->getMainVideo`);
+    //console.log(`SyncMgrService->getMainVideo`);
     this.mainvideo$.next(false);
     return this.mainvideo;
   }

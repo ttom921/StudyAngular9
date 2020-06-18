@@ -65,7 +65,7 @@ export class VideoPlayManager2Component implements OnInit {
   }
   //改變layout
   changeLayoutType(layouttye: VideoLayoutType) {
-    console.log(`changeLayoutType videoLayoutType=${this.videoLayoutType}`);
+    //console.log(`changeLayoutType videoLayoutType=${this.videoLayoutType}`);
     //console.log(`this.synmgr=${this.synmgr}`);
     switch (layouttye) {
       case VideoLayoutType.Type1:
