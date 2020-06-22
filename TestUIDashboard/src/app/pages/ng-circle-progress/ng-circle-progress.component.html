@@ -1,3 +1,33 @@
+<mat-card>
+  <table border="1" cellpadding="1" cellspacing="1">
+    <tr>
+      <td>車號</td>
+      <td>事件</td>
+      <td>日期</td>
+      <td>到期日</td>
+      <td>狀態</td>
+      <td>動作</td>
+    </tr>
+    <tr>
+      <td>車牌-1</td>
+      <td>急加速</td>
+      <td>2020/06/10</td>
+      <td>2020/06/20</td>
+      <td>上傳中</td>
+      <td>
+        <button mat-raised-button color="primary" (click)="btntest()">
+          <mat-icon>play_arrow</mat-icon>
+        </button>
+      </td>
+      <td>
+        <button mat-raised-button color="primary">
+          <mat-icon>get_app</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </table>
+
+</mat-card>
 <mat-card class="mat-elevation-z2" style="width:50vw">
   <mat-card-header>
     <mat-card-title>Storage:</mat-card-title>
@@ -64,6 +94,7 @@
 
 
 </mat-card>
+
 <mat-card>
   <mat-card-header>
     <mat-card-title>多國語言用法:</mat-card-title>

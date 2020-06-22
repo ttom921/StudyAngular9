@@ -98,5 +98,9 @@ export class NgCircleProgressComponent implements OnInit {
     return bytes;
   }
   //#endregion
+  btntest() {
+    window.open('http://localhost:4200/videoplaymanager2/%E3%82%8F2-674/eventid123/eyJhbGciOiJIUzUxMiIsImlhdCI6MTU4', 'myTab');
+  }
+
 
 }
