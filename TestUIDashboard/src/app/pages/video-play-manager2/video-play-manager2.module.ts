@@ -14,6 +14,7 @@ import { MatPlayButtonComponent } from './sync-mgr/ui/mat-play-button/mat-play-b
 import { MatFrameByFrameControlComponent } from './sync-mgr/ui/mat-frame-by-frame-control/mat-frame-by-frame-control.component';
 import { MatTimeControlComponent } from './sync-mgr/ui/mat-time-control/mat-time-control.component';
 import { SecondsToTimePipe } from './sync-mgr/pipes/seconds-to-time.pipe';
+import { MatPhotoButtonComponent } from './sync-mgr/ui/mat-photo-button/mat-photo-button.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { SecondsToTimePipe } from './sync-mgr/pipes/seconds-to-time.pipe';
     MatPlayButtonComponent,
     MatFrameByFrameControlComponent,
     MatTimeControlComponent,
+    MatPhotoButtonComponent,
   ],
   imports: [
     CommonModule,

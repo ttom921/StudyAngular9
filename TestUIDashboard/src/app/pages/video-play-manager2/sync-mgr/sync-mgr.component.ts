@@ -17,6 +17,10 @@ export class SyncMgrComponent implements OnInit, AfterViewInit {
   @Input() color: ThemePalette = "primary";
   @Input() fps = 29.97;
   @Input() showFrameByFrame = false;
+  //是否顯示時間
+  @Input() showTime = false;
+  //是否顯示拍照icon
+  @Input() photoscreen = true;
   @Input() oneFrame = 1; // 30/15
   @Input() jumpTime = 10;
 
