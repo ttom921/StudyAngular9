@@ -8,7 +8,7 @@
       <div class="left" [ngClass]="{'disableDiv': !canactioned}">
         <mat-play-button #matplaybutton></mat-play-button>
         <mat-frame-by-frame-control *ngIf="showFrameByFrame" [fps]="fps" [oneFrame]="oneFrame"></mat-frame-by-frame-control>
-        <mat-time-control *ngIf="showTime" #mattimecontrol></mat-time-control>
+        <mat-time-control hidden="showTime" #mattimecontrol></mat-time-control>
       </div>
       <div class="right">
         <mat-photo-button *ngIf="photoscreen" [allphoto]="false"></mat-photo-button>
