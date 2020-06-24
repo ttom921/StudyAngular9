@@ -1,4 +1,4 @@
-<div class="color9" fxLayout="row" fxLayoutAlign="stretch" style="height:100%;width:100vw;">
+<div fxLayout="row" fxLayoutAlign="stretch" style="height:100%;width:100vw;">
   <!--Page0-->
   <div fxLayout="column" [fxFlex]="(mailindex===0) ? flexChangePageSize: '0'" [fxShow]="(mailindex===0) ?true: false">
     <div [fxFlex]="page0UhalfFlex" [fxShow]="page0UhalfShow">
@@ -46,7 +46,7 @@
           <mat-icon class="novideoicon">videocam_off</mat-icon>
         </div>
       </div>
-      <div class="color6 " [fxFlex]="page1RUFlex" [fxShow]="page1RUShow" (dblclick)="Dbclick('video6',video6)">
+      <div [fxFlex]="page1RUFlex" [fxShow]="page1RUShow" (dblclick)="Dbclick('video6',video6)">
         <mat-video #video6 [fxHide]="(video6.src==null) ? true:false" [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
         </mat-video>
         <div class="novideo" [fxShow]="(video6.src==null) ? true:false">
@@ -55,14 +55,14 @@
       </div>
     </div>
     <div [fxFlex]="page1DhalfFlex" [fxShow]="page1DhalfShow">
-      <div class="color7 " [fxFlex]="page1LDFlex" [fxShow]="page1LDShow" (dblclick)="Dbclick('video7',video7)">
+      <div [fxFlex]="page1LDFlex" [fxShow]="page1LDShow" (dblclick)="Dbclick('video7',video7)">
         <mat-video #video7 [fxHide]="(video7.src==null) ? true:false" [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
         </mat-video>
         <div class="novideo" [fxShow]="(video7.src==null) ? true:false">
           <mat-icon class="novideoicon">videocam_off</mat-icon>
         </div>
       </div>
-      <div class="color8 " [fxFlex]="page1RDFlex" [fxShow]="page1RDShow" (dblclick)="Dbclick('video8',video8)">
+      <div [fxFlex]="page1RDFlex" [fxShow]="page1RDShow" (dblclick)="Dbclick('video8',video8)">
         <mat-video #video8 [fxHide]="(video8.src==null) ? true:false" [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [mustShowTitle]="true" [download]="false" [preload]="false" [overlay]="false">
         </mat-video>
         <div class="novideo" [fxShow]="(video8.src==null) ? true:false">
