@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { LanguageService } from './_services/language/language.service';
 import { SSEService } from './_services/SSE/sse.service';
 import { GlobalConfig, ToastrService } from 'ngx-toastr';
@@ -83,4 +83,16 @@ export class AppComponent {
     );
   }
   //#endregion toastr相關
+  //How can we detect when user closes browser?
+  //https://stackoverflow.com/questions/37642589/how-can-we-detect-when-user-closes-browser/37642657#37642657
+  // @HostListener('window:unload', ['$event'])
+  // unloadHandler(event) {
+  //   // ...
+  //   alert(`I'm leaving the app!`);
+  // }
+  // @HostListener('window:beforeunload', ['$event'])
+  // beforeUnloadHandler(event) {
+  //   // ...
+  //   alert(`I'm leaving the app!`);
+  // }
 }
