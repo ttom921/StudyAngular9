@@ -117,19 +117,19 @@ export class CarVideoService {
   TestFakeData4() {
     let data = [
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
       },
 
     ];
@@ -138,22 +138,22 @@ export class CarVideoService {
   TestFakeData5() {
     let data = [
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
       },
     ];
     return data;
@@ -161,22 +161,22 @@ export class CarVideoService {
   TestFakeData6() {
     let data = [
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
       },
     ];
     return data;
@@ -184,25 +184,25 @@ export class CarVideoService {
   TestFakeData7() {
     let data = [
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH05.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2016-08-14)TIME(14-00-00)]CH01.mp4"
       },
     ];
     return data;
@@ -238,25 +238,25 @@ export class CarVideoService {
   // TestFakeDataIE7() {
   //   let data = [
   //     {
-  //       src: "http://192.168.46.139:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+  //       src: "http://192.168.40.190:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
   //     },
   //     {
-  //       src: "http://192.168.46.139:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+  //       src: "http://192.168.40.190:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
   //     },
   //     {
-  //       src: "http://192.168.46.139:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+  //       src: "http://192.168.40.190:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
   //     },
   //     {
-  //       src: "http://192.168.46.139:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+  //       src: "http://192.168.40.190:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
   //     },
   //     {
-  //       src: "http://192.168.46.139:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+  //       src: "http://192.168.40.190:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
   //     },
   //     {
-  //       src: "http://192.168.46.139:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+  //       src: "http://192.168.40.190:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
   //     },
   //     {
-  //       src: "http://192.168.46.139:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+  //       src: "http://192.168.40.190:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
   //     },
   //   ];
   //   return data;
@@ -264,28 +264,28 @@ export class CarVideoService {
   TestFakeData8() {
     let data = [
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH01.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH01.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH02.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH02.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH03.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH03.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH04.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH04.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH05.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH05.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH07.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH07.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH08.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH08.mp4"
       },
     ];
     return data;
@@ -293,28 +293,28 @@ export class CarVideoService {
   TestFakeData9() {
     let data = [
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
       },
       {
-        src: "http://192.168.46.139:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
+        src: "http://192.168.40.190:4200/assets/[DATE(2020-05-15)TIME(09-22-00)]CH06_aac.mp4"
       },
     ];
     return data;
