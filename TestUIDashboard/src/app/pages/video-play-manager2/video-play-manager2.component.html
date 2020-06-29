@@ -1,11 +1,24 @@
-<div fxLayout="column" fxLayoutAlign="stretch" style="height:100%;">
+<!-- <div fxLayout="row" fxLayoutAlign="stretch" style="height:100%;">
+  <div class="color1" fxFlex="10">
+
+  </div>
+
+  <div class="color2" fxFlex="90">
+
+
+
+  </div>
+</div> -->
+
+
+<div fxLayout="column" style="height:100%;">
   <div fxFlex="90" fxLayout="row">
     <ng-container [ngComponentOutlet]="DynComp"></ng-container>
     <router-outlet></router-outlet>
   </div>
 
   <div fxFlex="10">
-    <div fxFill>
+    <div>
       <sync-mgr #synmgr [showFrameByFrame]="true" [photoscreen]="true"></sync-mgr>
     </div>
   </div>
