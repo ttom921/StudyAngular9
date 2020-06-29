@@ -4,6 +4,7 @@ import { CommunicationService } from '../../services/communication.service';
 import { Subscription } from 'rxjs';
 import { MatVideoComponent } from 'src/app/_common/video/video.component';
 import { SyncMgrService } from '../../sync-mgr/services/sync-mgr.service';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-layout-type1',
@@ -21,7 +22,10 @@ export class LayoutType1Component implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('video7', { static: true }) video7: MatVideoComponent;
   @ViewChild('video8', { static: true }) video8: MatVideoComponent;
   videolist = [];
+  matvideolist = [];
   mailindex = 0;
+  //主控頻道id
+  mainindex = -1;
   sub = new Subscription();
   constructor(
     private communicationService: CommunicationService,
@@ -51,6 +55,7 @@ export class LayoutType1Component implements OnInit, AfterViewInit, OnDestroy {
         let elm = this.videolist[index];
         this[`video${index + 1}`]['src'] = elm.src;
         this[`video${index + 1}`]['title'] = `ch${index + 1}`;
+        this.matvideolist.push(this[`video${index + 1}`]);
       }
       // for (let index = 0; index < this.videolist.length; index++) {
       //   let elm = this.videolist[index];
@@ -59,6 +64,7 @@ export class LayoutType1Component implements OnInit, AfterViewInit, OnDestroy {
       // this.video1.src = this.videolist[0].src;
       //console.log(this[`video1`]);
       //this[`video1`]['src'] = this.videolist[0].src;
+
     });
     this.sub.add(obssub1);
   }
@@ -70,7 +76,8 @@ export class LayoutType1Component implements OnInit, AfterViewInit, OnDestroy {
     }
     this.syncMgrService.initVideoRxJSevent(matvideos, this.sub);
     //設定主控頻道
-    this.syncMgrService.setMainVideo(this[`video${0 + 1}`]);
+    this.setmainvideo();
+    //this.syncMgrService.setMainVideo(this[`video${0 + 1}`]);
   }
   changePage(direct: VideoPageDirect) {
     //console.log(`LayoutType1Component=>${direct}`);
@@ -80,13 +87,23 @@ export class LayoutType1Component implements OnInit, AfterViewInit, OnDestroy {
         //console.log("<<");
         this.mailindex = (this.mailindex + this.videolist.length - 1) % this.videolist.length;
         //this.communicationService.videoSrcChange(this.video1, this.videolist[this.mailindex].src);
+        this.setmainvideo(this.mailindex);
         break;
       case VideoPageDirect.Right:
         //console.log(">>");
         this.mailindex = (this.mailindex + 1) % this.videolist.length;
         //this.communicationService.videoSrcChange(this.video1, this.videolist[this.mailindex].src);
+        this.setmainvideo(this.mailindex);
         break;
     }
     //console.log(`this.mailindex=${this.mailindex}`);
+  }
+  private setmainvideo(index = 0) {
+    if (this.mainindex == index) return;
+    this.mainindex = index;
+    let elm = this.matvideolist[this.mainindex];
+
+    this.syncMgrService.setMainVideo(elm);
+    //console.log(`LayoutType1 setmainvideo index=${this.mainindex}`);
   }
 }

@@ -20,7 +20,10 @@ export class LayoutType4Component implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('video7', { static: true }) video7: MatVideoComponent;
   @ViewChild('video8', { static: true }) video8: MatVideoComponent;
   videolist = [];
+  matvideolist = [];
   mailindex = 0;
+  //主控頻道id
+  mainindex = -1;
   sub = new Subscription();
   flexChangePageSize = 100;
   pages = 2;
@@ -87,6 +90,7 @@ export class LayoutType4Component implements OnInit, AfterViewInit, OnDestroy {
         let elm = this.videolist[index];
         this[`video${index + 1}`]['src'] = elm.src;
         this[`video${index + 1}`]['title'] = `ch${index + 1}`;
+        this.matvideolist.push(this[`video${index + 1}`]);
       }
     });
     this.sub.add(obssub1);
@@ -100,7 +104,8 @@ export class LayoutType4Component implements OnInit, AfterViewInit, OnDestroy {
     }
     this.syncMgrService.initVideoRxJSevent(matvideos, this.sub);
     //設定主控頻道
-    this.syncMgrService.setMainVideo(this[`video${0 + 1}`]);
+    this.setmainvideo();
+    //this.syncMgrService.setMainVideo(this[`video${0 + 1}`]);
   }
   changePage(direct: VideoPageDirect) {
     //console.log(`LayoutType4Component=>${direct}`);
@@ -123,6 +128,15 @@ export class LayoutType4Component implements OnInit, AfterViewInit, OnDestroy {
       this.showPage1();
     }
   }
+  private setmainvideo(index = 0) {
+    if (this.mainindex == index) return;
+    this.mainindex = index;
+    let elm = this.matvideolist[this.mainindex];
+
+    this.syncMgrService.setMainVideo(elm);
+
+    //console.log(`LayoutType4 setmainvideo index=${this.mainindex}`);
+  }
   Dbclick(whoclick: string, whovideo: any) {
     //console.dir(whoclick);
     //console.log(`Dbclick ${whoclick}`);
@@ -132,28 +146,36 @@ export class LayoutType4Component implements OnInit, AfterViewInit, OnDestroy {
     switch (whoclick) {
       case "video1":
         this.selectvideo1();
+        this.setmainvideo(0);
         break;
       case "video2":
         this.selectvideo2();
+        this.setmainvideo(1);
         break;
       case "video3":
         this.selectvideo3();
+        this.setmainvideo(2);
         break;
       case "video4":
         this.selectvideo4();
+        this.setmainvideo(3);
         break;
       //------------------
       case "video5":
         this.selectvideo5();
+        this.setmainvideo(4);
         break;
       case "video6":
         this.selectvideo6();
+        this.setmainvideo(5);
         break;
       case "video7":
         this.selectvideo7();
+        this.setmainvideo(6);
         break;
       case "video8":
         this.selectvideo8();
+        this.setmainvideo(7);
         break;
       default:
         break;

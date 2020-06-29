@@ -24,6 +24,7 @@ export class LayoutType8Component implements OnInit, AfterViewInit, OnDestroy {
   @ViewChildren(MatVideoComponent) matVideos: QueryList<MatVideoComponent>;
   videolist = [];
   matvideolist = [];
+  //主控頻道id
   mainindex = -1;
 
   sub = new Subscription();

@@ -19,7 +19,7 @@ export class CarVideoService {
     // }
 
 
-
+    datas = this.TestFakeData2();
     //datas = this.TestFakeData();
     //datas = this.TestFakeData3();
     //datas = this.TestFakeData5();
@@ -33,7 +33,7 @@ export class CarVideoService {
 
     //IE
     //datas = this.TestFakeData7();
-    datas = this.TestFakeDataIE7();
+    //datas = this.TestFakeDataIE7();
     //datas = this.TestFakeData9();
 
     return of(datas);
