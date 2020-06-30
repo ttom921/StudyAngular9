@@ -93,4 +93,5 @@ export class SyncMgrComponent implements OnInit, AfterViewInit {
   reloadTimeControl() {
     this.mattimecontrol.reLoad();
   }
+
 }

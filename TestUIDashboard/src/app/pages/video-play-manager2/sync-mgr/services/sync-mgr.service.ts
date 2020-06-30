@@ -200,6 +200,9 @@ export class SyncMgrService {
     this.mainvideo$.next(false);
     return this.mainvideo;
   }
+  clearMainVideo() {
+    this.mainvideo = null;
+  }
   //檢查是否有主頻道
   isMainvideo() {
     if (isNullOrUndefined(this.mainvideo))

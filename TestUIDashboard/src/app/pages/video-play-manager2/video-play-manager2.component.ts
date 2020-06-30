@@ -56,6 +56,8 @@ export class VideoPlayManager2Component implements OnInit {
     this.syncMgrService.layoutType$.subscribe(data => {
       //console.log(data);
       this.changeLayoutType(data);
+      //切換頻道時，清除主控頻道
+      this.syncMgrService.clearMainVideo();
     });
   }
 

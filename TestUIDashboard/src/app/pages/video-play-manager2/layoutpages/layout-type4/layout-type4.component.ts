@@ -4,6 +4,7 @@ import { CommunicationService } from '../../services/communication.service';
 import { Subscription } from 'rxjs';
 import { MatVideoComponent } from 'src/app/_common/video/video.component';
 import { SyncMgrService } from '../../sync-mgr/services/sync-mgr.service';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-layout-type4',
@@ -130,12 +131,48 @@ export class LayoutType4Component implements OnInit, AfterViewInit, OnDestroy {
   }
   private setmainvideo(index = 0) {
     if (this.mainindex == index) return;
+    //console.log(`this.matvideolist=>${this.matvideolist}`);
+    let elm = this.matvideolist[index];
+    //console.log(elm);
+    if (isNullOrUndefined(elm)) {
+      this.syncMgrService.clearMainVideo();
+      return;
+    }
     this.mainindex = index;
-    let elm = this.matvideolist[this.mainindex];
-
     this.syncMgrService.setMainVideo(elm);
-
     //console.log(`LayoutType4 setmainvideo index=${this.mainindex}`);
+  }
+  selclick(whoclick: string) {
+    //console.log(`selclick ${whoclick}`);
+    switch (whoclick) {
+      case "video1":
+        this.setmainvideo(0);
+        break;
+      case "video2":
+        this.setmainvideo(1);
+        break;
+      case "video3":
+        this.setmainvideo(2);
+        break;
+      case "video4":
+        this.setmainvideo(3);
+        break;
+      //------------------
+      case "video5":
+        this.setmainvideo(4);
+        break;
+      case "video6":
+        this.setmainvideo(5);
+        break;
+      case "video7":
+        this.setmainvideo(6);
+        break;
+      case "video8":
+        this.setmainvideo(7);
+        break;
+      default:
+        break;
+    }
   }
   Dbclick(whoclick: string, whovideo: any) {
     //console.dir(whoclick);

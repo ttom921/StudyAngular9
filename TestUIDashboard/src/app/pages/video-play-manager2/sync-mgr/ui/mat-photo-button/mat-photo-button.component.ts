@@ -3,6 +3,7 @@ import { SyncMgrService } from '../../services/sync-mgr.service';
 import { MatVideoComponent } from 'src/app/_common/video/video.component';
 import * as _ from 'lodash';
 import { VideoLayoutType } from '../../../video-play-mgrs.enum';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'mat-photo-button',
@@ -16,11 +17,16 @@ export class MatPhotoButtonComponent implements OnInit {
     private syncMgrService: SyncMgrService
   ) { }
 
+
   ngOnInit(): void {
   }
+
   takePhoto() {
     console.log(`mat-photo-button->takePhoto()`);
     this.mainvideo = this.syncMgrService.getMainVideo();
+    //console.dir(this.mainvideo);
+    //console.log(`takePhoto->this.mainvideo=${this.mainvideo}`);
+    if (isNullOrUndefined(this.mainvideo)) return;
     if (this.allphoto) {
       let layout = this.syncMgrService.getCurrentLayout();
       //console.log(`layouttype=${layout}`);
