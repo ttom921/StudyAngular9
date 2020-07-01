@@ -6,10 +6,12 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 
 
+
 @Component({
   selector: 'app-ng-test-date-time-picker',
   templateUrl: './ng-test-date-time-picker.component.html',
   styleUrls: ['./ng-test-date-time-picker.component.scss'],
+
 })
 export class NgTestDateTimePickerComponent implements OnInit {
   date: moment.Moment;
@@ -28,7 +30,8 @@ export class NgTestDateTimePickerComponent implements OnInit {
   disableMinute = false;
   formGroup = new FormGroup({
     date: new FormControl(moment().format('YYYY/MM'), [Validators.required]),
-    date2: new FormControl(null, [Validators.required])
+    date2: new FormControl(moment(), [Validators.required]),
+    date3: new FormControl(null, [Validators.required])
   });
   constructor() { }
 

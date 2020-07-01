@@ -16,6 +16,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 //#endregion 多國語言
 import { ToastrModule } from 'ngx-toastr';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,8 +42,12 @@ import { ToastrModule } from 'ngx-toastr';
       enableHtml: true,
       closeButton: true,
       //disableTimeOut: true
-    }) // ToastrModule added
+    }), // ToastrModule added
     //#endregion Toastr
+    //日曆時間元件
+    MatNativeDateModule,
+    //日曆時間元件
+
   ],
   providers: [],
   bootstrap: [AppComponent]
