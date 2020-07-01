@@ -24,6 +24,10 @@ import { NgTestSingleVideosComponent } from '../ng-test-single-videos/ng-test-si
 import { MatVideoModule } from 'src/app/_common/video/video.module';
 import { SyncVideoModule } from 'src/app/_common/sync-video/sync-video.module';
 import { NgTestIE11videoComponent } from '../ng-test-ie11video/ng-test-ie11video.component';
+import { NgTestDateTimePickerComponent } from '../ng-test-date-time-picker/ng-test-date-time-picker.component';
+import { NgxMatTimepickerModule } from 'src/app/_common/datetime-picker/timepicker.module';
+import { NgxMatNativeDateModule } from 'src/app/_common/datetime-picker/core/native-date.module';
+import { NgxMatDatetimePickerModule } from 'src/app/_common/datetime-picker/datetime-picker.module';
 
 
 @NgModule({
@@ -44,6 +48,7 @@ import { NgTestIE11videoComponent } from '../ng-test-ie11video/ng-test-ie11video
     NgTestMultiVideosComponent,
     NgTestSingleVideosComponent,
     NgTestIE11videoComponent,
+    NgTestDateTimePickerComponent,
 
 
   ],
@@ -52,7 +57,13 @@ import { NgTestIE11videoComponent } from '../ng-test-ie11video/ng-test-ie11video
     DashboardRoutingModule,
     SharedAngularMaterialModule,
     MatVideoModule,
+    //日曆時間元件
+    NgxMatTimepickerModule,
+    NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule,
+    //日曆時間元件
     SyncVideoModule,
   ]
 })
+
 export class DashboardModule { }

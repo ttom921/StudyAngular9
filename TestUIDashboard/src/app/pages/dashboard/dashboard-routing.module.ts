@@ -11,6 +11,7 @@ import { NgTestSSEComponent } from '../ng-test-sse/ng-test-sse.component';
 import { NgTestMultiVideosComponent } from '../ng-test-multi-videos/ng-test-multi-videos.component';
 import { NgTestSingleVideosComponent } from '../ng-test-single-videos/ng-test-single-videos.component';
 import { NgTestIE11videoComponent } from '../ng-test-ie11video/ng-test-ie11video.component';
+import { NgTestDateTimePickerComponent } from '../ng-test-date-time-picker/ng-test-date-time-picker.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
       { path: 'ngtestmultivideos', component: NgTestMultiVideosComponent },
       { path: 'ngtestsinglevideos', component: NgTestSingleVideosComponent },
       { path: 'ngtestie11video', component: NgTestIE11videoComponent },
+      { path: 'ngtestdatetimepicker', component: NgTestDateTimePickerComponent }
     ]
   }
 ];

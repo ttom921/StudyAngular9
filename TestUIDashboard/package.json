@@ -27,6 +27,7 @@
     "animate.css": "^3.7.2",
     "classlist.js": "^1.1.20150312",
     "leaflet": "^1.6.0",
+    "moment": "^2.27.0",
     "ngx-toastr": "^12.0.1",
     "rxjs": "~6.5.5",
     "tslib": "^1.10.0",
