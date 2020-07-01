@@ -1,6 +1,6 @@
 <mat-card class="mat-elevation-z2">
   <mat-card-header>
-    <mat-card-title>Working with FormGroup</mat-card-title>
+    <mat-card-title>日期Working with FormGroup</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <div [formGroup]="formGroup">
@@ -23,3 +23,13 @@
     <ngx-mat-datetime-picker #picker1></ngx-mat-datetime-picker>
   </mat-form-field>
 </div> -->
+<mat-card class="mat-elevation-z2">
+  <mat-card-header>
+    <mat-card-title>時間Working with FormGroup</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="formGroup">
+      <ngx-mat-timepicker formControlName="date2" [showSeconds]="true"></ngx-mat-timepicker>
+    </form>
+  </mat-card-content>
+</mat-card>
