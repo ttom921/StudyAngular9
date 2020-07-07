@@ -29,6 +29,7 @@ import { NgxMatTimepickerModule } from 'src/app/_common/datetime-picker/timepick
 import { NgxMatNativeDateModule } from 'src/app/_common/datetime-picker/core/native-date.module';
 import { NgxMatDatetimePickerModule } from 'src/app/_common/datetime-picker/datetime-picker.module';
 import { OtaSetCarComponent } from '../ng-test-date-time-picker/ota-set-car/ota-set-car.component';
+import { OtaSetForceCarComponent } from '../ng-test-date-time-picker/ota-set-force-car/ota-set-force-car.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { OtaSetCarComponent } from '../ng-test-date-time-picker/ota-set-car/ota-
     NgTestIE11videoComponent,
     NgTestDateTimePickerComponent,
     OtaSetCarComponent,
+    OtaSetForceCarComponent,
 
 
   ],

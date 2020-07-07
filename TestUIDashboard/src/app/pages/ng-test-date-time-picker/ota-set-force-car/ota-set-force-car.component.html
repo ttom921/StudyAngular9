@@ -1,0 +1,11 @@
+<form [formGroup]="formModel">
+  <p>
+    <mat-form-field>
+      <mat-icon matPrefix>lock</mat-icon>
+      <mat-select formControlName="firmwarever">
+        <mat-option *ngFor="let item of this.firmwatelist" [value]="item">{{ item }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </p>
+</form>
