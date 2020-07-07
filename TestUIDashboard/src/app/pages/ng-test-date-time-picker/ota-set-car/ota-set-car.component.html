@@ -1,0 +1,20 @@
+<form [formGroup]="formModel" (submit)="onSubmit()">
+  <p>
+    <mat-form-field>
+      <mat-icon matPrefix>lock</mat-icon>
+      <mat-select formControlName="action">
+        <mat-option *ngFor="let item of this.actionlist" [value]="item.action">{{ item.action }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </p>
+  <p>
+    <mat-form-field [style.visibility]="isTimeVisible ? 'visible' : 'hidden'">
+      <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" formControlName="date" [min]="minDate" [max]="maxDate">
+      <mat-datepicker-toggle #pickicon matSuffix [for]="picker"></mat-datepicker-toggle>
+      <ngx-mat-datetime-picker #picker [color]="color">
+      </ngx-mat-datetime-picker>
+    </mat-form-field>
+  </p>
+
+</form>
