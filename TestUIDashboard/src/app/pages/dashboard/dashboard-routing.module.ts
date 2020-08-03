@@ -12,6 +12,7 @@ import { NgTestMultiVideosComponent } from '../ng-test-multi-videos/ng-test-mult
 import { NgTestSingleVideosComponent } from '../ng-test-single-videos/ng-test-single-videos.component';
 import { NgTestIE11videoComponent } from '../ng-test-ie11video/ng-test-ie11video.component';
 import { NgTestDateTimePickerComponent } from '../ng-test-date-time-picker/ng-test-date-time-picker.component';
+import { NgTestMaterialExpansionPanelComponent } from '../ng-test-material-expansion-panel/ng-test-material-expansion-panel.component';
 
 
 const routes: Routes = [
@@ -29,7 +30,8 @@ const routes: Routes = [
       { path: 'ngtestmultivideos', component: NgTestMultiVideosComponent },
       { path: 'ngtestsinglevideos', component: NgTestSingleVideosComponent },
       { path: 'ngtestie11video', component: NgTestIE11videoComponent },
-      { path: 'ngtestdatetimepicker', component: NgTestDateTimePickerComponent }
+      { path: 'ngtestdatetimepicker', component: NgTestDateTimePickerComponent },
+      { path: 'ngtestmatexpansionpanel', component: NgTestMaterialExpansionPanelComponent }
     ]
   }
 ];

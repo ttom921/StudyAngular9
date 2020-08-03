@@ -17,9 +17,11 @@ export function HttpLoaderFactory(http: HttpClient) {
 //#endregion 多國語言
 import { ToastrModule } from 'ngx-toastr';
 import { MatNativeDateModule } from '@angular/material/core';
+import { NgTestMaterialExpansionPanelComponent } from './pages/ng-test-material-expansion-panel/ng-test-material-expansion-panel.component';
 @NgModule({
   declarations: [
     AppComponent,
+    NgTestMaterialExpansionPanelComponent,
   ],
   imports: [
     BrowserModule,
