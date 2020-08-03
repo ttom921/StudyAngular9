@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root'
-})
 export interface OtaSetAction {
   action: string;
   actionName: string;
 };
+
+@Injectable({
+  providedIn: 'root'
+})
+
 
 // class OtaSetActions: {
 //   action: string,

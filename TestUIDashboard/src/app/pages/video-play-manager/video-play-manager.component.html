@@ -2,8 +2,8 @@
   <!-- left -->
   <div fxFlex="10">
     <div style="margin-left: 12px;">
-      <mat-card class="mat-elevation-z2" *ngFor="let item of videolist;let idx=index" style="padding: 2px;" [ngClass]="{'select-card': selectidx==idx}">
-        <mat-video [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [download]="false" [preload]="false" [overlay]="false" src="{{item.src}}" (click)="onVideoclick($event,item,idx)">
+      <mat-card class="mat-elevation-z2" *ngFor="let item of videolist;let idx=index" style="padding: 2px;" [ngClass]="{'select-card': selectidx==idx}" (click)="onVideoclick($event,item,idx)">
+        <mat-video [playFreeze]="true" [mustShowMouseIcon]="true" [muted]="true" [download]="false" [preload]="false" [overlay]="false" src="{{item.src}}">
         </mat-video>
       </mat-card>
     </div>
