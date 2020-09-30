@@ -80,6 +80,11 @@ export class SidebarComponent implements OnInit {
           iconName: 'star_rate',
           route: 'dashboard/ngtestmatexpansionpanel',
         },
+        {
+          displayName: '測試lazy-loading',
+          iconName: 'person',
+          route: 'dashboard/ngtestlazyload',
+        },
       ]
     }
   ];

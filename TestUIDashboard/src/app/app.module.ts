@@ -18,10 +18,14 @@ export function HttpLoaderFactory(http: HttpClient) {
 import { ToastrModule } from 'ngx-toastr';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgTestMaterialExpansionPanelComponent } from './pages/ng-test-material-expansion-panel/ng-test-material-expansion-panel.component';
+import { NgTestLazyloadComponent } from './pages/ng-test-lazyload/ng-test-lazyload.component';
+import { IntersectionObserverDirective } from './_common/_directive/intersection-observer.directive';
 @NgModule({
   declarations: [
     AppComponent,
     NgTestMaterialExpansionPanelComponent,
+    NgTestLazyloadComponent,
+    IntersectionObserverDirective,
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,4 @@
+import { NgTestLazyloadComponent } from './../ng-test-lazyload/ng-test-lazyload.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
@@ -31,7 +32,8 @@ const routes: Routes = [
       { path: 'ngtestsinglevideos', component: NgTestSingleVideosComponent },
       { path: 'ngtestie11video', component: NgTestIE11videoComponent },
       { path: 'ngtestdatetimepicker', component: NgTestDateTimePickerComponent },
-      { path: 'ngtestmatexpansionpanel', component: NgTestMaterialExpansionPanelComponent }
+      { path: 'ngtestmatexpansionpanel', component: NgTestMaterialExpansionPanelComponent },
+      { path: 'ngtestlazyload', component: NgTestLazyloadComponent }
     ]
   }
 ];
